@@ -9,20 +9,24 @@
 /* Begin PBXBuildFile section */
 		46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */; };
 		D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE23268BD37E00EBEA0A /* AppDelegate.swift */; };
-		D376BE28268BD37E00EBEA0A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE27268BD37E00EBEA0A /* LoginViewController.swift */; };
+		D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */; };
 		D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */; };
 		D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D376BE2C268BD37E00EBEA0A /* Assets.xcassets */; };
 		D376BE30268BD37E00EBEA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE2E268BD37E00EBEA0A /* LaunchScreen.storyboard */; };
 		D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D376BE3D268BD57800EBEA0A /* GoogleService-Info.plist */; };
 		D376BE41268BD70000EBEA0A /* FirebaseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */; };
 		D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE42268BD84400EBEA0A /* BaseURL.swift */; };
+		D376BE64268C2B6600EBEA0A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE63268C2B6600EBEA0A /* LoginViewController.swift */; };
+		D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE66268C337A00EBEA0A /* UIViewController.swift */; };
+		D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE69268C34E300EBEA0A /* LoginViewModel.swift */; };
+		D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DARDESH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376BE20268BD37E00EBEA0A /* DARDESH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARDESH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376BE23268BD37E00EBEA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D376BE27268BD37E00EBEA0A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegsterViewController.swift; sourceTree = "<group>"; };
 		D376BE2A268BD37E00EBEA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginMain.storyboard; sourceTree = "<group>"; };
 		D376BE2C268BD37E00EBEA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D376BE2F268BD37E00EBEA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +34,35 @@
 		D376BE3D268BD57800EBEA0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLayer.swift; sourceTree = "<group>"; };
 		D376BE42268BD84400EBEA0A /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		D376BE48268C23FA00EBEA0A /* NotoSansJP-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Medium.otf"; sourceTree = "<group>"; };
+		D376BE49268C23FB00EBEA0A /* NotoSansJP-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Regular.otf"; sourceTree = "<group>"; };
+		D376BE4A268C23FB00EBEA0A /* NotoSansJP-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Black.otf"; sourceTree = "<group>"; };
+		D376BE4B268C23FB00EBEA0A /* NotoSansJP-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Thin.otf"; sourceTree = "<group>"; };
+		D376BE4C268C23FB00EBEA0A /* NotoSansJP-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Bold.otf"; sourceTree = "<group>"; };
+		D376BE4D268C23FB00EBEA0A /* NotoSansJP-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansJP-Light.otf"; sourceTree = "<group>"; };
+		D376BE4F268C24C000EBEA0A /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		D376BE50268C24C000EBEA0A /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		D376BE51268C24C000EBEA0A /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		D376BE52268C24C000EBEA0A /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
+		D376BE53268C24C000EBEA0A /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		D376BE54268C24C000EBEA0A /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
+		D376BE55268C24C000EBEA0A /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
+		D376BE56268C24C000EBEA0A /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		D376BE57268C24C000EBEA0A /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		D376BE58268C24C000EBEA0A /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		D376BE59268C24C000EBEA0A /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D376BE5A268C24C000EBEA0A /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D376BE5B268C24C000EBEA0A /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		D376BE5C268C24C000EBEA0A /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
+		D376BE5E268C262F00EBEA0A /* Signika-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Bold.ttf"; sourceTree = "<group>"; };
+		D376BE5F268C262F00EBEA0A /* Signika-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Regular.ttf"; sourceTree = "<group>"; };
+		D376BE60268C262F00EBEA0A /* Signika-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Medium.ttf"; sourceTree = "<group>"; };
+		D376BE61268C262F00EBEA0A /* Signika-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-Light.ttf"; sourceTree = "<group>"; };
+		D376BE62268C262F00EBEA0A /* Signika-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Signika-SemiBold.ttf"; sourceTree = "<group>"; };
+		D376BE63268C2B6600EBEA0A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D376BE66268C337A00EBEA0A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		D376BE69268C34E300EBEA0A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegesterViewModel.swift; sourceTree = "<group>"; };
 		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				D376BE37268BD3EC00EBEA0A /* AppDelegate */,
+				D376BE65268C336500EBEA0A /* Extensions */,
 				D376BE3F268BD6E600EBEA0A /* Firebase Layer */,
 				D376BE3B268BD45A00EBEA0A /* LaunchScreen */,
 				D376BE38268BD3FB00EBEA0A /* Views + Controllers */,
@@ -105,7 +139,8 @@
 		D376BE39268BD43400EBEA0A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D376BE27268BD37E00EBEA0A /* LoginViewController.swift */,
+				D376BE6B268C34EC00EBEA0A /* RegesterController + ViewModel */,
+				D376BE68268C34AD00EBEA0A /* loginController + ViewModel */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -129,6 +164,7 @@
 		D376BE3C268BD47000EBEA0A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D376BE44268C236500EBEA0A /* Fonts */,
 				D376BE3D268BD57800EBEA0A /* GoogleService-Info.plist */,
 				D376BE2C268BD37E00EBEA0A /* Assets.xcassets */,
 				D376BE31268BD37E00EBEA0A /* Info.plist */,
@@ -143,6 +179,88 @@
 				D376BE42268BD84400EBEA0A /* BaseURL.swift */,
 			);
 			path = "Firebase Layer";
+			sourceTree = "<group>";
+		};
+		D376BE44268C236500EBEA0A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE5D268C262600EBEA0A /* Signika */,
+				D376BE4E268C24AD00EBEA0A /* Nunito */,
+				D376BE47268C23EC00EBEA0A /* Noto_Sans_JP */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		D376BE47268C23EC00EBEA0A /* Noto_Sans_JP */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE4A268C23FB00EBEA0A /* NotoSansJP-Black.otf */,
+				D376BE4C268C23FB00EBEA0A /* NotoSansJP-Bold.otf */,
+				D376BE4D268C23FB00EBEA0A /* NotoSansJP-Light.otf */,
+				D376BE48268C23FA00EBEA0A /* NotoSansJP-Medium.otf */,
+				D376BE49268C23FB00EBEA0A /* NotoSansJP-Regular.otf */,
+				D376BE4B268C23FB00EBEA0A /* NotoSansJP-Thin.otf */,
+			);
+			path = Noto_Sans_JP;
+			sourceTree = "<group>";
+		};
+		D376BE4E268C24AD00EBEA0A /* Nunito */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE51268C24C000EBEA0A /* Nunito-Black.ttf */,
+				D376BE52268C24C000EBEA0A /* Nunito-BlackItalic.ttf */,
+				D376BE57268C24C000EBEA0A /* Nunito-Bold.ttf */,
+				D376BE59268C24C000EBEA0A /* Nunito-BoldItalic.ttf */,
+				D376BE5A268C24C000EBEA0A /* Nunito-ExtraBold.ttf */,
+				D376BE5B268C24C000EBEA0A /* Nunito-ExtraBoldItalic.ttf */,
+				D376BE54268C24C000EBEA0A /* Nunito-ExtraLight.ttf */,
+				D376BE53268C24C000EBEA0A /* Nunito-ExtraLightItalic.ttf */,
+				D376BE55268C24C000EBEA0A /* Nunito-Italic.ttf */,
+				D376BE58268C24C000EBEA0A /* Nunito-Light.ttf */,
+				D376BE5C268C24C000EBEA0A /* Nunito-LightItalic.ttf */,
+				D376BE56268C24C000EBEA0A /* Nunito-Regular.ttf */,
+				D376BE50268C24C000EBEA0A /* Nunito-SemiBold.ttf */,
+				D376BE4F268C24C000EBEA0A /* Nunito-SemiBoldItalic.ttf */,
+			);
+			path = Nunito;
+			sourceTree = "<group>";
+		};
+		D376BE5D268C262600EBEA0A /* Signika */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE5E268C262F00EBEA0A /* Signika-Bold.ttf */,
+				D376BE61268C262F00EBEA0A /* Signika-Light.ttf */,
+				D376BE60268C262F00EBEA0A /* Signika-Medium.ttf */,
+				D376BE5F268C262F00EBEA0A /* Signika-Regular.ttf */,
+				D376BE62268C262F00EBEA0A /* Signika-SemiBold.ttf */,
+			);
+			path = Signika;
+			sourceTree = "<group>";
+		};
+		D376BE65268C336500EBEA0A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE66268C337A00EBEA0A /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D376BE68268C34AD00EBEA0A /* loginController + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE69268C34E300EBEA0A /* LoginViewModel.swift */,
+				D376BE63268C2B6600EBEA0A /* LoginViewController.swift */,
+			);
+			path = "loginController + ViewModel";
+			sourceTree = "<group>";
+		};
+		D376BE6B268C34EC00EBEA0A /* RegesterController + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */,
+				D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */,
+			);
+			path = "RegesterController + ViewModel";
 			sourceTree = "<group>";
 		};
 		E8F80A0A1EA8E520E4AE660E /* Frameworks */ = {
@@ -269,9 +387,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D376BE41268BD70000EBEA0A /* FirebaseLayer.swift in Sources */,
-				D376BE28268BD37E00EBEA0A /* LoginViewController.swift in Sources */,
+				D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */,
 				D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */,
+				D376BE64268C2B6600EBEA0A /* LoginViewController.swift in Sources */,
+				D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
+				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
+				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

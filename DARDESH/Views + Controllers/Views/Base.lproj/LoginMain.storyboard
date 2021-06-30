@@ -1,31 +1,330 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Gaa-tA-HPZ">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansJP-Bold.otf">
+            <string>NotoSansJP-Bold</string>
+        </array>
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+        <array key="Nunito-SemiBold.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
+        <array key="Signika-Regular.ttf">
+            <string>Signika-Regular_Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Login View Controller-->
+        <!--Regster View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegsterViewController" id="BYZ-38-t0r" customClass="RegsterViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regester" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-RM-8CM">
+                                <rect key="frame" x="110.33333333333333" y="58" width="154.66666666666669" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="fg7-es-RNS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansJP-Bold" family="Noto Sans JP" pointSize="36"/>
+                                <color key="textColor" name="label"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uzk-xG-2YH">
+                                <rect key="frame" x="32" y="151" width="327" height="118"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="9UC-aq-hcg">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="34"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lgk-AY-3Hx">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="IFD-YU-VMZ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FvV-4o-8Ej">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="34"/>
+                                                <fontDescription key="fontDescription" name="Signika-Regular_Regular" family="Signika" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="xQe-0G-C92"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="urP-UX-0uE">
+                                        <rect key="frame" x="0.0" y="42" width="327" height="34"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hx8-Ta-5b1">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="Uai-so-TFy"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wqD-W7-UbY">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="34"/>
+                                                <fontDescription key="fontDescription" name="Signika-Regular_Regular" family="Signika" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="acR-vZ-JHH"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="WjY-Pg-kwJ">
+                                        <rect key="frame" x="0.0" y="84" width="327" height="34"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJc-f6-OQB">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="25"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="pFo-vf-uKa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confrim Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QBR-aC-fiH">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="34"/>
+                                                <fontDescription key="fontDescription" name="Signika-Regular_Regular" family="Signika" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Cad-Nf-YdY"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akE-bZ-9wn">
+                                <rect key="frame" x="124" y="284" width="235" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Xsx-j4-sE9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
+                                <state key="normal" title="Resend Confirmation?"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZj-nK-xsx">
+                                <rect key="frame" x="72" y="350" width="233" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Nt3-EP-0gD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
+                                <state key="normal" title="Regester"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="9l6-uW-LAT">
+                                <rect key="frame" x="71.666666666666671" y="733" width="231.66666666666663" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4i-2i-tyE">
+                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="cCo-gh-vqc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTM-ov-xfA">
+                                        <rect key="frame" x="186.66666666666663" y="0.0" width="45" height="25"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <state key="normal" title="Login"/>
+                                        <connections>
+                                            <action selector="LoginAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sTN-vf-WDU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzk-xG-2YH" secondAttribute="trailing" constant="16" id="9FP-RU-v36"/>
+                            <constraint firstItem="LZj-nK-xsx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="FxT-40-c0V"/>
+                            <constraint firstItem="akE-bZ-9wn" firstAttribute="top" secondItem="uzk-xG-2YH" secondAttribute="bottom" constant="15" id="JQc-z1-VaU"/>
+                            <constraint firstItem="vWa-RM-8CM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LHl-jZ-NyP"/>
+                            <constraint firstItem="akE-bZ-9wn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="124" id="N3c-Or-hxi"/>
+                            <constraint firstItem="uzk-xG-2YH" firstAttribute="top" secondItem="vWa-RM-8CM" secondAttribute="bottom" constant="33" id="Sne-SW-rel"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9l6-uW-LAT" secondAttribute="bottom" constant="20" id="f4t-aD-EMA"/>
+                            <constraint firstItem="LZj-nK-xsx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="1" id="fOR-jP-4U9"/>
+                            <constraint firstItem="LZj-nK-xsx" firstAttribute="top" secondItem="akE-bZ-9wn" secondAttribute="bottom" constant="44" id="jX2-uZ-cWq"/>
+                            <constraint firstItem="uzk-xG-2YH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="pfI-UY-CKu"/>
+                            <constraint firstItem="9l6-uW-LAT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="q40-Gl-Ue5"/>
+                            <constraint firstItem="akE-bZ-9wn" firstAttribute="trailing" secondItem="uzk-xG-2YH" secondAttribute="trailing" id="s8b-8p-LXx"/>
+                            <constraint firstItem="vWa-RM-8CM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="tkI-DN-q7O"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ConfirmLabel" destination="iJc-f6-OQB" id="Y77-17-jc6"/>
+                        <outlet property="ConfirmPasswordTextField" destination="QBR-aC-fiH" id="P1o-zK-ALc"/>
+                        <outlet property="EmailLabel" destination="lgk-AY-3Hx" id="A4a-np-8ic"/>
+                        <outlet property="EmailTextField" destination="FvV-4o-8Ej" id="LIh-c1-mDW"/>
+                        <outlet property="PasswordLabel" destination="hx8-Ta-5b1" id="OxF-2x-vhm"/>
+                        <outlet property="PasswordTextField" destination="wqD-W7-UbY" id="poI-lz-lY0"/>
+                        <outlet property="RegesterButton" destination="LZj-nK-xsx" id="Nkp-Zd-tgo"/>
+                        <outlet property="ResendEmailButton" destination="akE-bZ-9wn" id="wgI-H6-POJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="100"/>
+            <point key="canvasLocation" x="131.25" y="99.295774647887328"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="ttg-Gi-Oe3">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="Gaa-tA-HPZ" customClass="LoginViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iVE-lh-y0y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-K3-BcD">
+                                <rect key="frame" x="138.33333333333334" y="58" width="98.333333333333343" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="pRX-13-hyZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansJP-Bold" family="Noto Sans JP" pointSize="36"/>
+                                <color key="textColor" name="label"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="af5-nW-zHf">
+                                <rect key="frame" x="16" y="158" width="343" height="76"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Uxo-0y-6Cb">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uqJ-mV-Nql">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="g7l-Jo-6al"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FEK-m9-mXn">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                <fontDescription key="fontDescription" name="Signika-Regular_Regular" family="Signika" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Gaa-tA-HPZ" id="COe-90-tJ9"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="GaJ-uM-1eg">
+                                        <rect key="frame" x="0.0" y="42" width="343" height="34"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOh-2F-WC8">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="1if-d1-oWL"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="evU-Ty-M5K">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="34"/>
+                                                <fontDescription key="fontDescription" name="Signika-Regular_Regular" family="Signika" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Gaa-tA-HPZ" id="EJa-os-zos"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caz-Yi-0LX">
+                                <rect key="frame" x="122" y="242" width="237" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="SGz-qQ-ihM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="17"/>
+                                <state key="normal" title="Forgot Password?"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19I-j5-xfh">
+                                <rect key="frame" x="71" y="327" width="233" height="39"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="I3F-sz-JzC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
+                                <state key="normal" title="Login"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uvw-cu-fsV">
+                                <rect key="frame" x="55.666666666666657" y="733" width="264" height="25"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't you have account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA7-xv-tuL">
+                                        <rect key="frame" x="0.0" y="0.0" width="196" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="8O3-YD-EPf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycj-dI-ImJ">
+                                        <rect key="frame" x="207.00000000000003" y="0.0" width="56.999999999999972" height="25"/>
+                                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
+                                        <state key="normal" title="Signup"/>
+                                        <connections>
+                                            <action selector="SignUpAction:" destination="Gaa-tA-HPZ" eventType="touchUpInside" id="gIy-Hd-PLL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h0V-t7-45a"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="19I-j5-xfh" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="71" id="Ah4-2s-QZe"/>
+                            <constraint firstItem="af5-nW-zHf" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="16" id="B9S-tM-mPk"/>
+                            <constraint firstItem="caz-Yi-0LX" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="122" id="EIu-ff-GWZ"/>
+                            <constraint firstItem="caz-Yi-0LX" firstAttribute="top" secondItem="af5-nW-zHf" secondAttribute="bottom" constant="8" symbolic="YES" id="Fy9-bO-2gE"/>
+                            <constraint firstItem="wGQ-K3-BcD" firstAttribute="top" secondItem="h0V-t7-45a" secondAttribute="top" constant="14" id="K2w-ok-ama"/>
+                            <constraint firstItem="h0V-t7-45a" firstAttribute="trailing" secondItem="af5-nW-zHf" secondAttribute="trailing" constant="16" id="Ylp-FA-uuU"/>
+                            <constraint firstItem="caz-Yi-0LX" firstAttribute="trailing" secondItem="af5-nW-zHf" secondAttribute="trailing" id="ePq-gA-BC3"/>
+                            <constraint firstItem="wGQ-K3-BcD" firstAttribute="centerX" secondItem="h0V-t7-45a" secondAttribute="centerX" id="eU3-zq-ufW"/>
+                            <constraint firstItem="af5-nW-zHf" firstAttribute="top" secondItem="wGQ-K3-BcD" secondAttribute="bottom" constant="40" id="ho7-R7-hyk"/>
+                            <constraint firstItem="uvw-cu-fsV" firstAttribute="centerX" secondItem="h0V-t7-45a" secondAttribute="centerX" id="kmd-FK-ly7"/>
+                            <constraint firstItem="19I-j5-xfh" firstAttribute="centerX" secondItem="h0V-t7-45a" secondAttribute="centerX" id="oTK-Tv-hSb"/>
+                            <constraint firstItem="h0V-t7-45a" firstAttribute="bottom" secondItem="uvw-cu-fsV" secondAttribute="bottom" constant="20" id="uNq-T6-6KJ"/>
+                            <constraint firstItem="19I-j5-xfh" firstAttribute="top" secondItem="caz-Yi-0LX" secondAttribute="bottom" constant="63" id="y6Z-gx-2ge"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="EmailLabel" destination="uqJ-mV-Nql" id="Lfa-3K-x3x"/>
+                        <outlet property="EmailTextField" destination="FEK-m9-mXn" id="V5y-Om-xTo"/>
+                        <outlet property="ForgetPasswordButton" destination="caz-Yi-0LX" id="wLW-gO-kv3"/>
+                        <outlet property="PasswordLabel" destination="NOh-2F-WC8" id="Bmz-gM-Ak7"/>
+                        <outlet property="PasswordTextField" destination="evU-Ty-M5K" id="bQS-Z1-21G"/>
+                        <outlet property="loginButton" destination="19I-j5-xfh" id="vDz-sC-mRo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="34C-MO-RIL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="848.79999999999995" y="98.275862068965523"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="label">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

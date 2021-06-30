@@ -29,21 +29,24 @@ class FirebaseLayer {
     
     
     // MARK:- TODO:- This Method For Signup completly to Firebase.
-    public static func createAccount(Email:String,Password:String,collectionName:String,data:[String:String]) {
+    // collectionName:String,data:[String:String]
+    public static func createAccount(Email:String,Password:String,completion: @escaping (String) -> ()) {
         
         Auth.auth().createUser(withEmail: Email, password: Password) { (auth, error) in
             if error != nil {
                 print("Error")
+                completion("Failed")
             }
             else {
-                self.addData(collectionName: collectionName, data: data)
+               // self.addData(collectionName: collectionName, data: data)
+                completion("Success")
             }
         }
     }
     
     
     // MARK:- TODO:- This Method For Make a login opertation.
-    public func MakeLogin (Email:String,Password:String,completion: @escaping (String) -> ())  {
+    public static func MakeLogin (Email:String,Password:String,completion: @escaping (String) -> ())  {
            
            Auth.auth().signIn(withEmail: Email, password: Password) { (auth, error) in
                if error != nil {
