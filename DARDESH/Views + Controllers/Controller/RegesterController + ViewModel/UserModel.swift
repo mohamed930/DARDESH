@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct UserModel {
+struct UserModel: Codable {
     var uid: String
     var email: String
     var UserName: String
     var Image: String
     var status: String
+    var pushid = ""
 }

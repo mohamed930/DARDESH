@@ -66,31 +66,47 @@ class RegesterViewModel {
         
         loadingBehaviour.accept(true)
         
+        // First Create Account into Auth table
+        
         FirebaseLayer.createAccount(Email: emailBehaviour.value, Password: passwordBehaviour.value) { [weak self] value , auth in
             
             guard let self = self else { return }
             
             if value == "Success" {
-                let usermodel = UserModel(uid: auth?.user.uid ?? "NoID", email: self.emailBehaviour.value, UserName: self.emailBehaviour.value, Image: defaultAvatar, status: "Avaliable")
                 
-                let userData = [
-                                    "id": usermodel.uid,
-                                    "email": usermodel.email,
-                                    "username": usermodel.UserName,
-                                    "image": usermodel.Image,
-                                    "status": usermodel.status
-                               ]
-                
-                FirebaseLayer.addData(collectionName: "User", data: userData) { response in
-                    if response == "Success" {
-                        self.loadingBehaviour.accept(false)
-                        self.isCreatedAccount.onNext("Success")
+                // After Success Send Verify code to email
+                auth?.user.sendEmailVerification(completion: { error in
+                    if error == nil {
+                        
+                        // After Success Add Resete Data to user collection
+                        let usermodel = UserModel(uid: auth?.user.uid ?? "NoID", email: self.emailBehaviour.value, UserName: self.emailBehaviour.value, Image: defaultAvatar, status: "Avaliable",pushid: "")
+                        
+                        do {
+                            try FirebaseLayer.refernceCollection(collectionName: userCollection).document(usermodel.uid).setData(from: usermodel) { error in
+                                if error != nil {
+                                    self.loadingBehaviour.accept(false)
+                                    self.isCreatedAccount.onNext("Failed")
+                                }
+                                else {
+                                    self.loadingBehaviour.accept(false)
+                                    self.isCreatedAccount.onNext("Success")
+                                }
+                            }
+                        }
+                        catch {
+                            print("Erri in converting")
+                            self.loadingBehaviour.accept(false)
+                            self.isCreatedAccount.onNext("Failed")
+                        }
                     }
                     else {
+                        print("Error in writing")
                         self.loadingBehaviour.accept(false)
                         self.isCreatedAccount.onNext("Failed")
                     }
-                }
+                })
+                
+                
             }
             else {
                 self.loadingBehaviour.accept(false)

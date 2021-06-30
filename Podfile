@@ -14,6 +14,7 @@ target 'DARDESH' do
   pod 'Firebase/Auth'
   pod 'Firebase/Messaging'
   pod 'IQKeyboardManagerSwift'
+  pod 'FirebaseFirestoreSwift', '8.2.0-beta'
   pod 'Kingfisher'
   pod 'RxSwift'
   pod 'RxCocoa'

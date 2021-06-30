@@ -28,6 +28,10 @@ class FirebaseLayer {
        }
    }
     
+    public static func refernceCollection (collectionName:String) -> CollectionReference {
+        return Firestore.firestore().collection(collectionName)
+    }
+    
     
     // MARK:- TODO:- This Method For Signup completly to Firebase.
     public static func createAccount(Email:String,Password:String,completion: @escaping (String,AuthDataResult?) -> ()) {

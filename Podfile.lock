@@ -296,6 +296,8 @@ PODS:
     - "gRPC-C++ (~> 1.28.0)"
     - leveldb-library (~> 1.22)
     - nanopb (~> 2.30908.0)
+  - FirebaseFirestoreSwift (8.2.0-beta):
+    - FirebaseFirestore (~> 8.0)
   - FirebaseInstallations (8.1.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
@@ -409,6 +411,7 @@ DEPENDENCIES:
   - Firebase/Firestore
   - Firebase/Messaging
   - Firebase/Storage
+  - FirebaseFirestoreSwift (= 8.2.0-beta)
   - Gallery
   - InputBarAccessoryView
   - IQKeyboardManagerSwift
@@ -431,6 +434,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
     - FirebaseFirestore
+    - FirebaseFirestoreSwift
     - FirebaseInstallations
     - FirebaseMessaging
     - FirebaseStorage
@@ -466,6 +470,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 3e249cee3de5c5f9cfd6cc2a19997231286fec11
   FirebaseDatabase: cc219dac8f37fe80f5838ed5ffd84ce3daa443ad
   FirebaseFirestore: c4be8314e9fa156f44b54025f7a98ecbff6971a6
+  FirebaseFirestoreSwift: c9c493b7fcb8a22858f399783b50d23363e92f95
   FirebaseInstallations: 7f31798a8198c354eadcb87176d2090b62edc187
   FirebaseMessaging: c8871b0907dcf4e76de81241eb6a62be6d657d2f
   FirebaseStorage: 5b5958efaf84fb991568ad36f157f60c76bdcd80
@@ -491,6 +496,6 @@ SPEC CHECKSUMS:
   RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
   SKPhotoBrowser: 343de95d89dc7913763c5dda243cc6e606e4a168
 
-PODFILE CHECKSUM: 50a1f3ec1eed0e153be2deb7ffb81626bd46ddd9
+PODFILE CHECKSUM: 59d552daeae08db7a4788d2d92d5c41b00179f24
 
 COCOAPODS: 1.10.1
