@@ -9,6 +9,7 @@ target 'DARDESH' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
   pod 'Firebase/Auth'
   pod 'Firebase/Messaging'

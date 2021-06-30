@@ -6,54 +6,70 @@
 //
 
 import Foundation
-import FirebaseDatabase
 import FirebaseStorage
+import FirebaseDatabase
+import FirebaseFirestore
 import FirebaseAuth
 
 class FirebaseLayer {
     
-    // MARK:- TODO:- This Method for Write data to dicrect child
-    // ---------------------------------------------------------
-    public static func write(childName:String,childID:String,value:[String:Any]) {
+   // MARK:- TODO:- This Method For Adding Data to Firebase.
+   public static func addData (collectionName:String,data:[String:Any]) {
+       
+       Firestore.firestore().collection(collectionName).document().setData(data){
+           error in
+           if error != nil {
+               print("Error")
+           }
+           else {
+               print("Success")
+           }
+       }
+   }
+    
+    
+    // MARK:- TODO:- This Method For Signup completly to Firebase.
+    public static func createAccount(Email:String,Password:String,collectionName:String,data:[String:String]) {
         
-        Database.database().reference()
-            .child(childName).child(childID)
-        .setValue(value){
-            (error:Error?, ref:DatabaseReference) in
+        Auth.auth().createUser(withEmail: Email, password: Password) { (auth, error) in
             if error != nil {
                 print("Error")
             }
             else {
-                print("Sent success")
+                self.addData(collectionName: collectionName, data: data)
             }
         }
     }
-    // ---------------------------------------------------------
     
     
-    // MARK:- TODO:- This Method for Read data to direct child
-    // ---------------------------------------------------------
-    public static func readwithoutcondtion(childName:String, complention: @escaping (DataSnapshot) -> ()) {
-        
-        Database.database().reference().child(childName).observe(.childAdded, with: { (snap) in
-            complention(snap)
-        }) { (error) in
-            print("Error")
-        }
+    // MARK:- TODO:- This Method For Make a login opertation.
+    public func MakeLogin (Email:String,Password:String,completion: @escaping (String) -> ())  {
+           
+           Auth.auth().signIn(withEmail: Email, password: Password) { (auth, error) in
+               if error != nil {
+                   completion("Failed")
+               }
+               else {
+                   completion("Success")
+               }
+           }
+           
     }
-    // ---------------------------------------------------------
     
-    
-    // MARK:- TODO:- This Method for Read data to direct child with condtion
-    // ---------------------------------------------------------------------
-    public static func readwithcondtion(childName:String,k:String,v:String, complention: @escaping (DataSnapshot) -> ()) {
-        
-        Database.database().reference().child(childName).queryOrdered(byChild: k).queryEqual(toValue: v).observe(.childAdded) { (snap) in
-            complention(snap)
-        }
+    // MARK:- TODO:- This Method for Read Data from Firebase with condtion in public.
+    public static func publicreadWithWhereCondtion (collectionName:String , key:String , value:String , complention: @escaping (QuerySnapshot) -> ()) {
+            
+          //  RappleActivityIndicatorView.startAnimatingWithLabel("loading", attributes: RappleModernAttributes)
+            Firestore.firestore().collection(collectionName).whereField(key, isEqualTo: value).getDocuments { (quary, error) in
+                if error != nil {
+                    print("Error")
+                }
+                else {
+                    complention(quary!)
+                }
+            }
     }
-    // ---------------------------------------------------------------------
-    
+        
     
     // MARK:- TODO:- This Method for Upload Image.
     // --------------------------------------------
