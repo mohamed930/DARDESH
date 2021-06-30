@@ -103,13 +103,24 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.tag == 1 {
-            self.ShowLabelWithAnimation(LabelName: EmailLabel)
+            if EmailTextField.hasText {
+                self.ShowLabelWithAnimation(LabelName: EmailLabel)
+            }
+            else {
+                self.HideLabelWithAnimation(LabelName: EmailLabel)
+            }
+            
         }
         else {
-            self.ShowLabelWithAnimation(LabelName: PasswordLabel)
+            if PasswordTextField.hasText {
+                self.ShowLabelWithAnimation(LabelName: PasswordLabel)
+            }
+            else {
+                self.HideLabelWithAnimation(LabelName: PasswordLabel)
+            }
+            
         }
     }
     

@@ -121,12 +121,15 @@
                                 <state key="normal" title="Resend Confirmation?"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZj-nK-xsx">
-                                <rect key="frame" x="72" y="350" width="233" height="39"/>
+                                <rect key="frame" x="16" y="350" width="343" height="42"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="Nt3-EP-0gD"/>
+                                    <constraint firstAttribute="height" constant="42" id="Nt3-EP-0gD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
-                                <state key="normal" title="Regester"/>
+                                <state key="normal" title="Regester">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="9l6-uW-LAT">
                                 <rect key="frame" x="71.666666666666671" y="733" width="231.66666666666663" height="25"/>
@@ -155,13 +158,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uzk-xG-2YH" secondAttribute="trailing" constant="16" id="9FP-RU-v36"/>
-                            <constraint firstItem="LZj-nK-xsx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72" id="FxT-40-c0V"/>
+                            <constraint firstItem="LZj-nK-xsx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="FxT-40-c0V"/>
                             <constraint firstItem="akE-bZ-9wn" firstAttribute="top" secondItem="uzk-xG-2YH" secondAttribute="bottom" constant="15" id="JQc-z1-VaU"/>
                             <constraint firstItem="vWa-RM-8CM" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LHl-jZ-NyP"/>
                             <constraint firstItem="akE-bZ-9wn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="124" id="N3c-Or-hxi"/>
                             <constraint firstItem="uzk-xG-2YH" firstAttribute="top" secondItem="vWa-RM-8CM" secondAttribute="bottom" constant="33" id="Sne-SW-rel"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9l6-uW-LAT" secondAttribute="bottom" constant="20" id="f4t-aD-EMA"/>
-                            <constraint firstItem="LZj-nK-xsx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="1" id="fOR-jP-4U9"/>
+                            <constraint firstItem="LZj-nK-xsx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fOR-jP-4U9"/>
                             <constraint firstItem="LZj-nK-xsx" firstAttribute="top" secondItem="akE-bZ-9wn" secondAttribute="bottom" constant="44" id="jX2-uZ-cWq"/>
                             <constraint firstItem="uzk-xG-2YH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="pfI-UY-CKu"/>
                             <constraint firstItem="9l6-uW-LAT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="q40-Gl-Ue5"/>
@@ -182,7 +185,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="131.25" y="99.295774647887328"/>
+            <point key="canvasLocation" x="130.40000000000001" y="99.01477832512316"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ttg-Gi-Oe3">
@@ -259,12 +262,15 @@
                                 <state key="normal" title="Forgot Password?"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="19I-j5-xfh">
-                                <rect key="frame" x="71" y="327" width="233" height="39"/>
+                                <rect key="frame" x="16" y="327" width="343" height="42"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="I3F-sz-JzC"/>
+                                    <constraint firstAttribute="height" constant="42" id="I3F-sz-JzC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uvw-cu-fsV">
                                 <rect key="frame" x="55.666666666666657" y="733" width="264" height="25"/>
@@ -292,7 +298,7 @@
                         <viewLayoutGuide key="safeArea" id="h0V-t7-45a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="19I-j5-xfh" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="71" id="Ah4-2s-QZe"/>
+                            <constraint firstItem="19I-j5-xfh" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="16" id="Ah4-2s-QZe"/>
                             <constraint firstItem="af5-nW-zHf" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="16" id="B9S-tM-mPk"/>
                             <constraint firstItem="caz-Yi-0LX" firstAttribute="leading" secondItem="h0V-t7-45a" secondAttribute="leading" constant="122" id="EIu-ff-GWZ"/>
                             <constraint firstItem="caz-Yi-0LX" firstAttribute="top" secondItem="af5-nW-zHf" secondAttribute="bottom" constant="8" symbolic="YES" id="Fy9-bO-2gE"/>
@@ -322,6 +328,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="label">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

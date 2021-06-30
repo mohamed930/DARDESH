@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */; };
+		D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3242994268D13ED00EF0B6E /* UserModel.swift */; };
 		D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE23268BD37E00EBEA0A /* AppDelegate.swift */; };
 		D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */; };
 		D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DARDESH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3242994268D13ED00EF0B6E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D376BE20268BD37E00EBEA0A /* DARDESH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARDESH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376BE23268BD37E00EBEA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegsterViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		D376BE6B268C34EC00EBEA0A /* RegesterController + ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D3242994268D13ED00EF0B6E /* UserModel.swift */,
 				D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */,
 				D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */,
 			);
@@ -393,6 +396,7 @@
 				D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
+				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,36 +10,34 @@ import FirebaseStorage
 import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseAuth
+import ProgressHUD
 
 class FirebaseLayer {
     
    // MARK:- TODO:- This Method For Adding Data to Firebase.
-   public static func addData (collectionName:String,data:[String:Any]) {
+    public static func addData (collectionName:String,data:[String:Any],completion: @escaping (String) -> ()) {
        
        Firestore.firestore().collection(collectionName).document().setData(data){
            error in
            if error != nil {
-               print("Error")
+               completion("Error")
            }
            else {
-               print("Success")
+                completion("Success")
            }
        }
    }
     
     
     // MARK:- TODO:- This Method For Signup completly to Firebase.
-    // collectionName:String,data:[String:String]
-    public static func createAccount(Email:String,Password:String,completion: @escaping (String) -> ()) {
+    public static func createAccount(Email:String,Password:String,completion: @escaping (String,AuthDataResult?) -> ()) {
         
         Auth.auth().createUser(withEmail: Email, password: Password) { (auth, error) in
             if error != nil {
-                print("Error")
-                completion("Failed")
+                completion("Error",auth)
             }
             else {
-               // self.addData(collectionName: collectionName, data: data)
-                completion("Success")
+                completion("Success",auth)
             }
         }
     }

@@ -17,6 +17,13 @@ extension UIViewController {
         }
     }
     
+    func HideLabelWithAnimation (LabelName: UILabel) {
+        UIView.animate(withDuration: 0.5) {
+            LabelName.isHidden = true
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     func showAnimation() {
         ProgressHUD.show()
     }

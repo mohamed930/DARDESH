@@ -64,9 +64,9 @@ class RegsterViewController: UIViewController {
             }
             else {
                 print("Regester is Failed")
-                ProgressHUD.showError("email is used before try to change it")
                 self.PasswordTextField.text = ""
                 self.ConfirmPasswordTextField.text = ""
+                ProgressHUD.showError("email is used before try to change it")
             }
         }).disposed(by: disposebag)
     }
@@ -102,14 +102,14 @@ class RegsterViewController: UIViewController {
 
 extension RegsterViewController: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
         case 1:
-            self.ShowLabelWithAnimation(LabelName: EmailLabel)
+             EmailTextField.hasText ? self.ShowLabelWithAnimation(LabelName: EmailLabel) : self.HideLabelWithAnimation(LabelName: EmailLabel)
         case 2:
-            self.ShowLabelWithAnimation(LabelName: PasswordLabel)
+            PasswordTextField.hasText ? self.ShowLabelWithAnimation(LabelName: PasswordLabel) : self.HideLabelWithAnimation(LabelName: PasswordLabel)
         default:
-            self.ShowLabelWithAnimation(LabelName: ConfirmLabel)
+            ConfirmPasswordTextField.hasText ? self.ShowLabelWithAnimation(LabelName:  ConfirmLabel) : self.HideLabelWithAnimation(LabelName: ConfirmLabel)
         }
     }
     

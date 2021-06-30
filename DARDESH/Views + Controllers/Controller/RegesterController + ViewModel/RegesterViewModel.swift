@@ -8,6 +8,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import FirebaseAuth
 
 class RegesterViewModel {
     
@@ -65,13 +66,31 @@ class RegesterViewModel {
         
         loadingBehaviour.accept(true)
         
-        FirebaseLayer.createAccount(Email: emailBehaviour.value, Password: passwordBehaviour.value) { [weak self] value in
+        FirebaseLayer.createAccount(Email: emailBehaviour.value, Password: passwordBehaviour.value) { [weak self] value , auth in
             
             guard let self = self else { return }
             
             if value == "Success" {
-                self.loadingBehaviour.accept(false)
-                self.isCreatedAccount.onNext("Success")
+                let usermodel = UserModel(uid: auth?.user.uid ?? "NoID", email: self.emailBehaviour.value, UserName: self.emailBehaviour.value, Image: defaultAvatar, status: "Avaliable")
+                
+                let userData = [
+                                    "id": usermodel.uid,
+                                    "email": usermodel.email,
+                                    "username": usermodel.UserName,
+                                    "image": usermodel.Image,
+                                    "status": usermodel.status
+                               ]
+                
+                FirebaseLayer.addData(collectionName: "User", data: userData) { response in
+                    if response == "Success" {
+                        self.loadingBehaviour.accept(false)
+                        self.isCreatedAccount.onNext("Success")
+                    }
+                    else {
+                        self.loadingBehaviour.accept(false)
+                        self.isCreatedAccount.onNext("Failed")
+                    }
+                }
             }
             else {
                 self.loadingBehaviour.accept(false)
