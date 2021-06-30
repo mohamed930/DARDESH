@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */; };
+		D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE23268BD37E00EBEA0A /* AppDelegate.swift */; };
+		D376BE28268BD37E00EBEA0A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE27268BD37E00EBEA0A /* LoginViewController.swift */; };
+		D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */; };
+		D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D376BE2C268BD37E00EBEA0A /* Assets.xcassets */; };
+		D376BE30268BD37E00EBEA0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE2E268BD37E00EBEA0A /* LaunchScreen.storyboard */; };
+		D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D376BE3D268BD57800EBEA0A /* GoogleService-Info.plist */; };
+		D376BE41268BD70000EBEA0A /* FirebaseLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */; };
+		D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE42268BD84400EBEA0A /* BaseURL.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DARDESH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D376BE20268BD37E00EBEA0A /* DARDESH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARDESH.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D376BE23268BD37E00EBEA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D376BE27268BD37E00EBEA0A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D376BE2A268BD37E00EBEA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LoginMain.storyboard; sourceTree = "<group>"; };
+		D376BE2C268BD37E00EBEA0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D376BE2F268BD37E00EBEA0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D376BE31268BD37E00EBEA0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D376BE3D268BD57800EBEA0A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseLayer.swift; sourceTree = "<group>"; };
+		D376BE42268BD84400EBEA0A /* BaseURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseURL.swift; sourceTree = "<group>"; };
+		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
+		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D376BE1D268BD37E00EBEA0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04BF94CFBB87846821ACE87F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */,
+				FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D376BE17268BD37D00EBEA0A = {
+			isa = PBXGroup;
+			children = (
+				D376BE22268BD37E00EBEA0A /* DARDESH */,
+				D376BE21268BD37E00EBEA0A /* Products */,
+				04BF94CFBB87846821ACE87F /* Pods */,
+				E8F80A0A1EA8E520E4AE660E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D376BE21268BD37E00EBEA0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE20268BD37E00EBEA0A /* DARDESH.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D376BE22268BD37E00EBEA0A /* DARDESH */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE37268BD3EC00EBEA0A /* AppDelegate */,
+				D376BE3F268BD6E600EBEA0A /* Firebase Layer */,
+				D376BE3B268BD45A00EBEA0A /* LaunchScreen */,
+				D376BE38268BD3FB00EBEA0A /* Views + Controllers */,
+				D376BE3C268BD47000EBEA0A /* Resources */,
+			);
+			path = DARDESH;
+			sourceTree = "<group>";
+		};
+		D376BE37268BD3EC00EBEA0A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE23268BD37E00EBEA0A /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D376BE38268BD3FB00EBEA0A /* Views + Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE39268BD43400EBEA0A /* Controller */,
+				D376BE3A268BD44700EBEA0A /* Views */,
+			);
+			path = "Views + Controllers";
+			sourceTree = "<group>";
+		};
+		D376BE39268BD43400EBEA0A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE27268BD37E00EBEA0A /* LoginViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D376BE3A268BD44700EBEA0A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D376BE3B268BD45A00EBEA0A /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE2E268BD37E00EBEA0A /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		D376BE3C268BD47000EBEA0A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE3D268BD57800EBEA0A /* GoogleService-Info.plist */,
+				D376BE2C268BD37E00EBEA0A /* Assets.xcassets */,
+				D376BE31268BD37E00EBEA0A /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D376BE3F268BD6E600EBEA0A /* Firebase Layer */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */,
+				D376BE42268BD84400EBEA0A /* BaseURL.swift */,
+			);
+			path = "Firebase Layer";
+			sourceTree = "<group>";
+		};
+		E8F80A0A1EA8E520E4AE660E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D376BE1F268BD37E00EBEA0A /* DARDESH */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D376BE34268BD37E00EBEA0A /* Build configuration list for PBXNativeTarget "DARDESH" */;
+			buildPhases = (
+				3A6E551AEBD4B91AF444C30C /* [CP] Check Pods Manifest.lock */,
+				D376BE1C268BD37E00EBEA0A /* Sources */,
+				D376BE1D268BD37E00EBEA0A /* Frameworks */,
+				D376BE1E268BD37E00EBEA0A /* Resources */,
+				C31570958916B02941325539 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DARDESH;
+			productName = DARDESH;
+			productReference = D376BE20268BD37E00EBEA0A /* DARDESH.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D376BE18268BD37D00EBEA0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					D376BE1F268BD37E00EBEA0A = {
+						CreatedOnToolsVersion = 12.5;
+					};
+				};
+			};
+			buildConfigurationList = D376BE1B268BD37D00EBEA0A /* Build configuration list for PBXProject "DARDESH" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D376BE17268BD37D00EBEA0A;
+			productRefGroup = D376BE21268BD37E00EBEA0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D376BE1F268BD37E00EBEA0A /* DARDESH */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D376BE1E268BD37E00EBEA0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D376BE30268BD37E00EBEA0A /* LaunchScreen.storyboard in Resources */,
+				D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */,
+				D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */,
+				D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A6E551AEBD4B91AF444C30C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DARDESH-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C31570958916B02941325539 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DARDESH/Pods-DARDESH-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DARDESH/Pods-DARDESH-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DARDESH/Pods-DARDESH-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D376BE1C268BD37E00EBEA0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D376BE41268BD70000EBEA0A /* FirebaseLayer.swift in Sources */,
+				D376BE28268BD37E00EBEA0A /* LoginViewController.swift in Sources */,
+				D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */,
+				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D376BE2A268BD37E00EBEA0A /* Base */,
+			);
+			name = LoginMain.storyboard;
+			sourceTree = "<group>";
+		};
+		D376BE2E268BD37E00EBEA0A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D376BE2F268BD37E00EBEA0A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D376BE32268BD37E00EBEA0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D376BE33268BD37E00EBEA0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D376BE35268BD37E00EBEA0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/DARDESH/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization199.DARDESH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D376BE36268BD37E00EBEA0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/DARDESH/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization199.DARDESH;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D376BE1B268BD37D00EBEA0A /* Build configuration list for PBXProject "DARDESH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D376BE32268BD37E00EBEA0A /* Debug */,
+				D376BE33268BD37E00EBEA0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D376BE34268BD37E00EBEA0A /* Build configuration list for PBXNativeTarget "DARDESH" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D376BE35268BD37E00EBEA0A /* Debug */,
+				D376BE36268BD37E00EBEA0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D376BE18268BD37D00EBEA0A /* Project object */;
+}
