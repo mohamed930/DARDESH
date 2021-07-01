@@ -67,45 +67,13 @@ class RegesterViewModel {
         loadingBehaviour.accept(true)
         
         // First Create Account into Auth table
-        
         FirebaseLayer.createAccount(Email: emailBehaviour.value, Password: passwordBehaviour.value) { [weak self] value , auth in
             
             guard let self = self else { return }
             
             if value == "Success" {
                 
-                // After Success Send Verify code to email
-                auth?.user.sendEmailVerification(completion: { error in
-                    if error == nil {
-                        
-                        // After Success Add Resete Data to user collection
-                        let usermodel = UserModel(uid: auth?.user.uid ?? "NoID", email: self.emailBehaviour.value, UserName: self.emailBehaviour.value, Image: defaultAvatar, status: "Avaliable",pushid: "")
-                        
-                        do {
-                            try FirebaseLayer.refernceCollection(collectionName: userCollection).document(usermodel.uid).setData(from: usermodel) { error in
-                                if error != nil {
-                                    self.loadingBehaviour.accept(false)
-                                    self.isCreatedAccount.onNext("Failed")
-                                }
-                                else {
-                                    self.loadingBehaviour.accept(false)
-                                    self.isCreatedAccount.onNext("Success")
-                                }
-                            }
-                        }
-                        catch {
-                            print("Erri in converting")
-                            self.loadingBehaviour.accept(false)
-                            self.isCreatedAccount.onNext("Failed")
-                        }
-                    }
-                    else {
-                        print("Error in writing")
-                        self.loadingBehaviour.accept(false)
-                        self.isCreatedAccount.onNext("Failed")
-                    }
-                })
-                
+                self.SendEmailVerfie(auth: auth)
                 
             }
             else {
@@ -113,6 +81,54 @@ class RegesterViewModel {
                 self.isCreatedAccount.onNext("Failed")
             }
         }
+        
+    }
+    
+    private func SendEmailVerfie(auth: AuthDataResult?) {
+        
+        // Second Send Verification to user to active email.
+        auth?.user.sendEmailVerification(completion: {  [weak self] error in
+            
+            guard let self = self else { return }
+            
+            if error != nil {
+                self.loadingBehaviour.accept(false)
+                self.isCreatedAccount.onNext("Failed")
+            }
+            else {
+                self.WriteNewUser(auth: auth)
+            }
+        })
+    }
+    
+    private func WriteNewUser(auth: AuthDataResult?) {
+        
+        // thrid write user data to firestore.
+        
+        let user = UserModel(uid: auth?.user.uid ?? "NoID", email: self.emailBehaviour.value, UserName: self.emailBehaviour.value, Image: defaultAvatar, status: "Avaliable",pushid: "")
+        
+        do {
+            try FirebaseLayer.refernceCollection(userCollection).document(auth!.user.uid).setData(from: user) {
+                error in
+                
+                if error != nil {
+                    print("Error in writing")
+                    self.loadingBehaviour.accept(false)
+                    self.isCreatedAccount.onNext("Failed")
+                }
+                else {
+                    self.loadingBehaviour.accept(false)
+                    self.isCreatedAccount.onNext("Success")
+                }
+                
+            }
+        }
+        catch {
+            print("Error in converting")
+            self.loadingBehaviour.accept(false)
+            self.isCreatedAccount.onNext("Failed")
+        }
+        
         
     }
     

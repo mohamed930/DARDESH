@@ -14,21 +14,7 @@ import ProgressHUD
 
 class FirebaseLayer {
     
-   // MARK:- TODO:- This Method For Adding Data to Firebase.
-    public static func addData (collectionName:String,data:[String:Any],completion: @escaping (String) -> ()) {
-       
-       Firestore.firestore().collection(collectionName).document().setData(data){
-           error in
-           if error != nil {
-               completion("Error")
-           }
-           else {
-                completion("Success")
-           }
-       }
-   }
-    
-    public static func refernceCollection (collectionName:String) -> CollectionReference {
+    public static func refernceCollection (_ collectionName:String) -> CollectionReference {
         return Firestore.firestore().collection(collectionName)
     }
     

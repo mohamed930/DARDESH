@@ -121,6 +121,7 @@ extension RegsterViewController: UITextFieldDelegate {
             ConfirmPasswordTextField.becomeFirstResponder()
         default:
             self.view.endEditing(true)
+            self.regesterviewmodel.RegesterOperation()
         }
         return true
     }

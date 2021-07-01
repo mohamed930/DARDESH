@@ -130,6 +130,7 @@ extension LoginViewController: UITextFieldDelegate {
         }
         else {
             self.view.endEditing(true)
+            self.loginviewmodel.LoginOperation()
         }
         
         return true
