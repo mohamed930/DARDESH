@@ -65,10 +65,14 @@ class RegsterViewController: UIViewController {
             guard let self = self else { return }
             
             if result == "Success" {
-                // success regester and close view
+                // success regester and go to Chats VC
                 print("Regester is Successfully")
                 ProgressHUD.showSuccess("Regester is Successfully")
-                self.dismiss(animated: true, completion: nil)
+                
+                let story = UIStoryboard(name: "HomeView", bundle: nil)
+                let next  = story.instantiateViewController(withIdentifier: "ChatsViewControllers")
+                next.modalPresentationStyle = .fullScreen
+                self.present(next, animated: true, completion: nil)
             }
             else {
                 // failed clear password and confirm and sent message

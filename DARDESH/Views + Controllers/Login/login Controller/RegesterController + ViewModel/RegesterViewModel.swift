@@ -127,6 +127,9 @@ class RegesterViewModel {
                 else {
                     self.loadingBehaviour.accept(false)
                     self.isCreatedAccount.onNext("Success")
+                    
+                    // After saved to firestore save locally
+                    self.SaveUserLocally(user)
                 }
                 
             }
@@ -138,5 +141,18 @@ class RegesterViewModel {
         }
     }
     // ------------------------------------------------
+    
+    private func SaveUserLocally (_ user: UserModel) {
+        
+        let encoder = JSONEncoder()
+        
+        do {
+            let data = try encoder.encode(user)
+            UserDefaults.standard.setValue(data, forKey: currentUser)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
     
 }
