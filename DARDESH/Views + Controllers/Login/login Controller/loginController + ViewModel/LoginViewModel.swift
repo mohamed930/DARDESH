@@ -12,9 +12,18 @@ import ProgressHUD
 
 class LoginViewModel {
     
+    // MARK:- TODO:- Intialize rxswift varible
     var EmailBehaviour = BehaviorRelay<String>(value: "")
     var PasswordBehaviour = BehaviorRelay<String>(value: "")
+    var loadingBehaviour = BehaviorRelay<Bool>(value: false)
     
+    private var loginBehaviour = PublishSubject<String>()
+    var loginsModelSubjectObserval:Observable<String> {
+        return loginBehaviour
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- Make Validation Oberval here.
     var isEmailBehaviour : Observable<Bool> {
         return EmailBehaviour.asObservable().map { email -> Bool in
             let isEmailEmpty = email.trimmingCharacters(in: .whitespaces).isEmpty
@@ -39,14 +48,9 @@ class LoginViewModel {
             return loginValid
         }
     }
+    // ------------------------------------------------
     
-    var loadingBehaviour = BehaviorRelay<Bool>(value: false)
-    
-    private var loginBehaviour = PublishSubject<String>()
-    var loginsModelSubjectObserval:Observable<String> {
-        return loginBehaviour
-    }
-    
+    // MARK:- TODO:- method for login with email&password
     func LoginOperation() {
         
         loadingBehaviour.accept(true)
@@ -56,16 +60,19 @@ class LoginViewModel {
             guard let self = self else { return }
             
             if message == "Success" {
+                // send to load to stop and send response success
                 self.loadingBehaviour.accept(false)
                 self.loginBehaviour.onNext("Success")
             }
             else {
+                // send to load to stop and send response failed
                 self.loadingBehaviour.accept(false)
                 self.loginBehaviour.onNext("Failed")
             }
         }
         
     }
+    // ------------------------------------------------
     
     
 }

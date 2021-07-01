@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class RegesterViewModel {
     
+    // MARK:- TODO:- intialise varibles here
     var emailBehaviour = BehaviorRelay<String>(value: "")
     var passwordBehaviour = BehaviorRelay<String>(value: "")
     var confirmPasswordBehaviour = BehaviorRelay<String>(value: "")
@@ -22,8 +23,9 @@ class RegesterViewModel {
     var CreatedModelSubjectObserval:Observable<String> {
         return isCreatedAccount
     }
+    // ------------------------------------------------
     
-    
+    // MARK:- TODO:- Make Validation Oberval here.
     var isEmailBehaviour : Observable<Bool> {
         return emailBehaviour.asObservable().map { email -> Bool in
             let isEmailEmpty = email.trimmingCharacters(in: .whitespaces).isEmpty
@@ -61,7 +63,9 @@ class RegesterViewModel {
             return result
         }
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- This method for regester
     func RegesterOperation() {
         
         loadingBehaviour.accept(true)
@@ -83,7 +87,9 @@ class RegesterViewModel {
         }
         
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- method after auth verfiy email
     private func SendEmailVerfie(auth: AuthDataResult?) {
         
         // Second Send Verification to user to active email.
@@ -100,7 +106,9 @@ class RegesterViewModel {
             }
         })
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- thrid write user data to firestore.
     private func WriteNewUser(auth: AuthDataResult?) {
         
         // thrid write user data to firestore.
@@ -128,8 +136,7 @@ class RegesterViewModel {
             self.loadingBehaviour.accept(false)
             self.isCreatedAccount.onNext("Failed")
         }
-        
-        
     }
+    // ------------------------------------------------
     
 }

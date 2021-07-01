@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */; };
 		D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3242994268D13ED00EF0B6E /* UserModel.swift */; };
+		D34EF74B268DBAFB0061FB98 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */; };
+		D34EF74E268DBC6A0061FB98 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */; };
+		D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */; };
+		D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF752268DBD050061FB98 /* SettingsViewController.swift */; };
+		D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF754268DBD200061FB98 /* SettingsViewModel.swift */; };
+		D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF756268DC0540061FB98 /* ExtensionloginViewController.swift */; };
+		D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */; };
 		D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE23268BD37E00EBEA0A /* AppDelegate.swift */; };
 		D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */; };
 		D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */; };
@@ -26,6 +33,13 @@
 /* Begin PBXFileReference section */
 		7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DARDESH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3242994268D13ED00EF0B6E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
+		D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
+		D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
+		D34EF752268DBD050061FB98 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D34EF754268DBD200061FB98 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		D34EF756268DC0540061FB98 /* ExtensionloginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionloginViewController.swift; sourceTree = "<group>"; };
+		D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRegesterViewController.swift; sourceTree = "<group>"; };
 		D376BE20268BD37E00EBEA0A /* DARDESH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARDESH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376BE23268BD37E00EBEA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegsterViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +104,59 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D34EF748268DBAAF0061FB98 /* Home Views */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */,
+			);
+			path = "Home Views";
+			sourceTree = "<group>";
+		};
+		D34EF749268DBABC0061FB98 /* Home Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
+				D34EF751268DBCDC0061FB98 /* Settings Controllers + ViewModel */,
+			);
+			path = "Home Controllers";
+			sourceTree = "<group>";
+		};
+		D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */,
+				D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */,
+			);
+			path = "Chats Controllers + ViewModel";
+			sourceTree = "<group>";
+		};
+		D34EF751268DBCDC0061FB98 /* Settings Controllers + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF754268DBD200061FB98 /* SettingsViewModel.swift */,
+				D34EF752268DBD050061FB98 /* SettingsViewController.swift */,
+			);
+			path = "Settings Controllers + ViewModel";
+			sourceTree = "<group>";
+		};
+		D34EF75A268DC7A00061FB98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D376BE39268BD43400EBEA0A /* login Controller */,
+				D376BE3A268BD44700EBEA0A /* login Views */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		D34EF75B268DC7AE0061FB98 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF749268DBABC0061FB98 /* Home Controllers */,
+				D34EF748268DBAAF0061FB98 /* Home Views */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		D376BE17268BD37D00EBEA0A = {
 			isa = PBXGroup;
 			children = (
@@ -132,27 +199,27 @@
 		D376BE38268BD3FB00EBEA0A /* Views + Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D376BE39268BD43400EBEA0A /* Controller */,
-				D376BE3A268BD44700EBEA0A /* Views */,
+				D34EF75A268DC7A00061FB98 /* Login */,
+				D34EF75B268DC7AE0061FB98 /* Home */,
 			);
 			path = "Views + Controllers";
 			sourceTree = "<group>";
 		};
-		D376BE39268BD43400EBEA0A /* Controller */ = {
+		D376BE39268BD43400EBEA0A /* login Controller */ = {
 			isa = PBXGroup;
 			children = (
 				D376BE6B268C34EC00EBEA0A /* RegesterController + ViewModel */,
 				D376BE68268C34AD00EBEA0A /* loginController + ViewModel */,
 			);
-			path = Controller;
+			path = "login Controller";
 			sourceTree = "<group>";
 		};
-		D376BE3A268BD44700EBEA0A /* Views */ = {
+		D376BE3A268BD44700EBEA0A /* login Views */ = {
 			isa = PBXGroup;
 			children = (
 				D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */,
 			);
-			path = Views;
+			path = "login Views";
 			sourceTree = "<group>";
 		};
 		D376BE3B268BD45A00EBEA0A /* LaunchScreen */ = {
@@ -252,6 +319,7 @@
 			children = (
 				D376BE69268C34E300EBEA0A /* LoginViewModel.swift */,
 				D376BE63268C2B6600EBEA0A /* LoginViewController.swift */,
+				D34EF756268DC0540061FB98 /* ExtensionloginViewController.swift */,
 			);
 			path = "loginController + ViewModel";
 			sourceTree = "<group>";
@@ -262,6 +330,7 @@
 				D3242994268D13ED00EF0B6E /* UserModel.swift */,
 				D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */,
 				D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */,
+				D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */,
 			);
 			path = "RegesterController + ViewModel";
 			sourceTree = "<group>";
@@ -333,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D34EF74B268DBAFB0061FB98 /* HomeView.storyboard in Resources */,
 				D376BE30268BD37E00EBEA0A /* LaunchScreen.storyboard in Resources */,
 				D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */,
 				D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */,
@@ -391,13 +461,19 @@
 			files = (
 				D376BE41268BD70000EBEA0A /* FirebaseLayer.swift in Sources */,
 				D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */,
+				D34EF74E268DBC6A0061FB98 /* ChatsViewController.swift in Sources */,
 				D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */,
 				D376BE64268C2B6600EBEA0A /* LoginViewController.swift in Sources */,
 				D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
+				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
+				D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */,
+				D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */,
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
+				D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */,
+				D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,12 +36,15 @@ class RegsterViewController: UIViewController {
         RegestersubscribeTap()
     }
     
+    // MARK:- TODO:- observe our textfield to viewmodel
     func TextFieldToViewModel() {
         EmailTextField.rx.text.orEmpty.bind(to: regesterviewmodel.emailBehaviour).disposed(by: disposebag)
         PasswordTextField.rx.text.orEmpty.bind(to: regesterviewmodel.passwordBehaviour).disposed(by: disposebag)
         ConfirmPasswordTextField.rx.text.orEmpty.bind(to: regesterviewmodel.confirmPasswordBehaviour).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- work with loading if value is true load or stop
     func subscribeToLoading() {
         regesterviewmodel.loadingBehaviour.subscribe(onNext: { isloading in
             if isloading {
@@ -52,17 +55,23 @@ class RegsterViewController: UIViewController {
             }
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- get response from firebase if regester is success or not.
     func subscribeToresponse() {
+        
         regesterviewmodel.CreatedModelSubjectObserval.subscribe(onNext: { [weak self] result in
             
             guard let self = self else { return }
             
             if result == "Success" {
+                // success regester and close view
                 print("Regester is Successfully")
                 ProgressHUD.showSuccess("Regester is Successfully")
+                self.dismiss(animated: true, completion: nil)
             }
             else {
+                // failed clear password and confirm and sent message
                 print("Regester is Failed")
                 self.PasswordTextField.text = ""
                 self.ConfirmPasswordTextField.text = ""
@@ -70,13 +79,17 @@ class RegsterViewController: UIViewController {
             }
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- make validation if values is fill button work or not.
     func subscribeisLoginEnabeld() {
         regesterviewmodel.isRegesterButtonEnabled
             .bind(to: RegesterButton.rx.isEnabled)
             .disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- make regester action with rxswift
     func RegestersubscribeTap() {
         RegesterButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] (_) in
             
@@ -84,45 +97,23 @@ class RegsterViewController: UIViewController {
             
             self.view.endEditing(true)
             
+            // make regester with viewmodel
             self.regesterviewmodel.RegesterOperation()
             
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- login action to dismiss this page to return login.
     @IBAction func LoginAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- dismiss keypad if touch view
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // ------------------------------------------------
     
-}
-
-
-extension RegsterViewController: UITextFieldDelegate {
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        switch textField.tag {
-        case 1:
-             EmailTextField.hasText ? self.ShowLabelWithAnimation(LabelName: EmailLabel) : self.HideLabelWithAnimation(LabelName: EmailLabel)
-        case 2:
-            PasswordTextField.hasText ? self.ShowLabelWithAnimation(LabelName: PasswordLabel) : self.HideLabelWithAnimation(LabelName: PasswordLabel)
-        default:
-            ConfirmPasswordTextField.hasText ? self.ShowLabelWithAnimation(LabelName:  ConfirmLabel) : self.HideLabelWithAnimation(LabelName: ConfirmLabel)
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        switch textField.tag {
-        case 1:
-            PasswordTextField.becomeFirstResponder()
-        case 2:
-            ConfirmPasswordTextField.becomeFirstResponder()
-        default:
-            self.view.endEditing(true)
-            self.regesterviewmodel.RegesterOperation()
-        }
-        return true
-    }
 }

@@ -33,11 +33,14 @@ class LoginViewController: UIViewController {
         loginsubscribeTap()
     }
     
+    // MARK:- TODO:- observe our textfield to viewmodel
     func TextFieldToViewModel() {
         EmailTextField.rx.text.orEmpty.bind(to: loginviewmodel.EmailBehaviour).disposed(by: disposebag)
         PasswordTextField.rx.text.orEmpty.bind(to: loginviewmodel.PasswordBehaviour).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- work with loading if value is true load or stop
     func subscribeToLoading() {
         loginviewmodel.loadingBehaviour.subscribe(onNext: { isloading in
             if isloading {
@@ -48,7 +51,9 @@ class LoginViewController: UIViewController {
             }
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- get response from firebase if login is success or not.
     func subscribeToresponse() {
         loginviewmodel.loginsModelSubjectObserval.subscribe(onNext: { [weak self] result in
             
@@ -65,13 +70,17 @@ class LoginViewController: UIViewController {
             }
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- make validation if values is fill button work or not.
     func subscribeisLoginEnabeld() {
         loginviewmodel.isLoginButtonEnabled
             .bind(to: loginButton.rx.isEnabled)
             .disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- make login action with rxswift
     func loginsubscribeTap() {
         loginButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] (_) in
             
@@ -79,12 +88,14 @@ class LoginViewController: UIViewController {
             
             self.view.endEditing(true)
             
+            // call login method from viewmodel
             self.loginviewmodel.LoginOperation()
             
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
-    
+    // MARK:- TODO:- signup action button
     @IBAction func SignUpAction(_ sender: Any) {
         
         let story = UIStoryboard(name: "LoginMain", bundle: nil)
@@ -95,45 +106,11 @@ class LoginViewController: UIViewController {
         self.present(next, animated: true, completion: nil)
         
     }
+    // ------------------------------------------------
     
+    // MARK:- TODO:- dismiss keypad if touch view
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField.tag == 1 {
-            if EmailTextField.hasText {
-                self.ShowLabelWithAnimation(LabelName: EmailLabel)
-            }
-            else {
-                self.HideLabelWithAnimation(LabelName: EmailLabel)
-            }
-            
-        }
-        else {
-            if PasswordTextField.hasText {
-                self.ShowLabelWithAnimation(LabelName: PasswordLabel)
-            }
-            else {
-                self.HideLabelWithAnimation(LabelName: PasswordLabel)
-            }
-            
-        }
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.tag == 1 {
-            self.PasswordTextField.becomeFirstResponder()
-        }
-        else {
-            self.view.endEditing(true)
-            self.loginviewmodel.LoginOperation()
-        }
-        
-        return true
-    }
-    
+    // ------------------------------------------------
 }
