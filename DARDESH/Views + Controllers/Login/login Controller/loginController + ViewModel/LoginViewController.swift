@@ -61,10 +61,16 @@ class LoginViewController: UIViewController {
             
             if result == "Success" {
                 print("Login is Successfully")
+                
+                // Go to ChatVC.
+                let story = UIStoryboard(name: "HomeView", bundle: nil)
+                let next  = story.instantiateViewController(withIdentifier: "ChatsViewControllers")
+                next.modalPresentationStyle = .fullScreen
+                self.present(next, animated: true, completion: nil)
             }
             else {
-                print("Login is Failed")
-                ProgressHUD.showError("email or password isn't correct")
+                print("Login is Failed \(result)")
+                ProgressHUD.showError(result)
                 self.PasswordTextField.text = ""
 //                self.PasswordTextField.becomeFirstResponder()
             }

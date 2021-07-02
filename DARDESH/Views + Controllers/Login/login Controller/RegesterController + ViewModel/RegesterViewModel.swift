@@ -82,7 +82,7 @@ class RegesterViewModel {
             }
             else {
                 self.loadingBehaviour.accept(false)
-                self.isCreatedAccount.onNext("Failed")
+                self.isCreatedAccount.onNext(value)
             }
         }
         
@@ -99,7 +99,7 @@ class RegesterViewModel {
             
             if error != nil {
                 self.loadingBehaviour.accept(false)
-                self.isCreatedAccount.onNext("Failed")
+                self.isCreatedAccount.onNext(error!.localizedDescription)
             }
             else {
                 self.WriteNewUser(auth: auth)
@@ -122,7 +122,7 @@ class RegesterViewModel {
                 if error != nil {
                     print("Error in writing")
                     self.loadingBehaviour.accept(false)
-                    self.isCreatedAccount.onNext("Failed")
+                    self.isCreatedAccount.onNext(error!.localizedDescription)
                 }
                 else {
                     self.loadingBehaviour.accept(false)
@@ -137,11 +137,12 @@ class RegesterViewModel {
         catch {
             print("Error in converting")
             self.loadingBehaviour.accept(false)
-            self.isCreatedAccount.onNext("Failed")
+            self.isCreatedAccount.onNext(error.localizedDescription)
         }
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- This method for saving UserData to UserDefaults.
     private func SaveUserLocally (_ user: UserModel) {
         
         let encoder = JSONEncoder()
@@ -154,5 +155,6 @@ class RegesterViewModel {
         }
         
     }
+    // ------------------------------------------------
     
 }

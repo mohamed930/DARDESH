@@ -25,7 +25,7 @@ extension UIViewController {
     }
     
     func showAnimation() {
-        ProgressHUD.show()
+        ProgressHUD.show("Please Wait")
     }
     
     func stopAnimating() {

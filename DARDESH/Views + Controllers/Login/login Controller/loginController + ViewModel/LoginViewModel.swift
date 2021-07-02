@@ -9,6 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 import ProgressHUD
+import FirebaseAuth
 
 class LoginViewModel {
     
@@ -55,24 +56,65 @@ class LoginViewModel {
         
         loadingBehaviour.accept(true)
         
-        FirebaseLayer.MakeLogin(Email: EmailBehaviour.value, Password: PasswordBehaviour.value) { [weak self] message in
+        FirebaseLayer.MakeLogin(Email: EmailBehaviour.value, Password: PasswordBehaviour.value) { [weak self] auth, error in
             
             guard let self = self else { return }
             
-            if message == "Success" {
-                // send to load to stop and send response success
-                self.loadingBehaviour.accept(false)
-                self.loginBehaviour.onNext("Success")
+            if error == nil && auth!.user.isEmailVerified {
+            
+                // download data from firestore
+                self.DownloadData(auth1: auth!)
             }
             else {
                 // send to load to stop and send response failed
                 self.loadingBehaviour.accept(false)
-                self.loginBehaviour.onNext("Failed")
+                self.loginBehaviour.onNext(error?.localizedDescription ?? "There is no connection")
             }
+            
         }
         
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- This method for download data from firestore
+    func DownloadData(auth1: AuthDataResult) {
+        
+        FirebaseLayer.publicreadWithWhereCondtion(collectionName: userCollection, key: "uid", value: auth1.user.uid) { [weak self] snap in
+            
+            guard let self = self else { return }
+            
+            for doc in snap.documents {
+                
+                // Download Data from Firestore
+                let user = UserModel(uid: doc.get("uid") as! String, email: doc.get("email") as! String, UserName: doc.get("UserName") as! String, Image: doc.get("Image") as! String, status: doc.get("status") as! String)
+                
+                // Save Data in to userdefaults
+                self.SaveUserDataLocally(user)
+            }
+        }
+    }
+    // ------------------------------------------------
     
+    
+    
+    // MARK:- TODO:- this method for save user datalocally
+    func SaveUserDataLocally(_ user: UserModel) {
+        
+        let encoder = JSONEncoder()
+        do {
+            let data = try encoder.encode(user)
+            UserDefaults.standard.setValue(data, forKey: currentUser)
+            
+            // send to load to stop and send response success
+            self.loadingBehaviour.accept(false)
+            self.loginBehaviour.onNext("Success")
+        } catch {
+            print(error.localizedDescription)
+            
+            self.loadingBehaviour.accept(false)
+            self.loginBehaviour.onNext(error.localizedDescription)
+        }
+        
+    }
+    // ------------------------------------------------
 }

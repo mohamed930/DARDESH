@@ -79,7 +79,7 @@ class RegsterViewController: UIViewController {
                 print("Regester is Failed")
                 self.PasswordTextField.text = ""
                 self.ConfirmPasswordTextField.text = ""
-                ProgressHUD.showError("email is used before try to change it")
+                ProgressHUD.showError(result)
             }
         }).disposed(by: disposebag)
     }

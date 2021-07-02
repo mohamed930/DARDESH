@@ -24,7 +24,7 @@ class FirebaseLayer {
         
         Auth.auth().createUser(withEmail: Email, password: Password) { (auth, error) in
             if error != nil {
-                completion("Error",auth)
+                completion(error!.localizedDescription,auth)
             }
             else {
                 completion("Success",auth)
@@ -33,34 +33,28 @@ class FirebaseLayer {
     }
     
     
+    // MARK:- TODO:- This Method for Read Data from Firebase with condtion in public.
+    public static func publicreadWithWhereCondtion (collectionName:String , key:String , value:String , complention: @escaping (QuerySnapshot) -> ()) {
+        
+        Firestore.firestore().collection(collectionName).whereField(key, isEqualTo: value).getDocuments { (quary, error) in
+            if error != nil {
+                ProgressHUD.showError("We Can't Find Your Data!")
+            }
+            else {
+                complention(quary!)
+            }
+        }
+    }
+    
+    
     // MARK:- TODO:- This Method For Make a login opertation.
-    public static func MakeLogin (Email:String,Password:String,completion: @escaping (String) -> ())  {
+    public static func MakeLogin (Email:String,Password:String,completion: @escaping (AuthDataResult?,Error?) -> ())  {
            
            Auth.auth().signIn(withEmail: Email, password: Password) { (auth, error) in
-               if error != nil {
-                   completion("Failed")
-               }
-               else {
-                   completion("Success")
-               }
+               completion(auth,error)
            }
            
     }
-    
-    // MARK:- TODO:- This Method for Read Data from Firebase with condtion in public.
-    public static func publicreadWithWhereCondtion (collectionName:String , key:String , value:String , complention: @escaping (QuerySnapshot) -> ()) {
-            
-          //  RappleActivityIndicatorView.startAnimatingWithLabel("loading", attributes: RappleModernAttributes)
-            Firestore.firestore().collection(collectionName).whereField(key, isEqualTo: value).getDocuments { (quary, error) in
-                if error != nil {
-                    print("Error")
-                }
-                else {
-                    complention(quary!)
-                }
-            }
-    }
-        
     
     // MARK:- TODO:- This Method for Upload Image.
     // --------------------------------------------
