@@ -11,13 +11,4 @@ import RxCocoa
 
 class ChatsViewModel {
     
-    func MakeLoginOperation() {
-        if LoginTag == true {
-            
-            DispatchQueue.main.async {
-                // Make Login Operation
-            }
-        }
-    }
-    
 }

@@ -26,7 +26,7 @@ class RegesterViewModel {
     
     var isSentEmailVerify = PublishSubject<String>()
     var SentEmailVerifyModelSubjectObserval:Observable<String> {
-        return isCreatedAccount
+        return isSentEmailVerify
     }
     // ------------------------------------------------
     
@@ -109,6 +109,13 @@ class RegesterViewModel {
         
     }
     // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- Help Methods:-
+    // ------------------------------------------------
+    
+    
     
     
     // MARK:- TODO:- method after auth verfiy email

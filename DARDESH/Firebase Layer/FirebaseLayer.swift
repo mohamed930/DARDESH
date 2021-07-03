@@ -79,8 +79,17 @@ class FirebaseLayer {
             }
             else {
                 if (!Auth.auth().currentUser!.isEmailVerified) {
-                    //resend verification email
-                    completion("Email Sent successfully")
+                    
+                    // resend verification email
+                    Auth.auth().currentUser?.sendEmailVerification(completion: { err in
+                        if err != nil {
+                            completion(err!.localizedDescription)
+                        }
+                        else {
+                            completion("Email Sent successfully")
+                        }
+                    })
+                    
                 } else {
                      //login
                     completion("you can go to login now")

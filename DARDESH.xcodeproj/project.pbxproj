@@ -208,6 +208,7 @@
 		D376BE39268BD43400EBEA0A /* login Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D3A909B4269041D50070FCA5 /* User Model */,
 				D376BE6B268C34EC00EBEA0A /* RegesterController + ViewModel */,
 				D376BE68268C34AD00EBEA0A /* loginController + ViewModel */,
 			);
@@ -327,12 +328,19 @@
 		D376BE6B268C34EC00EBEA0A /* RegesterController + ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				D3242994268D13ED00EF0B6E /* UserModel.swift */,
 				D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */,
 				D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */,
 				D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */,
 			);
 			path = "RegesterController + ViewModel";
+			sourceTree = "<group>";
+		};
+		D3A909B4269041D50070FCA5 /* User Model */ = {
+			isa = PBXGroup;
+			children = (
+				D3242994268D13ED00EF0B6E /* UserModel.swift */,
+			);
+			path = "User Model";
 			sourceTree = "<group>";
 		};
 		E8F80A0A1EA8E520E4AE660E /* Frameworks */ = {

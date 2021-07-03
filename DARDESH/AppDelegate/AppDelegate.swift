@@ -9,12 +9,12 @@ import UIKit
 import Firebase
 import IQKeyboardManagerSwift
 
-var LoginTag = false
-
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var firebaseListener: AuthStateDidChangeListenerHandle?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -32,22 +32,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //      print("F: \(loadedPerson.UserName)")
         // }
         
-        // First Check user in USERDefaults is exsist or not.
-        if (UserDefaults.standard.object(forKey: currentUser) as? Data) != nil {
-            print("User exsist")
+        
+        // First Check user in Firebase State && USERDefaults is exsist or not.
+        firebaseListener = Auth.auth().addStateDidChangeListener({ [weak self] auth, user in
             
-            // Send to chats we have login and we have to go chatsVC
-            LoginTag = true
-            MakeViewControolerisInit(StroyName: "HomeView", Id: "ChatsViewControllers")
+            guard let self = self else { return }
             
-        }
-        else {
-            print("user not found")
+            Auth.auth().removeStateDidChangeListener(self.firebaseListener!)
             
-            // Sned to login failed and we have to go loginVC
-            LoginTag = false
-            MakeViewControolerisInit(StroyName: "LoginMain", Id: "LoginViewController")
-        }
+            if user != nil && UserDefaults.standard.object(forKey: currentUser) as? Data != nil {
+                
+                DispatchQueue.main.async {
+                    print("User exsist")
+                    
+                    // Send to chats we have login and we have to go chatsVC
+                    self.MakeViewControolerisInit(StroyName: "HomeView", Id: "ChatsViewControllers")
+                }
+                
+            }
+            else {
+                print("user not found")
+                
+                // Sned to login failed and we have to go loginVC
+                self.MakeViewControolerisInit(StroyName: "LoginMain", Id: "LoginViewController")
+            }
+        })
 
     }
     
