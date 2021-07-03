@@ -1,0 +1,60 @@
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "19I-j5-xfh"; */
+"19I-j5-xfh.normalTitle" = "تسجبل الدخول";
+
+/* Class = "UILabel"; text = "Don't you have account?"; ObjectID = "EA7-xv-tuL"; */
+"EA7-xv-tuL.text" = "لا تمتلك حساب بعد؟";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "FEK-m9-mXn"; */
+"FEK-m9-mXn.placeholder" = "البريد الالكترونى";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "FvV-4o-8Ej"; */
+"FvV-4o-8Ej.placeholder" = "البريد الالكترونى";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "HTM-ov-xfA"; */
+"HTM-ov-xfA.normalTitle" = "تسجيل الدخول";
+
+/* Class = "UIButton"; normalTitle = "Regester"; ObjectID = "LZj-nK-xsx"; */
+"LZj-nK-xsx.normalTitle" = "انشئ حساب";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "NOh-2F-WC8"; */
+"NOh-2F-WC8.text" = "كلمه السر";
+
+/* Class = "UITextField"; placeholder = "Confrim Password"; ObjectID = "QBR-aC-fiH"; */
+"QBR-aC-fiH.placeholder" = "تأكيد كلمه المرور";
+
+/* Class = "UILabel"; text = "Do you have account?"; ObjectID = "R4i-2i-tyE"; */
+"R4i-2i-tyE.text" = "هل تمتلك حساب؟";
+
+/* Class = "UIButton"; normalTitle = "Resend Confirmation?"; ObjectID = "akE-bZ-9wn"; */
+"akE-bZ-9wn.normalTitle" = "اعد ارسال رمز التأكيد؟";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password?"; ObjectID = "caz-Yi-0LX"; */
+"caz-Yi-0LX.normalTitle" = "هل نسيت كلمه المرور؟";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "evU-Ty-M5K"; */
+"evU-Ty-M5K.placeholder" = "كلمه المرور";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "hx8-Ta-5b1"; */
+"hx8-Ta-5b1.text" = "كلمه المرور";
+
+/* Class = "UILabel"; text = "Confirm Password"; ObjectID = "iJc-f6-OQB"; */
+"iJc-f6-OQB.text" = "تأكيد كلمه المرور";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "lgk-AY-3Hx"; */
+"lgk-AY-3Hx.text" = "البريد الالكترونى";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "uqJ-mV-Nql"; */
+"uqJ-mV-Nql.text" = "البريد الالكترونى";
+
+/* Class = "UILabel"; text = "Regester"; ObjectID = "vWa-RM-8CM"; */
+"vWa-RM-8CM.text" = "انشئ الحساب";
+
+/* Class = "UILabel"; text = "Login"; ObjectID = "wGQ-K3-BcD"; */
+"wGQ-K3-BcD.text" = "تسجيل الدخول";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "wqD-W7-UbY"; */
+"wqD-W7-UbY.placeholder" = "كلمه المرور";
+
+/* Class = "UIButton"; normalTitle = "Signup"; ObjectID = "ycj-dI-ImJ"; */
+"ycj-dI-ImJ.normalTitle" = "انشئ الحساب";

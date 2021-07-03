@@ -82,7 +82,7 @@ class LoginViewModel {
             else {
                 // send to load to stop and send response failed
                 self.loadingBehaviour.accept(false)
-                self.loginBehaviour.onNext(error?.localizedDescription ?? "There is no connection")
+                self.loginBehaviour.onNext(error?.localizedDescription ?? "ConnectionMess".localized)
             }
             
         }

@@ -70,7 +70,7 @@ class RegsterViewController: UIViewController {
             if result == "Success" {
                 // success regester and go to Chats VC
                 print("Regester is Successfully")
-                ProgressHUD.showSuccess("Regester is Successfully")
+                ProgressHUD.showSuccess("RegesterMess".localized)
                 
 //                let story = UIStoryboard(name: "HomeView", bundle: nil)
 //                let next  = story.instantiateViewController(withIdentifier: "ChatsViewControllers")
@@ -115,8 +115,12 @@ class RegsterViewController: UIViewController {
     func subecribToResponseeisSentEmail() {
         regesterviewmodel.SentEmailVerifyModelSubjectObserval.subscribe(onNext: { result in
             
-            if result == "Email Sent successfully" || result == "you can go to login now" {
-                ProgressHUD.showSuccess(result)
+            if result == "Email Sent successfully" {
+                ProgressHUD.showSuccess("RegesterMail".localized)
+                print("F: \(result)")
+            }
+            else if result == "you can go to login now" {
+                ProgressHUD.showSuccess("RegserMailLogin".localized)
                 print("F: \(result)")
             }
             else {

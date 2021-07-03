@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  DARDESH
+
+  Created by Mohamed Ali on 03/07/2021.
+  
+*/
+
+"errorMess"                = "معزره لم تتم الوصول لمعلوماتك";
+"RegesterMess"             = "تم انشاء الحساب بنجاح";
+"RegesterMail"             = "تم ارسال البريد بنجاح";
+"RegserMailLogin"          = "يمكنك الآن ان تسجل دخولك حالاً";
+"ConnectionMess"           = "لايوجد اتصال بالانترنت";
+"PasswordReseteMessage"    = "البريد الالكترونى قد ارسل لك اتبع التعليمات التى بداخله لاعاده التعيين";
+"WaitMess"                 = "برجاء الانتظار";

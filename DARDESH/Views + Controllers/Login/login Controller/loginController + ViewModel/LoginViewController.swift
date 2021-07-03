@@ -119,7 +119,7 @@ class LoginViewController: UIViewController {
         loginviewmodel.resetePasssModelSubjectObserval.subscribe(onNext: { mess in
             
             if mess == "Email was sent please follow steps to resete password" {
-                ProgressHUD.showSuccess(mess)
+                ProgressHUD.showSuccess("PasswordReseteMessage".localized)
             }
             else {
                 ProgressHUD.showError(mess)

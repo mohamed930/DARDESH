@@ -38,7 +38,7 @@ class FirebaseLayer {
         
         Firestore.firestore().collection(collectionName).whereField(key, isEqualTo: value).getDocuments { (quary, error) in
             if error != nil {
-                ProgressHUD.showError("We Can't Find Your Data!")
+                ProgressHUD.showError("errorMess".localized)
             }
             else {
                 complention(quary!)

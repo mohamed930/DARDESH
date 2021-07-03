@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  DARDESH
+
+  Created by Mohamed Ali on 03/07/2021.
+  
+*/
+
+"errorMess"                = "We Can't Find Your Data!";
+"RegesterMess"             = "Regester is Successfully";
+"RegesterMail"             = "Email Sent successfully";
+"RegserMailLogin"          = "you can go to login now";
+"ConnectionMess"           = "There is no connection";
+"PasswordReseteMessage"    = "Email was sent please follow steps to resete password";
+"WaitMess"                 = "Please Wait";
