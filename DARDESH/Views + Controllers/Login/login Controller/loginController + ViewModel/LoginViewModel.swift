@@ -22,6 +22,11 @@ class LoginViewModel {
     var loginsModelSubjectObserval:Observable<String> {
         return loginBehaviour
     }
+    
+    private var resetePassBehaviour = PublishSubject<String>()
+    var resetePasssModelSubjectObserval:Observable<String> {
+        return resetePassBehaviour
+    }
     // ------------------------------------------------
     
     // MARK:- TODO:- Make Validation Oberval here.
@@ -47,6 +52,15 @@ class LoginViewModel {
             let loginValid = !emailEmpty && !passwordEmpty
             
             return loginValid
+        }
+    }
+    
+    
+    var isPasswordResetrBehaviour : Observable<Bool> {
+        return EmailBehaviour.asObservable().map { email -> Bool in
+            let isEmailEmpty = email.trimmingCharacters(in: .whitespaces).isEmpty
+            
+            return !isEmailEmpty
         }
     }
     // ------------------------------------------------
@@ -76,8 +90,31 @@ class LoginViewModel {
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- this method for resete password agter entring email
+    func ResetPasswordOperation() {
+        
+        loadingBehaviour.accept(true)
+        
+        FirebaseLayer.resetPassword(Email: EmailBehaviour.value) {  [weak self] mess in
+            
+            guard let self = self else { return }
+            
+            if mess == "Sent Successed" {
+                self.loadingBehaviour.accept(false)
+                self.resetePassBehaviour.onNext("Email was sent please follow steps to resete password")
+            }
+            else {
+                self.loadingBehaviour.accept(false)
+                self.resetePassBehaviour.onNext(mess)
+                print("F: \(mess)")
+            }
+        }
+        
+    }
+    // ------------------------------------------------
+    
     // MARK:- TODO:- This method for download data from firestore
-    func DownloadData(auth1: AuthDataResult) {
+    private func DownloadData(auth1: AuthDataResult) {
         
         FirebaseLayer.publicreadWithWhereCondtion(collectionName: userCollection, key: "uid", value: auth1.user.uid) { [weak self] snap in
             
@@ -98,7 +135,7 @@ class LoginViewModel {
     
     
     // MARK:- TODO:- this method for save user datalocally
-    func SaveUserDataLocally(_ user: UserModel) {
+    private func SaveUserDataLocally(_ user: UserModel) {
         
         let encoder = JSONEncoder()
         do {

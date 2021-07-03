@@ -23,6 +23,11 @@ class RegesterViewModel {
     var CreatedModelSubjectObserval:Observable<String> {
         return isCreatedAccount
     }
+    
+    var isSentEmailVerify = PublishSubject<String>()
+    var SentEmailVerifyModelSubjectObserval:Observable<String> {
+        return isCreatedAccount
+    }
     // ------------------------------------------------
     
     // MARK:- TODO:- Make Validation Oberval here.
@@ -88,6 +93,23 @@ class RegesterViewModel {
         
     }
     // ------------------------------------------------
+
+    // MARK:- TODO:- This Method For Resend Email Verfication.
+    func SendEmailVerfication() {
+        
+        loadingBehaviour.accept(true)
+        
+        FirebaseLayer.SendEmailVerifcation { [weak self] mess in
+            
+            guard let self = self else { return }
+            
+            self.loadingBehaviour.accept(false)
+            self.isSentEmailVerify.onNext(mess)
+        }
+        
+    }
+    // ------------------------------------------------
+    
     
     // MARK:- TODO:- method after auth verfiy email
     private func SendEmailVerfie(auth: AuthDataResult?) {

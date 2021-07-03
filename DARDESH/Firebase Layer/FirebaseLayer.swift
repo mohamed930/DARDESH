@@ -56,6 +56,40 @@ class FirebaseLayer {
            
     }
     
+    // MARK:- TODO:- This Method For Send Password resete operation.
+    public static func resetPassword (Email: String, completion: @escaping (String) -> ()) {
+        
+        Auth.auth().sendPasswordReset(withEmail: Email) { error in
+            if error != nil {
+                completion(error!.localizedDescription)
+            }
+            else {
+                completion("Sent Successed")
+            }
+        }
+        
+    }
+    
+    // MARK:- TODO:- This Method for Send Email Verfication again to user.
+    public static func SendEmailVerifcation (completion: @escaping (String) -> ()) {
+        
+        Auth.auth().currentUser?.reload(completion: { error in
+            if error != nil {
+                completion(error!.localizedDescription)
+            }
+            else {
+                if (!Auth.auth().currentUser!.isEmailVerified) {
+                    //resend verification email
+                    completion("Email Sent successfully")
+                } else {
+                     //login
+                    completion("you can go to login now")
+                }
+            }
+        })
+        
+    }
+    
     // MARK:- TODO:- This Method for Upload Image.
     // --------------------------------------------
     public static func uploadMedia(ImageName:String,PickedImage:UIImage,completion: @escaping (_ url: String?) -> Void) {

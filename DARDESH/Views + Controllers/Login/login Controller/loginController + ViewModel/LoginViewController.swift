@@ -31,6 +31,10 @@ class LoginViewController: UIViewController {
         subscribeToresponse()
         subscribeisLoginEnabeld()
         loginsubscribeTap()
+        
+        CheckResetePasswordEnabled()
+        subscribeToresponseResete()
+        ResetePasswordsubscribeTap()
     }
     
     // MARK:- TODO:- observe our textfield to viewmodel
@@ -98,6 +102,48 @@ class LoginViewController: UIViewController {
             self.loginviewmodel.LoginOperation()
             
         }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method is for validation before send resete email
+    func CheckResetePasswordEnabled() {
+        loginviewmodel.isPasswordResetrBehaviour
+            .bind(to: ForgetPasswordButton.rx.isEnabled)
+            .disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Action when email success or not.
+    func subscribeToresponseResete() {
+        
+        loginviewmodel.resetePasssModelSubjectObserval.subscribe(onNext: { mess in
+            
+            if mess == "Email was sent please follow steps to resete password" {
+                ProgressHUD.showSuccess(mess)
+            }
+            else {
+                ProgressHUD.showError(mess)
+            }
+            
+        }).disposed(by: disposebag)
+        
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Making Action for Reste Password.
+    func ResetePasswordsubscribeTap () {
+        
+        ForgetPasswordButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] (_) in
+            
+            guard let self = self else { return }
+            
+            self.view.endEditing(true)
+            
+            // call login method from viewmodel
+            self.loginviewmodel.ResetPasswordOperation()
+            
+        }).disposed(by: disposebag)
+        
     }
     // ------------------------------------------------
     

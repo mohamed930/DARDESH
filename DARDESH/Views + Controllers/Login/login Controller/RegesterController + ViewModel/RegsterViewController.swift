@@ -34,6 +34,9 @@ class RegsterViewController: UIViewController {
         subscribeToresponse()
         subscribeisLoginEnabeld()
         RegestersubscribeTap()
+        
+        subecribToResponseeisSentEmail()
+        isSentEmailsubscribeTap()
     }
     
     // MARK:- TODO:- observe our textfield to viewmodel
@@ -69,10 +72,10 @@ class RegsterViewController: UIViewController {
                 print("Regester is Successfully")
                 ProgressHUD.showSuccess("Regester is Successfully")
                 
-                let story = UIStoryboard(name: "HomeView", bundle: nil)
-                let next  = story.instantiateViewController(withIdentifier: "ChatsViewControllers")
-                next.modalPresentationStyle = .fullScreen
-                self.present(next, animated: true, completion: nil)
+//                let story = UIStoryboard(name: "HomeView", bundle: nil)
+//                let next  = story.instantiateViewController(withIdentifier: "ChatsViewControllers")
+//                next.modalPresentationStyle = .fullScreen
+//                self.present(next, animated: true, completion: nil)
             }
             else {
                 // failed clear password and confirm and sent message
@@ -107,6 +110,36 @@ class RegsterViewController: UIViewController {
         }).disposed(by: disposebag)
     }
     // ------------------------------------------------
+    
+    // MARK:- TODO:- this method for get reponse if sent email or not.
+    func subecribToResponseeisSentEmail() {
+        regesterviewmodel.SentEmailVerifyModelSubjectObserval.subscribe(onNext: { result in
+            
+            if result == "Email Sent successfully" || result == "you can go to login now" {
+                ProgressHUD.showSuccess(result)
+                print("F: \(result)")
+            }
+            else {
+                ProgressHUD.showError(result)
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- this method for action for sent email button with rxswit.
+    func isSentEmailsubscribeTap() {
+        ResendEmailButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] (_) in
+            
+            guard let self = self else { return }
+            
+            self.view.endEditing(true)
+            
+            // make regester with viewmodel
+            self.regesterviewmodel.SendEmailVerfication()
+            
+        }).disposed(by: disposebag)
+    }
     
     // MARK:- TODO:- login action to dismiss this page to return login.
     @IBAction func LoginAction(_ sender: Any) {
