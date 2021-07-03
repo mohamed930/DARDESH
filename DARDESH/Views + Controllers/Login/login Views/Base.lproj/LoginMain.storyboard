@@ -33,7 +33,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regester" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWa-RM-8CM">
-                                <rect key="frame" x="110.33333333333333" y="58" width="154.66666666666669" height="60"/>
+                                <rect key="frame" x="115.33333333333333" y="58" width="144.66666666666669" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="fg7-es-RNS"/>
                                 </constraints>
@@ -132,10 +132,10 @@
                                 </state>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="9l6-uW-LAT">
-                                <rect key="frame" x="71.666666666666671" y="733" width="231.66666666666663" height="25"/>
+                                <rect key="frame" x="69" y="733" width="237" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R4i-2i-tyE">
-                                        <rect key="frame" x="0.0" y="0.0" width="175.66666666666666" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="181" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="cCo-gh-vqc"/>
                                         </constraints>
@@ -144,7 +144,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HTM-ov-xfA">
-                                        <rect key="frame" x="186.66666666666663" y="0.0" width="45" height="25"/>
+                                        <rect key="frame" x="192" y="0.0" width="45" height="25"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                                         <state key="normal" title="Login"/>
                                         <connections>
@@ -196,7 +196,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wGQ-K3-BcD">
-                                <rect key="frame" x="138.33333333333334" y="58" width="98.333333333333343" height="60"/>
+                                <rect key="frame" x="142.66666666666666" y="58" width="89.666666666666657" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="pRX-13-hyZ"/>
                                 </constraints>
@@ -273,10 +273,10 @@
                                 </state>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="uvw-cu-fsV">
-                                <rect key="frame" x="55.666666666666657" y="733" width="264" height="25"/>
+                                <rect key="frame" x="52.666666666666657" y="733" width="269.66666666666674" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't you have account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EA7-xv-tuL">
-                                        <rect key="frame" x="0.0" y="0.0" width="196" height="25"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="201.66666666666666" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="25" id="8O3-YD-EPf"/>
                                         </constraints>
@@ -285,7 +285,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycj-dI-ImJ">
-                                        <rect key="frame" x="207.00000000000003" y="0.0" width="56.999999999999972" height="25"/>
+                                        <rect key="frame" x="212.66666666666666" y="0.0" width="56.999999999999972" height="25"/>
                                         <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="18"/>
                                         <state key="normal" title="Signup"/>
                                         <connections>
