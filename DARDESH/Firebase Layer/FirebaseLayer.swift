@@ -70,6 +70,7 @@ class FirebaseLayer {
         
     }
     
+    
     // MARK:- TODO:- This Method for Send Email Verfication again to user.
     public static func SendEmailVerifcation (completion: @escaping (String) -> ()) {
         
@@ -97,6 +98,18 @@ class FirebaseLayer {
             }
         })
         
+    }
+    
+  
+    // MARK:- TODO:- This Method For logout user from firebase.
+    public static func LogoutUser (completion: @escaping (String) -> ()) {
+        do {
+            try Auth.auth().signOut()
+            completion("Sign out Successfully")
+            
+        } catch {
+            completion(error.localizedDescription)
+        }
     }
     
     // MARK:- TODO:- This Method for Upload Image.

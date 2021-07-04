@@ -28,6 +28,7 @@
 		D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE66268C337A00EBEA0A /* UIViewController.swift */; };
 		D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE69268C34E300EBEA0A /* LoginViewModel.swift */; };
 		D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */; };
+		D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A33B512691A4F000FAFD3D /* UIImageView.swift */; };
 		D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A909BC269056D10070FCA5 /* Localizable.strings */; };
 		D3A909BF269057C50070FCA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A909BE269057C50070FCA5 /* String.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		D376BE66268C337A00EBEA0A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D376BE69268C34E300EBEA0A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegesterViewModel.swift; sourceTree = "<group>"; };
+		D3A33B512691A4F000FAFD3D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D3A909B526904EDE0070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D3A909B626904EDF0070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LoginMain.strings; sourceTree = "<group>"; };
 		D3A909BB269056D10070FCA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 			children = (
 				D376BE66268C337A00EBEA0A /* UIViewController.swift */,
 				D3A909BE269057C50070FCA5 /* String.swift */,
+				D3A33B512691A4F000FAFD3D /* UIImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 				D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */,
 				D3A909BF269057C50070FCA5 /* String.swift in Sources */,
+				D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */,
 				D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -669,6 +673,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization199.DARDESH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -690,6 +695,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization199.DARDESH;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -13,3 +13,8 @@
 "ConnectionMess"           = "There is no connection";
 "PasswordReseteMessage"    = "Email was sent please follow steps to resete password";
 "WaitMess"                 = "Please Wait";
+
+"logoutMess"               = "logout is failed, please try again later";
+"logoutBody"               = "Are you sure to logout?";
+"logoutTitle"              = "Logout";
+"Cancel"                   = "Cancel";
