@@ -31,6 +31,10 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         ProfileCoverImageView.MakeImageCircle()
+        
+        subscribeToLoading()
+        subscribeLogoutResponse()
+        subscribeLogoutTapped()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,10 +42,6 @@ class SettingsViewController: UIViewController {
         
         SubscribeToResponse()
         settingviewmodel.loadUserDataOperation()
-        
-        subscribeToLoading()
-        subscribeLogoutResponse()
-        subscribeLogoutTapped()
     }
     
     // MARK:- TODO:- This Method For print data from UserDefault Response.
