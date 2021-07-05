@@ -31,6 +31,8 @@
 		D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A33B512691A4F000FAFD3D /* UIImageView.swift */; };
 		D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A909BC269056D10070FCA5 /* Localizable.strings */; };
 		D3A909BF269057C50070FCA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A909BE269057C50070FCA5 /* String.swift */; };
+		D3C0E6792692B35A00B50CE2 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */; };
+		D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		D3A909BB269056D10070FCA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3A909BD269056D70070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3A909BE269057C50070FCA5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
+		D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +130,7 @@
 			children = (
 				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
 				D34EF751268DBCDC0061FB98 /* Settings Controllers + ViewModel */,
+				D3C0E6772692B33000B50CE2 /* Edit Profile Contollers + ViewModel */,
 			);
 			path = "Home Controllers";
 			sourceTree = "<group>";
@@ -363,6 +368,15 @@
 			path = localizable;
 			sourceTree = "<group>";
 		};
+		D3C0E6772692B33000B50CE2 /* Edit Profile Contollers + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */,
+				D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */,
+			);
+			path = "Edit Profile Contollers + ViewModel";
+			sourceTree = "<group>";
+		};
 		E8F80A0A1EA8E520E4AE660E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +509,8 @@
 				D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */,
 				D376BE64268C2B6600EBEA0A /* LoginViewController.swift in Sources */,
 				D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */,
+				D3C0E6792692B35A00B50CE2 /* EditProfileViewModel.swift in Sources */,
+				D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
 				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
