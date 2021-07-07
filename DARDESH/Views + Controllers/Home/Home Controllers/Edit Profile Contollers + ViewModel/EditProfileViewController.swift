@@ -13,21 +13,22 @@ import ProgressHUD
 class EditProfileViewController: UITableViewController {
     
     @IBOutlet weak var ProfileImageView: UIImageView!
-    
     @IBOutlet weak var UserNameTextField: UITextField!
-    
     @IBOutlet weak var StatusLabel: UILabel!
-    
     @IBOutlet weak var cell: UITableViewCell!
-    
     @IBOutlet weak var EditButton: UIButton!
+    @IBOutlet weak var StatusCell: UIView!
     
+    // MARK:- TODO:- This for initalise new varible.
     let editviewmodel = EditProfileViewModel()
     let disposebag    = DisposeBag()
+    // ------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        AddTapGeusterToTableView()
+        AddTapGeusterToStatusCell()
         ProfileImageView.MakeImageCircle()
         subscribeToUserName()
         subsctibeToResponseUpdate()
@@ -97,13 +98,44 @@ class EditProfileViewController: UITableViewController {
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- This Method for Adding TapGeuster to tableView.
+    func AddTapGeusterToTableView() {
+        
+        let tab = UITapGestureRecognizer(target: self, action: #selector(DismissKeyPad(tapGestureRecognizer:)))
+        tab.numberOfTapsRequired = 1
+        tab.numberOfTouchesRequired = 1
+        tableView.isUserInteractionEnabled = true
+        tableView.addGestureRecognizer(tab)
+        
+    }
     
+    @objc func DismissKeyPad(tapGestureRecognizer: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This method for going to Status TableView.
+    func AddTapGeusterToStatusCell() {
+        let tab = UITapGestureRecognizer(target: self, action: #selector(GotoStatus(tapGestureRecognizer:)))
+        tab.numberOfTapsRequired = 1
+        tab.numberOfTouchesRequired = 1
+        StatusCell.isUserInteractionEnabled = true
+        StatusCell.addGestureRecognizer(tab)
+    }
+    
+    @objc func GotoStatus(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+        let next = storyboard?.instantiateViewController(withIdentifier: "StatusTableViewController") as! StatusTableViewController
+        
+        self.navigationController?.pushViewController(next, animated: true)
+        
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Setting Tapped to Dismiss.
     @IBAction func SettingTapped(_ sender: Any) {
         self.dismissDetail()
     }
-    
-    @IBAction func TapGeusterTapped (_ sender: Any) {
-        self.view.endEditing(true)
-    }
+    // ------------------------------------------------
     
 }

@@ -34,6 +34,11 @@
 		D3A909BF269057C50070FCA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A909BE269057C50070FCA5 /* String.swift */; };
 		D3C0E6792692B35A00B50CE2 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */; };
 		D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */; };
+		D3C1B07426958F51002CBD94 /* StatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B07326958F51002CBD94 /* StatusTableViewController.swift */; };
+		D3C1B07626958F65002CBD94 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B07526958F65002CBD94 /* StatusViewModel.swift */; };
+		D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B078269595E7002CBD94 /* StatusCell.swift */; };
+		D3C1B07B269595E7002CBD94 /* StatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C1B079269595E7002CBD94 /* StatusCell.xib */; };
+		D3C1B07D2695975B002CBD94 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B07C2695975B002CBD94 /* StatusModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +99,11 @@
 		D3A909BE269057C50070FCA5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D3C1B07326958F51002CBD94 /* StatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewController.swift; sourceTree = "<group>"; };
+		D3C1B07526958F65002CBD94 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
+		D3C1B078269595E7002CBD94 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
+		D3C1B079269595E7002CBD94 /* StatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusCell.xib; sourceTree = "<group>"; };
+		D3C1B07C2695975B002CBD94 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
 		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +143,7 @@
 				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
 				D34EF751268DBCDC0061FB98 /* Settings Controllers + ViewModel */,
 				D3C0E6772692B33000B50CE2 /* Edit Profile Contollers + ViewModel */,
+				D3C1B07226958EAB002CBD94 /* StatusViewContollers + ViewModel */,
 			);
 			path = "Home Controllers";
 			sourceTree = "<group>";
@@ -380,6 +391,26 @@
 			path = "Edit Profile Contollers + ViewModel";
 			sourceTree = "<group>";
 		};
+		D3C1B07226958EAB002CBD94 /* StatusViewContollers + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3C1B07C2695975B002CBD94 /* StatusModel.swift */,
+				D3C1B07526958F65002CBD94 /* StatusViewModel.swift */,
+				D3C1B07326958F51002CBD94 /* StatusTableViewController.swift */,
+				D3C1B077269595AC002CBD94 /* Status Cell */,
+			);
+			path = "StatusViewContollers + ViewModel";
+			sourceTree = "<group>";
+		};
+		D3C1B077269595AC002CBD94 /* Status Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3C1B078269595E7002CBD94 /* StatusCell.swift */,
+				D3C1B079269595E7002CBD94 /* StatusCell.xib */,
+			);
+			path = "Status Cell";
+			sourceTree = "<group>";
+		};
 		E8F80A0A1EA8E520E4AE660E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +485,7 @@
 				D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */,
 				D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */,
 				D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */,
+				D3C1B07B269595E7002CBD94 /* StatusCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -515,6 +547,8 @@
 				D3C0E6792692B35A00B50CE2 /* EditProfileViewModel.swift in Sources */,
 				D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
+				D3C1B07D2695975B002CBD94 /* StatusModel.swift in Sources */,
+				D3C1B07426958F51002CBD94 /* StatusTableViewController.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
 				D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */,
 				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
@@ -522,7 +556,9 @@
 				D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */,
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
+				D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */,
 				D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */,
+				D3C1B07626958F65002CBD94 /* StatusViewModel.swift in Sources */,
 				D3A909BF269057C50070FCA5 /* String.swift in Sources */,
 				D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */,
 				D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */,

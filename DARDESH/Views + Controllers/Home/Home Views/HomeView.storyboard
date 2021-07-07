@@ -170,7 +170,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uc-Kp-hD9">
                                         <rect key="frame" x="0.0" y="105" width="375" height="94"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="JzG-oP-XpC">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JzG-oP-XpC">
                                                 <rect key="frame" x="17" y="12" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="FVb-7o-F1N"/>
@@ -330,14 +330,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Color 1"/>
+                        <gestureRecognizers/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Vj1-bH-nJt">
                             <rect key="frame" x="0.0" y="300.66667244651103" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" name="Color 1"/>
                             <gestureRecognizers/>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="NbH-mw-TBL" appends="YES" id="XR4-xc-5d2"/>
-                            </connections>
                         </view>
                         <sections>
                             <tableViewSection id="G4d-BY-odT">
@@ -349,7 +347,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="JUC-2W-QLu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="JUC-2W-QLu">
                                                     <rect key="frame" x="16" y="13" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="3wv-0v-9Up"/>
@@ -457,19 +455,50 @@
                     <connections>
                         <outlet property="EditButton" destination="MtT-As-7UC" id="zUx-Db-UdJ"/>
                         <outlet property="ProfileImageView" destination="JUC-2W-QLu" id="nSY-ag-ud0"/>
+                        <outlet property="StatusCell" destination="0rH-jc-A1Y" id="sa7-F8-Cxg"/>
                         <outlet property="StatusLabel" destination="veG-aL-DXF" id="Jrm-Wq-Wox"/>
                         <outlet property="UserNameTextField" destination="4OG-eW-xir" id="XOg-ZE-lBt"/>
                         <outlet property="cell" destination="CFI-jp-Rnk" id="qhu-O5-bRC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtq-pg-rre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="NbH-mw-TBL">
-                    <connections>
-                        <action selector="TapGeusterTapped:" destination="BA0-KQ-2ld" id="4Ju-Dp-SDB"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1927.2" y="501.72413793103448"/>
+        </scene>
+        <!--Status Table View Controller-->
+        <scene sceneID="mar-w1-zKn">
+            <objects>
+                <viewController storyboardIdentifier="StatusTableViewController" id="o3a-ec-zon" customClass="StatusTableViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lq9-HA-UZS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1oQ-Oj-jyg">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="dMP-IH-GmG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PIw-yo-dOH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1oQ-Oj-jyg" firstAttribute="leading" secondItem="PIw-yo-dOH" secondAttribute="leading" id="4XK-oC-x5Y"/>
+                            <constraint firstItem="PIw-yo-dOH" firstAttribute="trailing" secondItem="1oQ-Oj-jyg" secondAttribute="trailing" id="lPu-GX-Mu2"/>
+                            <constraint firstItem="1oQ-Oj-jyg" firstAttribute="top" secondItem="PIw-yo-dOH" secondAttribute="top" id="rDa-XY-efk"/>
+                            <constraint firstItem="PIw-yo-dOH" firstAttribute="bottom" secondItem="1oQ-Oj-jyg" secondAttribute="bottom" id="rUb-B6-D5f"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="1oQ-Oj-jyg" id="plO-8R-Icj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cSu-ay-OCc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2713" y="502"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uHU-6f-zqw">
@@ -491,12 +520,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icon" width="140.66667175292969" height="137.66667175292969"/>
         <image name="icons8-chat-50" width="25" height="25"/>
         <image name="icons8-chat-room-50" width="25" height="25"/>
         <image name="icons8-gear-50" width="25" height="25"/>
         <image name="icons8-user-account-50" width="25" height="25"/>
         <image name="next-1" width="20" height="20"/>
+        <image name="photoPlaceholder" width="341.33334350585938" height="256"/>
         <namedColor name="Color 1">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
