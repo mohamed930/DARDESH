@@ -11,6 +11,8 @@ import RxCocoa
 
 class StatusViewModel {
     
+    var checkmarksStatus = BehaviorRelay<String>(value: "")
+    
     private var StatusModelSubject = PublishSubject<[StatusModel]>()
     var StatusModelObservable: Observable<[StatusModel]> {
         return StatusModelSubject
@@ -23,8 +25,14 @@ class StatusViewModel {
         var statusModels = Array<StatusModel>()
         
         for i in data {
-            let ob = StatusModel(statusName: i)
-            statusModels.append(ob)
+            if i == checkmarksStatus.value {
+                let ob = StatusModel(statusName: i, checkMark: true)
+                statusModels.append(ob)
+            }
+            else {
+                let ob = StatusModel(statusName: i, checkMark: false)
+                statusModels.append(ob)
+            }
         }
         
         StatusModelSubject.onNext(statusModels)

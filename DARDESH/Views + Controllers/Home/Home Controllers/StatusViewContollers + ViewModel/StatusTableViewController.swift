@@ -18,6 +18,7 @@ class StatusTableViewController: UIViewController {
     let cellIdentifier = "Cell"
     let statusviewmodel = StatusViewModel()
     let disposebag = DisposeBag()
+    var checkMarkStatus = String()
     // ------------------------------------------------
 
     override func viewDidLoad() {
@@ -25,9 +26,18 @@ class StatusTableViewController: UIViewController {
 
         self.navigationItem.title = "Choose your status"
         configueNibFile()
-        FillTableView()
+        subscribeToResponse()
+        bindStatusValue()
         GetDataToFill()
+        subscribeToStatusSelection()
     }
+    
+    // MARK:- TODO:- Bind Varible to rxSwift varible.
+    func bindStatusValue() {
+        statusviewmodel.checkmarksStatus.accept(checkMarkStatus)
+        
+    }
+    // ------------------------------------------------
     
     // MARK:- TODO:- This Method For Configure nib file to TableView.
     func configueNibFile() {
@@ -36,7 +46,7 @@ class StatusTableViewController: UIViewController {
     // ------------------------------------------------
     
     // MARK:- TODO:- This Method For Fill Data to tableView.
-    func FillTableView() {
+    func subscribeToResponse() {
         
         statusviewmodel.StatusModelObservable
         .bind(to: tableView
@@ -45,6 +55,13 @@ class StatusTableViewController: UIViewController {
                cellType: StatusCell.self)) { row, branch, cell in
                
                 cell.StatusLabel.text = branch.statusName
+            
+                if branch.checkMark {
+                    cell.accessoryType = .checkmark
+                }
+                else {
+                    cell.accessoryType = .none
+                }
             
         }.disposed(by: disposebag)
         
@@ -55,6 +72,28 @@ class StatusTableViewController: UIViewController {
     // MARK:- TODO:- Fill Data.
     func GetDataToFill() {
         statusviewmodel.GetData()
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Checking Status Cell.
+    func subscribeToStatusSelection() {
+        
+        Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(StatusModel.self))
+            .bind { [weak self] selectedIndex, branch in
+
+                guard let self = self else { return }
+
+                let cell = self.tableView.cellForRow(at: selectedIndex) as? StatusCell
+                var B = branch
+                B.checkMark = !B.checkMark
+                cell?.accessoryType = B.checkMark ? .checkmark : .none
+                // Save To UserDefault and See the Results
+                
+
+                print(selectedIndex, B.checkMark)
+        }
+        .disposed(by: disposebag)
+        
     }
     // ------------------------------------------------
     

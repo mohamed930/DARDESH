@@ -127,6 +127,8 @@ class EditProfileViewController: UITableViewController {
         
         let next = storyboard?.instantiateViewController(withIdentifier: "StatusTableViewController") as! StatusTableViewController
         
+        next.checkMarkStatus = StatusLabel.text!
+        
         self.navigationController?.pushViewController(next, animated: true)
         
     }

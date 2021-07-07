@@ -9,4 +9,5 @@ import Foundation
 
 struct StatusModel {
     var statusName: String
+    var checkMark:  Bool
 }
