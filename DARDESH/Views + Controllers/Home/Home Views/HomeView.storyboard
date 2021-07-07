@@ -13,6 +13,9 @@
         <array key="NotoSansJP-Black.otf">
             <string>NotoSansJP-Black</string>
         </array>
+        <array key="NotoSansJP-Medium.otf">
+            <string>NotoSansJP-Medium</string>
+        </array>
         <array key="Nunito-Bold.ttf">
             <string>Nunito-Bold</string>
         </array>
@@ -268,7 +271,6 @@
                                             <constraint firstItem="prQ-bF-wsS" firstAttribute="leading" secondItem="dJH-7c-8xu" secondAttribute="leading" constant="8" id="1xi-SM-tVE"/>
                                             <constraint firstItem="9Ha-xV-oE3" firstAttribute="leading" secondItem="prQ-bF-wsS" secondAttribute="trailing" constant="10" id="65F-cg-1eh"/>
                                             <constraint firstAttribute="trailing" secondItem="9Ha-xV-oE3" secondAttribute="trailing" constant="8" id="G5T-RG-M3d"/>
-                                            <constraint firstAttribute="width" constant="375" id="K9Z-Ua-S6Z"/>
                                             <constraint firstItem="LRZ-K7-8BN" firstAttribute="trailing" secondItem="9Ha-xV-oE3" secondAttribute="trailing" id="aWc-HY-btN"/>
                                             <constraint firstItem="LRZ-K7-8BN" firstAttribute="leading" secondItem="prQ-bF-wsS" secondAttribute="leading" id="eOM-kW-g9l"/>
                                             <constraint firstItem="prQ-bF-wsS" firstAttribute="top" secondItem="dJH-7c-8xu" secondAttribute="top" constant="8" id="fxG-oE-274"/>
@@ -324,21 +326,30 @@
         <scene sceneID="cm9-Oc-TVE">
             <objects>
                 <tableViewController id="BA0-KQ-2ld" customClass="EditProfileViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZRU-ix-cJJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZRU-ix-cJJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Color 1"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Vj1-bH-nJt">
+                            <rect key="frame" x="0.0" y="300.66667244651103" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" name="Color 1"/>
+                            <gestureRecognizers/>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="NbH-mw-TBL" appends="YES" id="XR4-xc-5d2"/>
+                            </connections>
+                        </view>
                         <sections>
                             <tableViewSection id="G4d-BY-odT">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="116" id="Edj-ZB-29X">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="116" id="Edj-ZB-29X">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Edj-ZB-29X" id="nZg-6l-qyA">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUC-2W-QLu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon" translatesAutoresizingMaskIntoConstraints="NO" id="JUC-2W-QLu">
                                                     <rect key="frame" x="16" y="13" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="3wv-0v-9Up"/>
@@ -350,15 +361,15 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="CEP-NM-RFj"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="15"/>
                                                     <state key="normal" title="Edit"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your name and add optional profile picture" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vO-8Y-iRh">
-                                                    <rect key="frame" x="89" y="24" width="270" height="43"/>
+                                                    <rect key="frame" x="89" y="18.666666666666671" width="270" height="54"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="43" id="cHm-dK-BdC"/>
+                                                        <constraint firstAttribute="height" constant="54" id="cHm-dK-BdC"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -374,18 +385,22 @@
                                                 <constraint firstItem="6vO-8Y-iRh" firstAttribute="leading" secondItem="JUC-2W-QLu" secondAttribute="trailing" constant="8" symbolic="YES" id="oxK-ao-dqv"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Color 2"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iba-je-6kb">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="iba-je-6kb">
                                         <rect key="frame" x="0.0" y="140.33333396911621" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iba-je-6kb" id="VfJ-3i-mvd">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Mohamed Ali" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4OG-eW-xir">
-                                                    <rect key="frame" x="16" y="5" width="343" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="4OG-eW-xir">
+                                                    <rect key="frame" x="16" y="5" width="343" height="34.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="BA0-KQ-2ld" id="oOJ-r7-Tdt"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -395,12 +410,13 @@
                                                 <constraint firstAttribute="trailing" secondItem="4OG-eW-xir" secondAttribute="trailing" constant="16" id="vy1-1o-zvQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Color 2"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="1l7-B8-RIe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="CFI-jp-Rnk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="CFI-jp-Rnk">
                                         <rect key="frame" x="0.0" y="232.66667019237173" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CFI-jp-Rnk" id="0rH-jc-A1Y">
@@ -409,7 +425,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Busy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="veG-aL-DXF">
                                                     <rect key="frame" x="16" y="11.999999999999998" width="318" height="22.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -421,6 +437,7 @@
                                                 <constraint firstItem="veG-aL-DXF" firstAttribute="leading" secondItem="0rH-jc-A1Y" secondAttribute="leading" constant="16" id="rAo-sM-Mis"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Color 2"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -431,10 +448,26 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Profile" id="Apa-Js-jrh">
-                        <barButtonItem key="leftBarButtonItem" title="Setting" id="Rk1-iG-7Qw"/>
+                        <barButtonItem key="leftBarButtonItem" title="Setting" id="Rk1-iG-7Qw">
+                            <connections>
+                                <action selector="SettingTapped:" destination="BA0-KQ-2ld" id="osq-3q-Ln1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="EditButton" destination="MtT-As-7UC" id="zUx-Db-UdJ"/>
+                        <outlet property="ProfileImageView" destination="JUC-2W-QLu" id="nSY-ag-ud0"/>
+                        <outlet property="StatusLabel" destination="veG-aL-DXF" id="Jrm-Wq-Wox"/>
+                        <outlet property="UserNameTextField" destination="4OG-eW-xir" id="XOg-ZE-lBt"/>
+                        <outlet property="cell" destination="CFI-jp-Rnk" id="qhu-O5-bRC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jtq-pg-rre" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="NbH-mw-TBL">
+                    <connections>
+                        <action selector="TapGeusterTapped:" destination="BA0-KQ-2ld" id="4Ju-Dp-SDB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1927.2" y="501.72413793103448"/>
         </scene>
@@ -454,7 +487,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2vj-kp-bG3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984.79999999999995" y="501.72413793103448"/>
+            <point key="canvasLocation" x="1151" y="502"/>
         </scene>
     </scenes>
     <resources>

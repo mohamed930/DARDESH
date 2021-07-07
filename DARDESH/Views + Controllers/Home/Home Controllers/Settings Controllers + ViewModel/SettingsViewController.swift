@@ -30,6 +30,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        AddTapGeusterToProfileView()
         ProfileCoverImageView.MakeImageCircle()
         
         subscribeToLoading()
@@ -124,4 +125,26 @@ class SettingsViewController: UIViewController {
         
     }
     // ------------------------------------------------
+    
+    func AddTapGeusterToProfileView() {
+        let tab = UITapGestureRecognizer(target: self, action: #selector(gotoEditProfile(tapGestureRecognizer:)))
+        tab.numberOfTapsRequired = 1
+        tab.numberOfTouchesRequired = 1
+        ProfileView.isUserInteractionEnabled = true
+        ProfileView.addGestureRecognizer(tab)
+    }
+    
+    @objc func gotoEditProfile(tapGestureRecognizer: UITapGestureRecognizer) {
+        
+//        let next = storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController")
+//
+//
+//
+//        next!.modalPresentationStyle = .fullScreen
+//
+//        self.present(next!, animated: true, completion: nil)
+        
+        self.presentDetail((storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController"))!)
+   }
+    
 }

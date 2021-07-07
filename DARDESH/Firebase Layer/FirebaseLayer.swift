@@ -112,6 +112,21 @@ class FirebaseLayer {
         }
     }
     
+    // MARK:- TODO:- This Method For Update Data from Firebase.
+    public static func updateDocumnt (collectionName:String,documntId:String,data:[String:Any],completion: @escaping (Bool) -> ()) {
+        
+        Firestore.firestore().collection(collectionName).document(documntId).updateData(data){
+            error in
+            if error != nil {
+                completion(false)
+            }
+            else {
+                completion(true)
+            }
+        }
+        
+    }
+    
     // MARK:- TODO:- This Method for Upload Image.
     // --------------------------------------------
     public static func uploadMedia(ImageName:String,PickedImage:UIImage,completion: @escaping (_ url: String?) -> Void) {

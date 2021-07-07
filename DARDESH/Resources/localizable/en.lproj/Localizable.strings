@@ -18,3 +18,5 @@
 "logoutBody"               = "Are you sure to logout?";
 "logoutTitle"              = "Logout";
 "Cancel"                   = "Cancel";
+"UserNameAction"           = "Update UserName Success";
+"UserNameActionFalse"      = "Update UserName is failed";

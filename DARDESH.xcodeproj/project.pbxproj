@@ -28,6 +28,7 @@
 		D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE66268C337A00EBEA0A /* UIViewController.swift */; };
 		D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE69268C34E300EBEA0A /* LoginViewModel.swift */; };
 		D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */; };
+		D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A0BF22692D000003EC335 /* ExtensionEditProfileViewController.swift */; };
 		D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A33B512691A4F000FAFD3D /* UIImageView.swift */; };
 		D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A909BC269056D10070FCA5 /* Localizable.strings */; };
 		D3A909BF269057C50070FCA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A909BE269057C50070FCA5 /* String.swift */; };
@@ -84,6 +85,7 @@
 		D376BE66268C337A00EBEA0A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		D376BE69268C34E300EBEA0A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegesterViewModel.swift; sourceTree = "<group>"; };
+		D37A0BF22692D000003EC335 /* ExtensionEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionEditProfileViewController.swift; sourceTree = "<group>"; };
 		D3A33B512691A4F000FAFD3D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D3A909B526904EDE0070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D3A909B626904EDF0070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LoginMain.strings; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 			children = (
 				D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */,
 				D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */,
+				D37A0BF22692D000003EC335 /* ExtensionEditProfileViewController.swift */,
 			);
 			path = "Edit Profile Contollers + ViewModel";
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
+				D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */,
 				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
 				D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */,
 				D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */,
@@ -683,6 +687,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X4YZSY77G5;
 				INFOPLIST_FILE = "$(SRCROOT)/DARDESH/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -705,6 +710,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = X4YZSY77G5;
 				INFOPLIST_FILE = "$(SRCROOT)/DARDESH/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
