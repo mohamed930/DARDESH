@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ProgressHUD
+import Gallery
 
 class EditProfileViewController: UITableViewController {
     
@@ -32,6 +33,7 @@ class EditProfileViewController: UITableViewController {
         ProfileImageView.MakeImageCircle()
         subscribeToUserName()
         subsctibeToResponseUpdate()
+        subscribeToEdit()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,6 +94,25 @@ class EditProfileViewController: UITableViewController {
             else {
                 ProgressHUD.showError("UserNameActionFalse".localized, interaction: true)
             }
+            
+        }).disposed(by: disposebag)
+        
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For EditAction To Open Gallary and Change Profile Image.
+    func subscribeToEdit() {
+        
+        EditButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] (_) in
+            
+            guard let self = self else { return }
+            
+            // Open Gallary.
+            let gallery = GalleryController()
+            Config.tabsToShow = [.imageTab , .cameraTab]
+            Config.initialTab = .imageTab
+            gallery.delegate = self
+            self.present(gallery, animated: true, completion: nil)
             
         }).disposed(by: disposebag)
         

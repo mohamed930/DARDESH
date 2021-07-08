@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Gallery
+import ProgressHUD
 
 extension EditProfileViewController: UITextFieldDelegate {
     
@@ -24,5 +26,41 @@ extension EditProfileViewController {
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return section == 0 ? 10.0 : 13.0
     }
+    
+}
+
+extension EditProfileViewController: GalleryControllerDelegate {
+    
+    func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
+        
+        images[0].resolve(completion: { [weak self] img in
+            
+            guard let self = self else { return }
+            
+            self.ProfileImageView.image = img
+            
+            controller.dismiss(animated: true, completion: nil)
+        })
+        
+        
+    }
+    
+    func galleryController(_ controller: GalleryController, requestLightbox images: [Image]) {
+        print("requestLightbox Selected")
+    }
+    
+    func galleryController(_ controller: GalleryController, didSelectVideo video: Video) {
+        print("Video Selected")
+    }
+    
+    func galleryControllerDidCancel(_ controller: GalleryController) {
+        print("Canceled Selected")
+//
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    
     
 }
