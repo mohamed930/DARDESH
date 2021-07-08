@@ -47,7 +47,7 @@ class EditProfileViewModel {
         
         isloadingBehaviour.accept(true)
         
-        FirebaseLayer.updateDocumnt(collectionName: userCollection, documntId: Auth.auth().currentUser!.uid, data: ["UserName": UserNameBehaviour.value]) { [weak self] Result in
+        FirebaseLayer.updateDocumnt(collectionName: userCollection, documntId: userID, data: ["UserName": UserNameBehaviour.value]) { [weak self] Result in
             
             guard let self = self else { return }
             

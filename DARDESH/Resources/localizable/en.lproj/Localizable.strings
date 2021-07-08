@@ -20,3 +20,4 @@
 "Cancel"                   = "Cancel";
 "UserNameAction"           = "Update UserName Success";
 "UserNameActionFalse"      = "Update UserName is failed";
+"Connection"               = "Connection is an interupted";

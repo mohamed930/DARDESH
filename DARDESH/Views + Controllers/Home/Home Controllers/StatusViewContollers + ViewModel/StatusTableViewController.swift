@@ -29,6 +29,7 @@ class StatusTableViewController: UIViewController {
         subscribeToResponse()
         bindStatusValue()
         GetDataToFill()
+        subscribeisLoading()
         subscribeToStatusSelection()
     }
     
@@ -75,6 +76,21 @@ class StatusTableViewController: UIViewController {
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- This Method For responseLoading.
+    func subscribeisLoading() {
+        statusviewmodel.isloading.subscribe(onNext: { isload in
+            
+            if isload {
+                self.showAnimation()
+            }
+            else {
+                self.stopAnimating()
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
     // MARK:- TODO:- This Method For Checking Status Cell.
     func subscribeToStatusSelection() {
         
@@ -82,15 +98,28 @@ class StatusTableViewController: UIViewController {
             .bind { [weak self] selectedIndex, branch in
 
                 guard let self = self else { return }
-
-                let cell = self.tableView.cellForRow(at: selectedIndex) as? StatusCell
-                var B = branch
-                B.checkMark = !B.checkMark
-                cell?.accessoryType = B.checkMark ? .checkmark : .none
-                // Save To UserDefault and See the Results
                 
+                if branch.checkMark == false {
+                    
+                    // Change Value to true
+                    var B = branch
+                    B.checkMark = true
+                    
+                    // Add Check Marks on current cell
+                    let cell = self.tableView.cellForRow(at: selectedIndex) as? StatusCell
+                    cell?.accessoryType = .checkmark
+//                    cell?.accessoryType = B.checkMark ? .checkmark : .none
+                    
+                    // Send Values to rxswift Varibles to Update.
+                    self.statusviewmodel.CurrentItemChangedIndexBehaviour.accept(selectedIndex[1])
+                    self.statusviewmodel.CurrentItemChangedStatusBehaviour.accept(B.checkMark)
+                    self.statusviewmodel.StatusNameBehaviour.accept(branch.statusName)
+                    
+                    // Updata Data on Firebase & UserDefaults
+                    self.statusviewmodel.UpdateOperation()
 
-                print(selectedIndex, B.checkMark)
+                    print(selectedIndex[1], B.checkMark)
+                }
         }
         .disposed(by: disposebag)
         
