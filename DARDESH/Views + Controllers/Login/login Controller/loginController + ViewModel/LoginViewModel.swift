@@ -77,7 +77,7 @@ class LoginViewModel {
             if error == nil && auth!.user.isEmailVerified {
             
                 // download data from firestore
-                self.DownloadData(auth1: auth!)
+                self.DownloadData()
             }
             else {
                 // send to load to stop and send response failed
@@ -114,9 +114,9 @@ class LoginViewModel {
     // ------------------------------------------------
     
     // MARK:- TODO:- This method for download data from firestore
-    private func DownloadData(auth1: AuthDataResult) {
+    func DownloadData() {
         
-        FirebaseLayer.publicreadWithWhereCondtion(collectionName: userCollection, key: "uid", value: auth1.user.uid) { [weak self] snap in
+        FirebaseLayer.publicreadWithWhereCondtion(collectionName: userCollection, key: "uid", value: userID) { [weak self] snap in
             
             guard let self = self else { return }
             

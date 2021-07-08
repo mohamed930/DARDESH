@@ -55,7 +55,7 @@ extension EditProfileViewController: GalleryControllerDelegate {
     
     func galleryControllerDidCancel(_ controller: GalleryController) {
         print("Canceled Selected")
-//
+
         controller.dismiss(animated: true, completion: nil)
     }
     
