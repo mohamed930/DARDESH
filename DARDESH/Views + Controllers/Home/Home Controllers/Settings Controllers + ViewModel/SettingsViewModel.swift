@@ -30,11 +30,12 @@ class SettingsViewModel {
     // MARK:- TODO:- This Method for Decode UserDefault and send object to Observable.
     func loadUserDataOperation() {
         
-         let savedPerson = UserDefaults.standard.object(forKey: currentUser) as? Data
-         let decoder = JSONDecoder()
-         if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson!) {
-            CollectDataBehaviour.onNext(loadedPerson)
-         }
+        guard let result = UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self) else  {
+            print("Error")
+            return
+        }
+        
+        CollectDataBehaviour.onNext(result)
     }
     // ------------------------------------------------
     

@@ -126,32 +126,19 @@ class LoginViewModel {
                 let user = UserModel(uid: doc.get("uid") as! String, email: doc.get("email") as! String, UserName: doc.get("UserName") as! String, Image: doc.get("Image") as! String, status: doc.get("status") as! String)
                 
                 // Save Data in to userdefaults
-                self.SaveUserDataLocally(user)
+                UserDefaultsMethods.SaveDataToUserDefaults(Key: currentUser, user) { response in
+                    if response == "Success" {
+                        // send to load to stop and send response success
+                        self.loadingBehaviour.accept(false)
+                        self.loginBehaviour.onNext("Success")
+                    }
+                    else {
+                        self.loadingBehaviour.accept(false)
+                        self.loginBehaviour.onNext(response)
+                    }
+                }
             }
         }
-    }
-    // ------------------------------------------------
-    
-    
-    
-    // MARK:- TODO:- this method for save user datalocally
-    private func SaveUserDataLocally(_ user: UserModel) {
-        
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(user)
-            UserDefaults.standard.setValue(data, forKey: currentUser)
-            
-            // send to load to stop and send response success
-            self.loadingBehaviour.accept(false)
-            self.loginBehaviour.onNext("Success")
-        } catch {
-            print(error.localizedDescription)
-            
-            self.loadingBehaviour.accept(false)
-            self.loginBehaviour.onNext(error.localizedDescription)
-        }
-        
     }
     // ------------------------------------------------
 }

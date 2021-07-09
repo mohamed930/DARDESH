@@ -154,11 +154,18 @@ class RegesterViewModel {
                     self.isCreatedAccount.onNext(error!.localizedDescription)
                 }
                 else {
-                    self.loadingBehaviour.accept(false)
-                    self.isCreatedAccount.onNext("Success")
                     
                     // After saved to firestore save locally
-                    self.SaveUserLocally(user)
+                    UserDefaultsMethods.SaveDataToUserDefaults(Key: currentUser, user) { response in
+                        if response == "Success" {
+                            self.loadingBehaviour.accept(false)
+                            self.isCreatedAccount.onNext("Success")
+                        }
+                        else {
+                            self.loadingBehaviour.accept(false)
+                            self.isCreatedAccount.onNext(response)
+                        }
+                    }
                 }
                 
             }
@@ -168,21 +175,6 @@ class RegesterViewModel {
             self.loadingBehaviour.accept(false)
             self.isCreatedAccount.onNext(error.localizedDescription)
         }
-    }
-    // ------------------------------------------------
-    
-    // MARK:- TODO:- This method for saving UserData to UserDefaults.
-    private func SaveUserLocally (_ user: UserModel) {
-        
-        let encoder = JSONEncoder()
-        
-        do {
-            let data = try encoder.encode(user)
-            UserDefaults.standard.setValue(data, forKey: currentUser)
-        } catch {
-            print(error.localizedDescription)
-        }
-        
     }
     // ------------------------------------------------
     

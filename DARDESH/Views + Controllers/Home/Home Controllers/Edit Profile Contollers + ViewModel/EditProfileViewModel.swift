@@ -16,6 +16,7 @@ class EditProfileViewModel {
     
     // MARK:- TODO:- This Varibles here.
     var UserNameBehaviour  = BehaviorRelay<String>(value: "")
+    var PickedImageBehaviour = BehaviorRelay<UIImage>(value: UIImage(named: "photoPlaceholder")!)
     var isloadingBehaviour = BehaviorRelay<Bool>(value: false)
     
     private var CollectDataBehaviour = PublishSubject<UserModel>()
@@ -52,7 +53,13 @@ class EditProfileViewModel {
             guard let self = self else { return }
             
             if Result {
-                self.UpdateUserDefault()
+                // Update User Defaults Data
+                guard let userData = UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self) else { return }
+                
+                // Second Updata Data to UserDefauls
+                let usermodel = UserModel(uid: userData.uid, email: userData.email, UserName: self.UserNameBehaviour.value , Image: userData.Image , status: userData.status , pushid: userData.pushid)
+                
+                self.UpdateUserDefaulsMethod(userModel: usermodel)
             }
             else {
                 self.isloadingBehaviour.accept(false)
@@ -62,36 +69,70 @@ class EditProfileViewModel {
     }
     // ------------------------------------------------
     
-    // MARK:- TODO:- Update UserDefault loccally.
-    private func UpdateUserDefault () {
+    // MARK:- TODO:- This Method For Updating ProfileImage.
+    func UpdateProfileImageOperation() {
         
-        let savedPerson = UserDefaults.standard.object(forKey: currentUser) as? Data
-        let decoder = JSONDecoder()
-        if let userData = try? decoder.decode(UserModel.self, from: savedPerson!) {
-           
-            let usermodel = UserModel(uid: userData.uid, email: userData.email, UserName: self.UserNameBehaviour.value , Image: userData.Image , status: userData.status , pushid: userData.pushid)
+        isloadingBehaviour.accept(true)
+        
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        let result = formatter.string(from: date)
+        
+        
+        let imgName = userID + result
+        
+        FirebaseLayer.uploadMedia(ImageName: imgName, PickedImage: PickedImageBehaviour.value) { [weak self] urlImg in
             
-            self.SaveUserLocally(usermodel)
+            guard let self = self else { return }
+            
+            if urlImg == nil {
+                self.isloadingBehaviour.accept(false)
+                self.UpdateResponseBehaviour.onNext(false)
+            }
+            else {
+                
+                // UpdateLink on firebase.
+                FirebaseLayer.updateDocumnt(collectionName: userCollection, documntId: userID, data: ["Image": urlImg!]) { [weak self] Result in
+                    
+                    guard let self = self else { return }
+                    
+                    if Result {
+                        // Update User Defaults Data
+                        guard let userData = UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self) else { return }
+                        
+                        // Second Updata Data to UserDefauls
+                        let usermodel = UserModel(uid: userData.uid, email: userData.email, UserName: userData.UserName , Image: urlImg! , status: userData.status , pushid: userData.pushid)
+                        
+                        self.UpdateUserDefaulsMethod(userModel: usermodel)
+                    }
+                    else {
+                        self.isloadingBehaviour.accept(false)
+                        self.UpdateResponseBehaviour.onNext(false)
+                    }
+                }
+                
+            }
         }
+        
     }
     // ------------------------------------------------
     
-    // MARK:- TODO:- This method for saving UserData to UserDefaults.
-    private func SaveUserLocally (_ user: UserModel) {
+    // MARK:- TODO:- Update UserDefualts Method.
+    private func UpdateUserDefaulsMethod(userModel: UserModel) {
         
-        let encoder = JSONEncoder()
-        
-        do {
-            let data = try encoder.encode(user)
-            UserDefaults.standard.setValue(data, forKey: currentUser)
-            print("Saved Here")
-            self.isloadingBehaviour.accept(false)
-            self.UpdateResponseBehaviour.onNext(true)
-        } catch {
-            print(error.localizedDescription)
+        UserDefaultsMethods.SaveDataToUserDefaults(Key: currentUser, userModel) { response in
+            if response == "Success" {
+                self.isloadingBehaviour.accept(false)
+                self.UpdateResponseBehaviour.onNext(true)
+            }
+            else {
+                print(response)
+                self.isloadingBehaviour.accept(false)
+                self.UpdateResponseBehaviour.onNext(false)
+            }
         }
         
     }
-    // ------------------------------------------------
     
 }

@@ -53,7 +53,6 @@ class StatusViewModel {
     func UpdateOperation() {
         UpdateDataOnUI()
         UpdateStatusOnFirebase()
-        UpdateStatusOnUserDefault()
     }
     // ------------------------------------------------
     
@@ -95,7 +94,7 @@ class StatusViewModel {
             guard let self = self else { return }
             
             if resposnse {
-                self.UpdateStatusOnUserDefault()
+                self.UpdateUserDefaulsMethod()
             }
             else {
                 self.isloading.accept(false)
@@ -105,37 +104,27 @@ class StatusViewModel {
     }
     // ------------------------------------------------
     
-    // MARK:- TODO:- Update stauts into UserDefault only.
-    private func UpdateStatusOnUserDefault() {
-        
-        let savedPerson = UserDefaults.standard.object(forKey: currentUser) as? Data
-        let decoder = JSONDecoder()
-        if let userData = try? decoder.decode(UserModel.self, from: savedPerson!) {
-           
-            // get data from userdefaults and change status with new status that you are checked.
-            let usermodel = UserModel(uid: userData.uid, email: userData.email, UserName: userData.UserName , Image: userData.Image , status: self.StatusNameBehaviour.value , pushid: userData.pushid)
-            
-            self.SaveUserLocally(usermodel)
-        }
-    }
-    // ------------------------------------------------
     
-    // MARK:- TODO:- This method for saving UserData to UserDefaults.
-    private func SaveUserLocally (_ user: UserModel) {
+    // MARK:- TODO:- Update UserDefualts Method.
+    private func UpdateUserDefaulsMethod() {
         
-        let encoder = JSONEncoder()
+        // Get User Defaults Data
+        guard let userData = UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self) else { return }
         
-        do {
-            let data = try encoder.encode(user)
-            UserDefaults.standard.setValue(data, forKey: currentUser)
-            print("Saved Here")
-            self.isloading.accept(false)
-        } catch {
-            print(error.localizedDescription)
-            ProgressHUD.showError(error.localizedDescription, interaction: true)
+        // Second Updata Data to UserDefauls
+        let usermodel = UserModel(uid: userData.uid, email: userData.email, UserName: userData.UserName , Image: userData.Image , status: self.StatusNameBehaviour.value , pushid: userData.pushid)
+        
+        UserDefaultsMethods.SaveDataToUserDefaults(Key: currentUser, usermodel) { response in
+            if response == "Success" {
+                print("Saved Here")
+                self.isloading.accept(false)
+            }
+            else {
+                print(response)
+                self.isloading.accept(false)
+            }
         }
         
     }
-    // ------------------------------------------------
     
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */; };
+		D31432BA2698FCC5006F3FE2 /* UserDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31432B92698FCC5006F3FE2 /* UserDefaultsMethods.swift */; };
 		D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3242994268D13ED00EF0B6E /* UserModel.swift */; };
 		D34EF74B268DBAFB0061FB98 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */; };
 		D34EF74E268DBC6A0061FB98 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DARDESH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D31432B92698FCC5006F3FE2 /* UserDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMethods.swift; sourceTree = "<group>"; };
 		D3242994268D13ED00EF0B6E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			children = (
 				D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */,
 				D376BE42268BD84400EBEA0A /* BaseURL.swift */,
+				D31432B92698FCC5006F3FE2 /* UserDefaultsMethods.swift */,
 			);
 			path = "Firebase Layer";
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */,
 				D376BE64268C2B6600EBEA0A /* LoginViewController.swift in Sources */,
 				D376BE67268C337A00EBEA0A /* UIViewController.swift in Sources */,
+				D31432BA2698FCC5006F3FE2 /* UserDefaultsMethods.swift in Sources */,
 				D3C0E6792692B35A00B50CE2 /* EditProfileViewModel.swift in Sources */,
 				D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
