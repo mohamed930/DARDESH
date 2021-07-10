@@ -24,7 +24,7 @@ extension EditProfileViewController: UITextFieldDelegate {
 extension EditProfileViewController {
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 10.0 : 13.0
+        return section == 0 ? 0.0 : 15.0
     }
     
 }
@@ -66,9 +66,5 @@ extension EditProfileViewController: GalleryControllerDelegate {
 
         controller.dismiss(animated: true, completion: nil)
     }
-    
-    
-    
-    
     
 }

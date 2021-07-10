@@ -220,7 +220,7 @@
                                             <constraint firstItem="6YR-vZ-15g" firstAttribute="top" secondItem="SIm-18-lgF" secondAttribute="bottom" constant="-8" id="pfs-iG-t8G"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgo-lQ-Fda">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgo-lQ-Fda">
                                         <rect key="frame" x="20" y="32" width="322" height="61"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="Aoi-4N-Akf"/>
@@ -335,6 +335,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="Color 1"/>
                         <gestureRecognizers/>
+                        <color key="sectionIndexBackgroundColor" name="Color 1"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Vj1-bH-nJt">
                             <rect key="frame" x="0.0" y="300.66667244651103" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

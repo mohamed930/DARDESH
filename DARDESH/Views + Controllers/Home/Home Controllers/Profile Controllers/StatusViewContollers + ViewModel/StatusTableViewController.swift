@@ -24,7 +24,7 @@ class StatusTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "Choose your status"
+        self.navigationItem.title = "Status".localized
         configueNibFile()
         subscribeToResponse()
         bindStatusValue()
