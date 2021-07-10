@@ -33,23 +33,17 @@ extension EditProfileViewController: GalleryControllerDelegate {
     
     func galleryController(_ controller: GalleryController, didSelectImages images: [Image]) {
         
-        if images.count > 1 {
-            let mess = "ChooceImageActionFalse".localized
-            ProgressHUD.showError(mess , interaction: true)
-        }
-        else {
-            images[0].resolve(completion: { [weak self] img in
-                
-                guard let self = self else { return }
-                
-                self.ProfileImageView.image = img
-                
-                controller.dismiss(animated: true, completion: nil)
-                
-                self.editviewmodel.PickedImageBehaviour.accept(img!)
-                self.editviewmodel.UpdateProfileImageOperation()
-            })
-        }
+        images[0].resolve(completion: { [weak self] img in
+            
+            guard let self = self else { return }
+            
+            self.ProfileImageView.image = img
+            
+            controller.dismiss(animated: true, completion: nil)
+            
+            self.editviewmodel.PickedImageBehaviour.accept(img!)
+            self.editviewmodel.UpdateProfileImageOperation()
+        })
 
     }
     

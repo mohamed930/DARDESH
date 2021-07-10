@@ -23,6 +23,7 @@ target 'DARDESH' do
   pod 'RealmSwift'
   
   pod 'ProgressHUD'
+  pod 'RappleProgressHUD'
   pod 'SKPhotoBrowser'
 
   pod 'MessageKit'

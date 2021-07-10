@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseFirestore
 import FirebaseAuth
 import ProgressHUD
+import RappleProgressHUD
 
 class FirebaseLayer {
     
@@ -133,10 +134,12 @@ class FirebaseLayer {
         
        let StorageRef = Storage.storage().reference(forURL: imageFolder)
        let starsRef = StorageRef.child(ImageName)
+       var task: StorageUploadTask!
+        
         if let uploadData = PickedImage.pngData() {
             let metadata = StorageMetadata()
             metadata.contentType = "image/png"
-            starsRef.putData(uploadData, metadata: metadata) { (metadata, error) in
+            task = starsRef.putData(uploadData, metadata: metadata) { (metadata, error) in
                 if error != nil {
                     print("error")
                     completion(nil)
@@ -150,6 +153,13 @@ class FirebaseLayer {
                         }
                     }
                 }
+            }
+            
+            task.observe(.progress) { snapshot in
+                let progress = snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount
+                
+                RappleActivityIndicatorView.setProgress(CGFloat(progress))
+                RappleActivityIndicatorView.stopAnimation()
             }
         }
         

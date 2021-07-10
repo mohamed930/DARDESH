@@ -113,6 +113,7 @@ class EditProfileViewController: UITableViewController {
             let gallery = GalleryController()
             Config.tabsToShow = [.imageTab , .cameraTab]
             Config.initialTab = .imageTab
+            Config.Camera.imageLimit = 1
             gallery.delegate = self
             self.present(gallery, animated: true, completion: nil)
             
