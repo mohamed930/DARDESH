@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-Bold.ttf">
+            <string>Nunito-Bold</string>
+        </array>
+        <array key="Nunito-Regular.ttf">
+            <string>Nunito-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="86" id="KGk-i7-Jjw" customClass="UsersCell" customModule="DARDESH" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="86"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="321.5" height="86"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="lb2-qP-OjN">
+                        <rect key="frame" x="20" y="13" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="hV8-ZL-ct8"/>
+                            <constraint firstAttribute="height" constant="60" id="rco-1k-5Ue"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNQ-iq-SAE">
+                        <rect key="frame" x="88" y="13" width="219" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="NQ5-yP-zBU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="22"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1O-kH-lX4">
+                        <rect key="frame" x="88" y="50" width="219" height="22"/>
+                        <string key="text" base64-UTF8="YES">
+VXNlciAQU3RhdHVzA
+</string>
+                        <fontDescription key="fontDescription" name="Nunito-Regular" family="Nunito" pointSize="16"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lb2-qP-OjN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="7Z1-oD-Nsi"/>
+                    <constraint firstAttribute="bottom" secondItem="lb2-qP-OjN" secondAttribute="bottom" constant="13" id="MN4-A7-JIJ"/>
+                    <constraint firstItem="nNQ-iq-SAE" firstAttribute="leading" secondItem="lb2-qP-OjN" secondAttribute="trailing" constant="8" symbolic="YES" id="UZc-TF-Vjr"/>
+                    <constraint firstItem="lb2-qP-OjN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Zbj-lh-9Yz"/>
+                    <constraint firstItem="f1O-kH-lX4" firstAttribute="trailing" secondItem="nNQ-iq-SAE" secondAttribute="trailing" id="c9r-cK-0bl"/>
+                    <constraint firstAttribute="trailing" secondItem="nNQ-iq-SAE" secondAttribute="trailing" constant="14.5" id="d62-IN-QOX"/>
+                    <constraint firstItem="f1O-kH-lX4" firstAttribute="top" secondItem="nNQ-iq-SAE" secondAttribute="bottom" constant="8" symbolic="YES" id="hOM-rk-vit"/>
+                    <constraint firstAttribute="bottom" secondItem="f1O-kH-lX4" secondAttribute="bottom" constant="14" id="slk-dU-keD"/>
+                    <constraint firstItem="f1O-kH-lX4" firstAttribute="leading" secondItem="nNQ-iq-SAE" secondAttribute="leading" id="tcr-H5-Ly7"/>
+                    <constraint firstItem="nNQ-iq-SAE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="vao-zl-6Tg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" name="Color 2"/>
+            <connections>
+                <outlet property="UserNameLabel" destination="nNQ-iq-SAE" id="WZ0-Dl-Vp1"/>
+                <outlet property="UserProfileImage" destination="lb2-qP-OjN" id="IxB-MW-gag"/>
+                <outlet property="UserStatusLabel" destination="f1O-kH-lX4" id="pqJ-VJ-p7W"/>
+            </connections>
+            <point key="canvasLocation" x="154.34782608695653" y="93.75"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="photoPlaceholder" width="500" height="375"/>
+        <namedColor name="Color 2">
+            <color red="0.96899998188018799" green="0.96899998188018799" blue="0.96899998188018799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -47,6 +47,19 @@ class FirebaseLayer {
         }
     }
     
+    // MARK:- TODO:- This Method for Read Data from Firebase without condtion in public.
+    public static func publicreadWithoutWhereCondtion (collectionName:String , complention: @escaping (QuerySnapshot? , Error?) -> ()) {
+        
+        Firestore.firestore().collection(collectionName).getDocuments { (quary, error) in
+            if error != nil {
+                complention(nil,error!)
+            }
+            else {
+                complention(quary!,nil)
+            }
+        }
+    }
+    
     
     // MARK:- TODO:- This Method For Make a login opertation.
     public static func MakeLogin (Email:String,Password:String,completion: @escaping (AuthDataResult?,Error?) -> ())  {
@@ -159,7 +172,13 @@ class FirebaseLayer {
                 let progress = snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount
                 
                 RappleActivityIndicatorView.setProgress(CGFloat(progress))
-                RappleActivityIndicatorView.stopAnimation()
+                if CGFloat(progress) == 100 {
+                    RappleActivityIndicatorView.stopAnimation()
+                }
+                else {
+                    RappleActivityIndicatorView.stopAnimation()
+                }
+                
             }
         }
         

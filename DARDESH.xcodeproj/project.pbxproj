@@ -40,6 +40,13 @@
 		D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B078269595E7002CBD94 /* StatusCell.swift */; };
 		D3C1B07B269595E7002CBD94 /* StatusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3C1B079269595E7002CBD94 /* StatusCell.xib */; };
 		D3C1B07D2695975B002CBD94 /* StatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B07C2695975B002CBD94 /* StatusModel.swift */; };
+		D3CFDCC2269A4AB4005E25E4 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCC1269A4AB4005E25E4 /* UsersViewModel.swift */; };
+		D3CFDCC4269A4B36005E25E4 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCC3269A4B36005E25E4 /* UsersViewController.swift */; };
+		D3CFDCC8269A4B7D005E25E4 /* UsersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCC6269A4B7D005E25E4 /* UsersCell.swift */; };
+		D3CFDCC9269A4B7D005E25E4 /* UsersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3CFDCC7269A4B7D005E25E4 /* UsersCell.xib */; };
+		D3CFDCCC269A5E91005E25E4 /* ProfileUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */; };
+		D3CFDCCE269A5EA5005E25E4 /* ProfileUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */; };
+		D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +113,13 @@
 		D3C1B078269595E7002CBD94 /* StatusCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusCell.swift; sourceTree = "<group>"; };
 		D3C1B079269595E7002CBD94 /* StatusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatusCell.xib; sourceTree = "<group>"; };
 		D3C1B07C2695975B002CBD94 /* StatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusModel.swift; sourceTree = "<group>"; };
+		D3CFDCC1269A4AB4005E25E4 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		D3CFDCC3269A4B36005E25E4 /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
+		D3CFDCC6269A4B7D005E25E4 /* UsersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersCell.swift; sourceTree = "<group>"; };
+		D3CFDCC7269A4B7D005E25E4 /* UsersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UsersCell.xib; sourceTree = "<group>"; };
+		D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserTableViewController.swift; sourceTree = "<group>"; };
+		D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewModel.swift; sourceTree = "<group>"; };
+		D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProfileUserTableView.swift; sourceTree = "<group>"; };
 		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
+				D3CFDCCF269A5EB9005E25E4 /* Users Controllers */,
 				D31432BB269912EE006F3FE2 /* Profile Controllers */,
 			);
 			path = "Home Controllers";
@@ -422,6 +437,44 @@
 			path = "Status Cell";
 			sourceTree = "<group>";
 		};
+		D3CFDCC0269A4A8C005E25E4 /* Users Controllers + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3CFDCC1269A4AB4005E25E4 /* UsersViewModel.swift */,
+				D3CFDCC3269A4B36005E25E4 /* UsersViewController.swift */,
+				D3CFDCC5269A4B4A005E25E4 /* Users Cell */,
+			);
+			path = "Users Controllers + ViewModel";
+			sourceTree = "<group>";
+		};
+		D3CFDCC5269A4B4A005E25E4 /* Users Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3CFDCC6269A4B7D005E25E4 /* UsersCell.swift */,
+				D3CFDCC7269A4B7D005E25E4 /* UsersCell.xib */,
+			);
+			path = "Users Cell";
+			sourceTree = "<group>";
+		};
+		D3CFDCCA269A5E4C005E25E4 /* UserProfileViewController + ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */,
+				D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */,
+				D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */,
+			);
+			path = "UserProfileViewController + ViewModel";
+			sourceTree = "<group>";
+		};
+		D3CFDCCF269A5EB9005E25E4 /* Users Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D3CFDCC0269A4A8C005E25E4 /* Users Controllers + ViewModel */,
+				D3CFDCCA269A5E4C005E25E4 /* UserProfileViewController + ViewModel */,
+			);
+			path = "Users Controllers";
+			sourceTree = "<group>";
+		};
 		E8F80A0A1EA8E520E4AE660E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,6 +543,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3CFDCC9269A4B7D005E25E4 /* UsersCell.xib in Resources */,
 				D34EF74B268DBAFB0061FB98 /* HomeView.storyboard in Resources */,
 				D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */,
 				D376BE30268BD37E00EBEA0A /* LaunchScreen.storyboard in Resources */,
@@ -550,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D376BE41268BD70000EBEA0A /* FirebaseLayer.swift in Sources */,
+				D3CFDCC2269A4AB4005E25E4 /* UsersViewModel.swift in Sources */,
 				D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */,
 				D34EF74E268DBC6A0061FB98 /* ChatsViewController.swift in Sources */,
 				D376BE43268BD84400EBEA0A /* BaseURL.swift in Sources */,
@@ -560,12 +615,15 @@
 				D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */,
 				D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */,
 				D3C1B07D2695975B002CBD94 /* StatusModel.swift in Sources */,
+				D3CFDCC8269A4B7D005E25E4 /* UsersCell.swift in Sources */,
 				D3C1B07426958F51002CBD94 /* StatusTableViewController.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
 				D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */,
 				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
+				D3CFDCC4269A4B36005E25E4 /* UsersViewController.swift in Sources */,
 				D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */,
 				D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */,
+				D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */,
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 				D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */,
@@ -573,6 +631,8 @@
 				D3C1B07626958F65002CBD94 /* StatusViewModel.swift in Sources */,
 				D3A909BF269057C50070FCA5 /* String.swift in Sources */,
 				D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */,
+				D3CFDCCE269A5EA5005E25E4 /* ProfileUserViewModel.swift in Sources */,
+				D3CFDCCC269A5E91005E25E4 /* ProfileUserTableViewController.swift in Sources */,
 				D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
