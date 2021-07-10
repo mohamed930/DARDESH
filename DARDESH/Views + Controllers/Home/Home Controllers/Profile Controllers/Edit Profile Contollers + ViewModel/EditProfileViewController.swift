@@ -21,6 +21,7 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet weak var StatusCell: UIView!
     
     // MARK:- TODO:- This for initalise new varible.
+    var screenedge : UIScreenEdgePanGestureRecognizer!
     let editviewmodel = EditProfileViewModel()
     let disposebag    = DisposeBag()
     // ------------------------------------------------
@@ -28,6 +29,7 @@ class EditProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initScreenEdgeGeuster()
         AddTapGeusterToTableView()
         AddTapGeusterToStatusCell()
         ProfileImageView.MakeImageCircle()
@@ -72,7 +74,7 @@ class EditProfileViewController: UITableViewController {
             guard let self = self else { return }
             
             self.UserNameTextField.text = userData.UserName
-            self.StatusLabel.text  = userData.status
+            self.StatusLabel.text  = userData.status.localized
             
             DispatchQueue.main.async {
                 self.ProfileImageView.kf.setImage(with:URL(string: userData.Image))
@@ -157,8 +159,28 @@ class EditProfileViewController: UITableViewController {
     
     // MARK:- TODO:- This Method For Setting Tapped to Dismiss.
     @IBAction func SettingTapped(_ sender: Any) {
-        self.dismissDetail()
+        "lang" == "eng" ? self.dismissDetailEn() : self.dismissDetailAr()
     }
     // ------------------------------------------------
     
+    
+    
+    // MARK:- TODO:- Add ScreenEdgePanGesture To This Page.
+    func initScreenEdgeGeuster() {
+        screenedge = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(Back(_:)))
+        
+        if "lang" == "eng" {
+            screenedge.edges = .left
+        }
+        else {
+            screenedge.edges = .right
+        }
+        
+        view.addGestureRecognizer(screenedge)
+    }
+    
+    @objc func Back (_ sender:UIScreenEdgePanGestureRecognizer) {
+        "lang" == "eng" ? self.dismissDetailEn() : self.dismissDetailAr()
+    }
+    // ------------------------------------------------
 }

@@ -32,7 +32,7 @@ extension UIViewController {
         ProgressHUD.dismiss()
     }
     
-    func presentDetail(_ viewControllerToPresent: UIViewController) {
+    func presentDetailEn(_ viewControllerToPresent: UIViewController) {
         let transition = CATransition()
         transition.duration = 0.5
         transition.type = CATransitionType.push
@@ -44,11 +44,33 @@ extension UIViewController {
         present(viewControllerToPresent, animated: false)
     }
 
-    func dismissDetail() {
+    func dismissDetailEn() {
         let transition = CATransition()
         transition.duration = 0.5
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromLeft
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+
+        dismiss(animated: false)
+    }
+    
+    func presentDetailAr(_ viewControllerToPresent: UIViewController) {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        self.view.window!.layer.add(transition, forKey: kCATransition)
+
+        viewControllerToPresent.modalPresentationStyle = .fullScreen
+        
+        present(viewControllerToPresent, animated: false)
+    }
+
+    func dismissDetailAr() {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromRight
         self.view.window!.layer.add(transition, forKey: kCATransition)
 
         dismiss(animated: false)

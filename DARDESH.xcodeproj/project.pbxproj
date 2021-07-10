@@ -131,6 +131,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D31432BB269912EE006F3FE2 /* Profile Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF751268DBCDC0061FB98 /* Settings Controllers + ViewModel */,
+				D3C0E6772692B33000B50CE2 /* Edit Profile Contollers + ViewModel */,
+				D3C1B07226958EAB002CBD94 /* StatusViewContollers + ViewModel */,
+			);
+			path = "Profile Controllers";
+			sourceTree = "<group>";
+		};
 		D34EF748268DBAAF0061FB98 /* Home Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,9 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
-				D34EF751268DBCDC0061FB98 /* Settings Controllers + ViewModel */,
-				D3C0E6772692B33000B50CE2 /* Edit Profile Contollers + ViewModel */,
-				D3C1B07226958EAB002CBD94 /* StatusViewContollers + ViewModel */,
+				D31432BB269912EE006F3FE2 /* Profile Controllers */,
 			);
 			path = "Home Controllers";
 			sourceTree = "<group>";

@@ -5,7 +5,22 @@
   Created by Mohamed Ali on 03/07/2021.
   
 */
+
+"lang"                     = "eng";
+
 "ChooceImageActionFalse"   = "Please, Pick one image for your profile";
+
+"Avaliable"                = "Avaliable";
+"Busy"                     = "Busy";
+"At School"                = "At School";
+"At The Movies"            = "At The Movies";
+"At Work"                  = "At Work";
+"Battary About to die"     = "Battary About to die";
+"Can't Talk"               = "Can't Talk";
+"In a Meating"             = "In a Meating";
+"At the gym"               = "At the gym";
+"Sleeping"                 = "Sleeping";
+"Ungent calls Only"        = "Ungent calls Only";
 
 "errorMess"                = "We Can't Find Your Data!";
 "RegesterMess"             = "Regester is Successfully";

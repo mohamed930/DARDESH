@@ -29,17 +29,19 @@ class StatusViewModel {
     // MARK:- TODO:- This for Initial Array to load page to checkMarks your current status.
     func GetData() {
         
-        let data = ["Avaliable","Busy","At School","At The Movies","At Work","Battary About to die","Can't Talk","In a Meating","At the gym","Sleeping","Ungent calls Only"]
+        let data = ["Avaliable".localized,"Busy".localized,"At School".localized,"At The Movies".localized,"At Work".localized,"Battary About to die".localized,"Can't Talk".localized,"In a Meating".localized,"At the gym".localized,"Sleeping".localized,"Ungent calls Only".localized]
+        
+        let data1 = ["Avaliable","Busy","At School","At The Movies","At Work","Battary About to die","Can't Talk","In a Meating","At the gym","Sleeping","Ungent calls Only"]
         
         var statusModels = Array<StatusModel>()
         
-        for i in data {
-            if i == checkmarksStatus.value {
-                let ob = StatusModel(statusName: i, checkMark: true)
+        for i in 0..<data.count {
+            if data[i] == checkmarksStatus.value {
+                let ob = StatusModel(statusName: data[i], checkMark: true, statusNameChecked: data1[i])
                 statusModels.append(ob)
             }
             else {
-                let ob = StatusModel(statusName: i, checkMark: false)
+                let ob = StatusModel(statusName: data[i], checkMark: false, statusNameChecked: data1[i])
                 statusModels.append(ob)
             }
         }
@@ -60,7 +62,10 @@ class StatusViewModel {
     private func UpdateDataOnUI() {
         
         // make elements
-        let data = ["Avaliable","Busy","At School","At The Movies","At Work","Battary About to die","Can't Talk","In a Meating","At the gym","Sleeping","Ungent calls Only"]
+        let data = ["Avaliable".localized,"Busy".localized,"At School".localized,"At The Movies".localized,"At Work".localized,"Battary About to die".localized,"Can't Talk".localized,"In a Meating".localized,"At the gym".localized,"Sleeping".localized,"Ungent calls Only".localized]
+        
+        
+        let data1 = ["Avaliable","Busy","At School","At The Movies","At Work","Battary About to die","Can't Talk","In a Meating","At the gym","Sleeping","Ungent calls Only"]
         
         var statusModels = Array<StatusModel>()
         
@@ -68,12 +73,12 @@ class StatusViewModel {
             // check you are in the current checked cell index.row
             if data[i] == data[CurrentItemChangedIndexBehaviour.value] {
                 // make it checked (true)
-                let ob = StatusModel(statusName: data[i], checkMark: CurrentItemChangedStatusBehaviour.value)
+                let ob = StatusModel(statusName: data[i], checkMark: CurrentItemChangedStatusBehaviour.value, statusNameChecked: data1[i])
                 statusModels.append(ob)
             }
             else {
                 // and make all cells not checked (false)
-                let ob = StatusModel(statusName: data[i], checkMark: false)
+                let ob = StatusModel(statusName: data[i], checkMark: false, statusNameChecked: data1[i])
                 statusModels.append(ob)
             }
         }

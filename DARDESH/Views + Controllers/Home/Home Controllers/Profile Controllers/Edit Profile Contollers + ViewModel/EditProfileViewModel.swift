@@ -35,11 +35,9 @@ class EditProfileViewModel {
     // MARK:- TODO:- This Method for Decode UserDefault and send object to Observable.
     func loadUserDataOperation() {
         
-         let savedPerson = UserDefaults.standard.object(forKey: currentUser) as? Data
-         let decoder = JSONDecoder()
-         if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson!) {
-            CollectDataBehaviour.onNext(loadedPerson)
-         }
+        guard let user = UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self) else { return }
+        
+        CollectDataBehaviour.onNext(user)
     }
     // ------------------------------------------------
     

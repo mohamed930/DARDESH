@@ -23,6 +23,11 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var AppVersionLabel: UIButton!
     @IBOutlet weak var LogoutButton: UIButton!
     
+    @IBOutlet weak var Next1: UIImageView!
+    @IBOutlet weak var Next2: UIImageView!
+    @IBOutlet weak var Next3: UIImageView!
+    @IBOutlet weak var Next4: UIImageView!
+    
     // MARK:- TODO:- initial Varibles here:-
     let settingviewmodel = SettingsViewModel()
     let disposebag = DisposeBag()
@@ -30,6 +35,8 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        CheckDirection()
+        
         AddTapGeusterToProfileView()
         ProfileCoverImageView.MakeImageCircle()
         
@@ -53,7 +60,7 @@ class SettingsViewController: UIViewController {
             guard let self = self else { return }
             
             self.ProfileNameLabel.text = userData.UserName
-            self.UserStatusLabel.text  = userData.status
+            self.UserStatusLabel.text  = userData.status.localized
             self.AppVersionLabel.setTitle("Application Version \(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "")", for: .normal)
             
             DispatchQueue.main.async {
@@ -136,15 +143,25 @@ class SettingsViewController: UIViewController {
     
     @objc func gotoEditProfile(tapGestureRecognizer: UITapGestureRecognizer) {
         
-//        let next = storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController")
-//
-//
-//
-//        next!.modalPresentationStyle = .fullScreen
-//
-//        self.present(next!, animated: true, completion: nil)
-        
-        self.presentDetail((storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController"))!)
+        "lang".localized == "eng" ? self.presentDetailEn((storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController"))!) : self.presentDetailAr((storyboard?.instantiateViewController(withIdentifier: "EditProfileViewController"))!)
    }
+    
+    // MARK:- TODO:- Check Direction ImageViww.
+    func CheckDirection() {
+        
+        if "lang".localized == "eng" {
+            Next1.image = UIImage(named: "next-1")
+            Next2.image = UIImage(named: "next-1")
+            Next3.image = UIImage(named: "next-1")
+            Next4.image = UIImage(named: "next-1")
+        }
+        else {
+            Next1.image = UIImage(named: "NextAr")
+            Next2.image = UIImage(named: "NextAr")
+            Next3.image = UIImage(named: "NextAr")
+            Next4.image = UIImage(named: "NextAr")
+        }
+        
+    }
     
 }

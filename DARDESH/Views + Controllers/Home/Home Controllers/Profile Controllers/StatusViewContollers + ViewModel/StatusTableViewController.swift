@@ -113,7 +113,7 @@ class StatusTableViewController: UIViewController {
                     // Send Values to rxswift Varibles to Update.
                     self.statusviewmodel.CurrentItemChangedIndexBehaviour.accept(selectedIndex[1])
                     self.statusviewmodel.CurrentItemChangedStatusBehaviour.accept(B.checkMark)
-                    self.statusviewmodel.StatusNameBehaviour.accept(branch.statusName)
+                    self.statusviewmodel.StatusNameBehaviour.accept(branch.statusNameChecked)
                     
                     // Updata Data on Firebase & UserDefaults
                     self.statusviewmodel.UpdateOperation()
