@@ -10,7 +10,6 @@
 		46BE9604AE8681436730F403 /* Pods_DARDESH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */; };
 		D31432BA2698FCC5006F3FE2 /* UserDefaultsMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31432B92698FCC5006F3FE2 /* UserDefaultsMethods.swift */; };
 		D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3242994268D13ED00EF0B6E /* UserModel.swift */; };
-		D34EF74B268DBAFB0061FB98 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */; };
 		D34EF74E268DBC6A0061FB98 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */; };
 		D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */; };
 		D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF752268DBD050061FB98 /* SettingsViewController.swift */; };
@@ -47,13 +46,13 @@
 		D3CFDCCC269A5E91005E25E4 /* ProfileUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */; };
 		D3CFDCCE269A5EA5005E25E4 /* ProfileUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */; };
 		D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */; };
+		D3FBD3ED269BE9ED00B9A4E6 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FBD3EC269BE9EC00B9A4E6 /* HomeView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7C8EC82B344B9B064EF34301 /* Pods_DARDESH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DARDESH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D31432B92698FCC5006F3FE2 /* UserDefaultsMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMethods.swift; sourceTree = "<group>"; };
 		D3242994268D13ED00EF0B6E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		D34EF752268DBD050061FB98 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +119,7 @@
 		D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserTableViewController.swift; sourceTree = "<group>"; };
 		D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewModel.swift; sourceTree = "<group>"; };
 		D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProfileUserTableView.swift; sourceTree = "<group>"; };
+		D3FBD3EC269BE9EC00B9A4E6 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,7 +158,7 @@
 		D34EF748268DBAAF0061FB98 /* Home Views */ = {
 			isa = PBXGroup;
 			children = (
-				D34EF74A268DBAFB0061FB98 /* HomeView.storyboard */,
+				D3FBD3EC269BE9EC00B9A4E6 /* HomeView.storyboard */,
 			);
 			path = "Home Views";
 			sourceTree = "<group>";
@@ -544,12 +544,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3CFDCC9269A4B7D005E25E4 /* UsersCell.xib in Resources */,
-				D34EF74B268DBAFB0061FB98 /* HomeView.storyboard in Resources */,
 				D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */,
 				D376BE30268BD37E00EBEA0A /* LaunchScreen.storyboard in Resources */,
 				D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */,
 				D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */,
 				D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */,
+				D3FBD3ED269BE9ED00B9A4E6 /* HomeView.storyboard in Resources */,
 				D3C1B07B269595E7002CBD94 /* StatusCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

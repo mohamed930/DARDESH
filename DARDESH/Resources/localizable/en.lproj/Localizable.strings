@@ -23,6 +23,8 @@
 "Sleeping"                 = "Sleeping";
 "Ungent calls Only"        = "Ungent calls Only";
 
+"UserProfile"              = "User Profile";
+
 "errorMess"                = "We Can't Find Your Data!";
 "RegesterMess"             = "Regester is Successfully";
 "RegesterMail"             = "Email Sent successfully";

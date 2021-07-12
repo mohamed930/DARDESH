@@ -38,9 +38,15 @@ class UsersViewModel {
                 
                 for i in query.documents {
                     
-                    let ob = UserModel(uid: i.get("uid") as! String, email: i.get("uid") as! String, UserName: i.get("UserName") as! String, Image: i.get("Image") as! String, status: i.get("status") as! String, pushid: i.get("pushid") as! String)
+                    if i.get("uid") as! String == userID {
+                        continue
+                    }
+                    else {
+                        let ob = UserModel(uid: i.get("uid") as! String, email: i.get("uid") as! String, UserName: i.get("UserName") as! String, Image: i.get("Image") as! String, status: i.get("status") as! String, pushid: i.get("pushid") as! String)
+                        
+                        arr.append(ob)
+                    }
                     
-                    arr.append(ob)
                     
                 }
                 

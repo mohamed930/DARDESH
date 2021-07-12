@@ -23,7 +23,7 @@ class ProfileUserTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "User Profile"
+        self.navigationItem.title = "UserProfile".localized
         ProfileImageView.MakeImageCircle()
         loadData()
         StartchatsubscribeTap()
