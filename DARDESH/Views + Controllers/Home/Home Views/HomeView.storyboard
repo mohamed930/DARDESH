@@ -143,32 +143,86 @@
         <scene sceneID="RUV-73-jw1">
             <objects>
                 <tableViewController storyboardIdentifier="ProfileUserTableViewController" id="dVG-HR-dxP" customClass="ProfileUserTableViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qma-gP-9i2">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qma-gP-9i2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Color 1"/>
+                        <color key="sectionIndexBackgroundColor" name="Color 1"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="9Tr-Zd-hWk">
+                            <rect key="frame" x="0.0" y="331.00000450827861" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" name="Color 1"/>
+                        </view>
                         <sections>
                             <tableViewSection id="Mg5-82-p7y">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="170" id="lWZ-Ki-udO">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="170"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="190" id="lWZ-Ki-udO">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="375" height="190"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lWZ-Ki-udO" id="NNR-gq-OQv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="190"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="KdO-6I-0bT">
+                                                    <rect key="frame" x="137.66666666666666" y="11" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="0ca-rO-GZX"/>
+                                                        <constraint firstAttribute="width" constant="100" id="f08-eK-87Z"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jaw-Xv-pdD">
+                                                    <rect key="frame" x="135.66666666666666" y="119" width="103.66666666666666" height="27"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="27" id="qSB-ld-Sy8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Nunito-Bold" family="Nunito" pointSize="22"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOX-Ld-ZIK">
+                                                    <rect key="frame" x="148.66666666666666" y="147" width="78" height="32"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="uOX-Ld-ZIK" secondAttribute="bottom" constant="11" id="02j-5I-txT"/>
+                                                <constraint firstItem="Jaw-Xv-pdD" firstAttribute="centerX" secondItem="KdO-6I-0bT" secondAttribute="centerX" id="5Tj-Yc-oJy"/>
+                                                <constraint firstItem="uOX-Ld-ZIK" firstAttribute="top" secondItem="Jaw-Xv-pdD" secondAttribute="bottom" constant="1" id="9Ll-ED-LtF"/>
+                                                <constraint firstItem="KdO-6I-0bT" firstAttribute="centerX" secondItem="NNR-gq-OQv" secondAttribute="centerX" id="Dv9-UW-RBb"/>
+                                                <constraint firstItem="KdO-6I-0bT" firstAttribute="top" secondItem="NNR-gq-OQv" secondAttribute="top" constant="11" id="R0K-B8-DUc"/>
+                                                <constraint firstItem="Jaw-Xv-pdD" firstAttribute="top" secondItem="KdO-6I-0bT" secondAttribute="bottom" constant="8" symbolic="YES" id="eo0-PN-0wO"/>
+                                                <constraint firstItem="uOX-Ld-ZIK" firstAttribute="centerX" secondItem="KdO-6I-0bT" secondAttribute="centerX" id="mBR-gW-8Ea"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Color 2"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="bvc-Av-YRe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="9mg-Xq-yeh">
-                                        <rect key="frame" x="0.0" y="243.0000022541393" width="375" height="43.666667938232422"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="9mg-Xq-yeh">
+                                        <rect key="frame" x="0.0" y="263.0000022541393" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9mg-Xq-yeh" id="OgE-hj-ZTf">
                                             <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-U1-Nxz">
+                                                    <rect key="frame" x="16" y="5.9999999999999982" width="316" height="30.333333333333329"/>
+                                                    <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="17"/>
+                                                    <state key="normal" title="Start chat"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="BHU-U1-Nxz" secondAttribute="bottom" constant="7.6666679382323082" id="46Y-9w-xJ9"/>
+                                                <constraint firstAttribute="trailing" secondItem="BHU-U1-Nxz" secondAttribute="trailing" constant="17.333333333333314" id="F0R-Xd-Po7"/>
+                                                <constraint firstItem="BHU-U1-Nxz" firstAttribute="leading" secondItem="OgE-hj-ZTf" secondAttribute="leading" constant="16" id="F3h-Q8-CAe"/>
+                                                <constraint firstItem="BHU-U1-Nxz" firstAttribute="top" secondItem="OgE-hj-ZTf" secondAttribute="top" constant="6.0000000000001137" id="c4K-Jy-ZYY"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="Color 2"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -178,6 +232,12 @@
                             <outlet property="delegate" destination="dVG-HR-dxP" id="pl7-rX-30z"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="ProfileImageView" destination="KdO-6I-0bT" id="syt-gz-86H"/>
+                        <outlet property="StartChatButton" destination="BHU-U1-Nxz" id="Zv4-f9-ico"/>
+                        <outlet property="UserStatusLabel" destination="uOX-Ld-ZIK" id="qRs-RO-ZKE"/>
+                        <outlet property="UsernameLabel" destination="Jaw-Xv-pdD" id="aSN-5E-m6i"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWr-tH-sjs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
