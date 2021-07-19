@@ -105,7 +105,7 @@ class EditProfileViewModel {
                         self.UpdateUserDefaulsMethod(userModel: usermodel)
                     }
                     else {
-                        self.isloadingBehaviour.accept(false)
+//                        self.isloadingBehaviour.accept(false)
                         self.UpdateResponseBehaviour.onNext(false)
                     }
                 }

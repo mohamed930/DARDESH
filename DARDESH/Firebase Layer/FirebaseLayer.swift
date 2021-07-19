@@ -149,10 +149,14 @@ class FirebaseLayer {
        let starsRef = StorageRef.child(ImageName)
        var task: StorageUploadTask!
         
-        if let uploadData = PickedImage.pngData() {
+        if let uploadData = PickedImage.jpegData(compressionQuality: 0.5) {
             let metadata = StorageMetadata()
-            metadata.contentType = "image/png"
+            metadata.contentType = "image/jpeg"
             task = starsRef.putData(uploadData, metadata: metadata) { (metadata, error) in
+                
+                task.removeAllObservers()
+                RappleActivityIndicatorView.stopAnimation()
+                
                 if error != nil {
                     print("error")
                     completion(nil)
@@ -166,20 +170,22 @@ class FirebaseLayer {
                         }
                     }
                 }
+                
             }
+            
             
             task.observe(.progress) { snapshot in
                 let progress = snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount
-                
+
                 RappleActivityIndicatorView.setProgress(CGFloat(progress))
-                if CGFloat(progress) == 100 {
-                    RappleActivityIndicatorView.stopAnimation()
-                }
-                else {
-                    RappleActivityIndicatorView.stopAnimation()
-                }
                 
+//                if CGFloat(progress) == 100 {
+//                    RappleActivityIndicatorView.stopAnimation(completionIndicator: .success, completionLabel: "Completed.", completionTimeout: 1.0)
+//                }
+                
+
             }
+            
         }
         
     }

@@ -170,7 +170,7 @@ class EditProfileViewController: UITableViewController {
     func initScreenEdgeGeuster() {
         screenedge = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(Back(_:)))
         
-        if "lang" == "eng" {
+        if "lang".localized == "eng" {
             screenedge.edges = .left
         }
         else {
@@ -181,7 +181,7 @@ class EditProfileViewController: UITableViewController {
     }
     
     @objc func Back (_ sender:UIScreenEdgePanGestureRecognizer) {
-        "lang" == "eng" ? self.dismissDetailEn() : self.dismissDetailAr()
+        "lang".localized == "eng" ? self.dismissDetailEn() : self.dismissDetailAr()
     }
     // ------------------------------------------------
 }

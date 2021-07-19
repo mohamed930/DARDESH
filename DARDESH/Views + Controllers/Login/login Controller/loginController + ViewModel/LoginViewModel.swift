@@ -77,6 +77,7 @@ class LoginViewModel {
             if error == nil && auth!.user.isEmailVerified {
             
                 // download data from firestore
+                userID = Auth.auth().currentUser!.uid
                 self.DownloadData()
             }
             else {

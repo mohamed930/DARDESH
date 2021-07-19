@@ -14,4 +14,4 @@ let userCollection = "User"
 
 let currentUser = "UserData"
 
-let userID = Auth.auth().currentUser!.uid
+var userID = Auth.auth().currentUser!.uid

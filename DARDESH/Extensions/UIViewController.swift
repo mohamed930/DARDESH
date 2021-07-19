@@ -6,7 +6,9 @@
 //
 
 import UIKit
-import ProgressHUD
+import RappleProgressHUD
+
+let transictionTime = 0.3
 
 extension UIViewController {
     
@@ -18,23 +20,25 @@ extension UIViewController {
     }
     
     func HideLabelWithAnimation (LabelName: UILabel) {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.6) {
             LabelName.isHidden = true
             self.view.layoutIfNeeded()
         }
     }
     
     func showAnimation() {
-        ProgressHUD.show("WaitMess".localized)
+        RappleActivityIndicatorView.startAnimatingWithLabel("WaitMess".localized, attributes: RappleAppleAttributes)
+//        ProgressHUD.show("WaitMess".localized)
     }
     
     func stopAnimating() {
-        ProgressHUD.dismiss()
+        RappleActivityIndicatorView.stopAnimation()
+//        ProgressHUD.dismiss()
     }
     
     func presentDetailEn(_ viewControllerToPresent: UIViewController) {
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = transictionTime
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromRight
         self.view.window!.layer.add(transition, forKey: kCATransition)
@@ -46,7 +50,7 @@ extension UIViewController {
 
     func dismissDetailEn() {
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = transictionTime
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromLeft
         self.view.window!.layer.add(transition, forKey: kCATransition)
@@ -56,7 +60,7 @@ extension UIViewController {
     
     func presentDetailAr(_ viewControllerToPresent: UIViewController) {
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = transictionTime
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromLeft
         self.view.window!.layer.add(transition, forKey: kCATransition)
@@ -68,7 +72,7 @@ extension UIViewController {
 
     func dismissDetailAr() {
         let transition = CATransition()
-        transition.duration = 0.5
+        transition.duration = transictionTime
         transition.type = CATransitionType.push
         transition.subtype = CATransitionSubtype.fromRight
         self.view.window!.layer.add(transition, forKey: kCATransition)
