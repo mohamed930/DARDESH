@@ -34,7 +34,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNQ-iq-SAE">
-                        <rect key="frame" x="88" y="13" width="219" height="29"/>
+                        <rect key="frame" x="88" y="13" width="217.5" height="29"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="29" id="NQ5-yP-zBU"/>
                         </constraints>
@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1O-kH-lX4">
-                        <rect key="frame" x="88" y="50" width="219" height="22"/>
+                        <rect key="frame" x="88" y="50" width="217.5" height="22"/>
                         <string key="text" base64-UTF8="YES">
 VXNlciAQU3RhdHVzA
 </string>

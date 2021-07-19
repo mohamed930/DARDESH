@@ -29,6 +29,10 @@
 		D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE69268C34E300EBEA0A /* LoginViewModel.swift */; };
 		D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */; };
 		D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D37A0BF22692D000003EC335 /* ExtensionEditProfileViewController.swift */; };
+		D3A051F126A63B3000D104EB /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A051F026A63B3000D104EB /* ChatModel.swift */; };
+		D3A051F526A63ED800D104EB /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A051F326A63ED800D104EB /* ChatsCell.swift */; };
+		D3A051F626A63ED800D104EB /* ChatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D3A051F426A63ED800D104EB /* ChatsCell.xib */; };
+		D3A051F826A644CD00D104EB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A051F726A644CD00D104EB /* UIView.swift */; };
 		D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A33B512691A4F000FAFD3D /* UIImageView.swift */; };
 		D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A909BC269056D10070FCA5 /* Localizable.strings */; };
 		D3A909BF269057C50070FCA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A909BE269057C50070FCA5 /* String.swift */; };
@@ -99,6 +103,10 @@
 		D376BE69268C34E300EBEA0A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		D376BE6C268C350D00EBEA0A /* RegesterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegesterViewModel.swift; sourceTree = "<group>"; };
 		D37A0BF22692D000003EC335 /* ExtensionEditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionEditProfileViewController.swift; sourceTree = "<group>"; };
+		D3A051F026A63B3000D104EB /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
+		D3A051F326A63ED800D104EB /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
+		D3A051F426A63ED800D104EB /* ChatsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatsCell.xib; sourceTree = "<group>"; };
+		D3A051F726A644CD00D104EB /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D3A33B512691A4F000FAFD3D /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		D3A909B526904EDE0070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D3A909B626904EDF0070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LoginMain.strings; sourceTree = "<group>"; };
@@ -176,8 +184,10 @@
 		D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				D3A051F026A63B3000D104EB /* ChatModel.swift */,
 				D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */,
 				D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */,
+				D3A051F226A63EB400D104EB /* Chats Cell */,
 			);
 			path = "Chats Controllers + ViewModel";
 			sourceTree = "<group>";
@@ -367,6 +377,7 @@
 				D376BE66268C337A00EBEA0A /* UIViewController.swift */,
 				D3A909BE269057C50070FCA5 /* String.swift */,
 				D3A33B512691A4F000FAFD3D /* UIImageView.swift */,
+				D3A051F726A644CD00D104EB /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -389,6 +400,15 @@
 				D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */,
 			);
 			path = "RegesterController + ViewModel";
+			sourceTree = "<group>";
+		};
+		D3A051F226A63EB400D104EB /* Chats Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3A051F326A63ED800D104EB /* ChatsCell.swift */,
+				D3A051F426A63ED800D104EB /* ChatsCell.xib */,
+			);
+			path = "Chats Cell";
 			sourceTree = "<group>";
 		};
 		D3A909B4269041D50070FCA5 /* User Model */ = {
@@ -549,6 +569,7 @@
 				D376BE3E268BD57800EBEA0A /* GoogleService-Info.plist in Resources */,
 				D376BE2D268BD37E00EBEA0A /* Assets.xcassets in Resources */,
 				D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */,
+				D3A051F626A63ED800D104EB /* ChatsCell.xib in Resources */,
 				D3FBD3ED269BE9ED00B9A4E6 /* HomeView.storyboard in Resources */,
 				D3C1B07B269595E7002CBD94 /* StatusCell.xib in Resources */,
 			);
@@ -630,10 +651,13 @@
 				D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */,
 				D3C1B07626958F65002CBD94 /* StatusViewModel.swift in Sources */,
 				D3A909BF269057C50070FCA5 /* String.swift in Sources */,
+				D3A051F126A63B3000D104EB /* ChatModel.swift in Sources */,
 				D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */,
 				D3CFDCCE269A5EA5005E25E4 /* ProfileUserViewModel.swift in Sources */,
+				D3A051F826A644CD00D104EB /* UIView.swift in Sources */,
 				D3CFDCCC269A5E91005E25E4 /* ProfileUserTableViewController.swift in Sources */,
 				D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */,
+				D3A051F526A63ED800D104EB /* ChatsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

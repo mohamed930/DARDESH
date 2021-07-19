@@ -28,12 +28,10 @@ extension UIViewController {
     
     func showAnimation() {
         RappleActivityIndicatorView.startAnimatingWithLabel("WaitMess".localized, attributes: RappleAppleAttributes)
-//        ProgressHUD.show("WaitMess".localized)
     }
     
     func stopAnimating() {
         RappleActivityIndicatorView.stopAnimation()
-//        ProgressHUD.dismiss()
     }
     
     func presentDetailEn(_ viewControllerToPresent: UIViewController) {
