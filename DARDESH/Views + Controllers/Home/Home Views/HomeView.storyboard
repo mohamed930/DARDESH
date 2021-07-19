@@ -96,19 +96,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no users" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gay-Ng-NxU">
+                                <rect key="frame" x="59.333333333333343" y="383.33333333333331" width="256.66666666666663" height="45.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <searchBar contentMode="redraw" placeholder="Search user" translatesAutoresizingMaskIntoConstraints="NO" id="6cD-wa-dWQ">
                                 <rect key="frame" x="16" y="192" width="343" height="51"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="obd-10-DUV" id="Ri0-t0-epB"/>
-                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7RG-O8-TtP">
                                 <rect key="frame" x="0.0" y="243" width="375" height="486"/>
                                 <color key="backgroundColor" name="Color 1"/>
                                 <color key="sectionIndexBackgroundColor" name="Color 1"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="KmB-dG-NSX">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" name="Color 1"/>
                                 </view>
@@ -119,10 +122,12 @@
                         <constraints>
                             <constraint firstItem="6cD-wa-dWQ" firstAttribute="top" secondItem="Gwa-8I-hkw" secondAttribute="bottom" constant="10" id="8wR-i7-dfw"/>
                             <constraint firstItem="w62-tw-f7W" firstAttribute="bottom" secondItem="7RG-O8-TtP" secondAttribute="bottom" id="AHK-LQ-bin"/>
+                            <constraint firstItem="gay-Ng-NxU" firstAttribute="centerX" secondItem="H32-DR-uwo" secondAttribute="centerX" id="DrQ-ng-CqC"/>
                             <constraint firstItem="w62-tw-f7W" firstAttribute="trailing" secondItem="7RG-O8-TtP" secondAttribute="trailing" id="LX8-c8-zHC"/>
                             <constraint firstItem="w62-tw-f7W" firstAttribute="trailing" secondItem="Gwa-8I-hkw" secondAttribute="trailing" constant="16" id="MoG-CS-hB0"/>
                             <constraint firstItem="Gwa-8I-hkw" firstAttribute="leading" secondItem="w62-tw-f7W" secondAttribute="leading" constant="16" id="QUz-na-v8P"/>
                             <constraint firstItem="6cD-wa-dWQ" firstAttribute="trailing" secondItem="Gwa-8I-hkw" secondAttribute="trailing" id="UCh-6s-MMr"/>
+                            <constraint firstItem="gay-Ng-NxU" firstAttribute="centerY" secondItem="H32-DR-uwo" secondAttribute="centerY" id="Ymc-DN-S2U"/>
                             <constraint firstItem="7RG-O8-TtP" firstAttribute="top" secondItem="6cD-wa-dWQ" secondAttribute="bottom" id="jjf-69-t5m"/>
                             <constraint firstItem="6cD-wa-dWQ" firstAttribute="leading" secondItem="Gwa-8I-hkw" secondAttribute="leading" id="mec-0R-sY1"/>
                             <constraint firstItem="Gwa-8I-hkw" firstAttribute="top" secondItem="w62-tw-f7W" secondAttribute="top" constant="33" id="xzI-uS-n9M"/>
@@ -131,13 +136,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="wH4-S3-maa"/>
                     <connections>
+                        <outlet property="BackView" destination="KmB-dG-NSX" id="FZt-gF-GPI"/>
+                        <outlet property="MessLabel" destination="gay-Ng-NxU" id="LEP-AA-cFG"/>
                         <outlet property="UserSearch" destination="6cD-wa-dWQ" id="ABY-b6-3c6"/>
                         <outlet property="tableView" destination="7RG-O8-TtP" id="eap-U9-d4j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="582-5m-nId" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="281" y="500"/>
+            <point key="canvasLocation" x="280.80000000000001" y="499.50738916256159"/>
         </scene>
         <!--Profile User Table View Controller-->
         <scene sceneID="RUV-73-jw1">

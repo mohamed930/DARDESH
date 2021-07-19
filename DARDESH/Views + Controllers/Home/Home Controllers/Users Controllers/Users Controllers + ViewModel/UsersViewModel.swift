@@ -12,11 +12,23 @@ import ProgressHUD
 
 class UsersViewModel {
     
+    var SearchTextFieldBehaviour = BehaviorRelay<String>(value: "")
+    
     var isLoadingBehaviour = BehaviorRelay<Bool>(value: false)
     
-    private var UsersModelSubject = PublishSubject<[UserModel]>()
-    var UsersModelObservable: Observable<[UserModel]> {
-        return UsersModelSubject
+    var UsersModelSubject       = BehaviorRelay<[UserModel]>(value: [])
+    var BackupUsersModelSubject = BehaviorRelay<[UserModel]>(value: [])
+    var FilteredGettenData      = BehaviorRelay<[UserModel]>(value: [])
+    
+    let disposebag = DisposeBag()
+    
+    // MARK:- TODO:- Make Validation Oberval here.
+    var isSearchBehaviour : Observable<Bool> {
+        return SearchTextFieldBehaviour.asObservable().map { search -> Bool in
+            let isSearchEmpty = search.trimmingCharacters(in: .whitespaces).isEmpty
+            
+            return isSearchEmpty
+        }
     }
     
     // MARK:- TODO:- This Method For Getting All Users from Firebase.
@@ -50,7 +62,8 @@ class UsersViewModel {
                     
                 }
                 
-                self.UsersModelSubject.onNext(arr)
+                self.UsersModelSubject.accept(arr)
+                self.BackupUsersModelSubject.accept(arr)
                 self.isLoadingBehaviour.accept(false)
                 
                 return
@@ -63,5 +76,21 @@ class UsersViewModel {
         
     }
     // ------------------------------------------------
+    
+    
+    func SearchOperation() {
+        let queryResult = SearchTextFieldBehaviour.map { query in
+            self.UsersModelSubject.value.filter { user in
+                query.isEmpty || user.UserName.lowercased().contains(query.lowercased())
+            }
+        }
+        
+        queryResult.asObservable().subscribe(onNext: { [weak self] usermodel in
+         
+            guard let self = self else { return }
+         
+         self.UsersModelSubject.accept(usermodel)
+        }).disposed(by: disposebag)
+    }
     
 }
