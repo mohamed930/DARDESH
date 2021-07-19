@@ -21,16 +21,14 @@ class UsersViewController: UIViewController {
     let cellIdentifier = "Cell"
     let usersviewmodel = UsersViewModel()
     let disposebag = DisposeBag()
+    let refreshControl = UIRefreshControl()
     // ------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         AddTapGeuster()
-        
-//        let attributes = [NSAttributedString.Key.font: UIFont(name: "Signika-Medium", size: 16.0), NSAttributedString.Key.foregroundColor: UIColor.black]
-//        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).defaultTextAttributes = attributes as [NSAttributedString.Key : Any]
-        
+                
         if #available(iOS 13.0, *) {
             UserSearch[keyPath: \.?.searchTextField]?.font = UIFont(name: "Signika-Medium", size: 18.0)
         } else {
@@ -47,6 +45,11 @@ class UsersViewController: UIViewController {
         GetAllData()
         
         SubscribeToChooceTheCell()
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +91,7 @@ class UsersViewController: UIViewController {
             }
             else {
                 if self.usersviewmodel.UsersModelSubject.value.isEmpty {
-                    self.MessLabel.text = "No Users"
+                    self.MessLabel.text = "There is no users"
                     self.MessLabel.isHidden = false
                     self.tableView.isHidden = true
                 }
@@ -167,6 +170,15 @@ class UsersViewController: UIViewController {
         
     }
     // ------------------------------------------------
+    
+    @objc func refresh(_ sender: AnyObject) {
+       // Code to refresh table view
+        if refreshControl.isRefreshing {
+            self.usersviewmodel.GetAllUsersOperation()
+            refreshControl.endRefreshing()
+        }
+
+    }
     
     // MARK:- TODO:- This Method if touch any point in main Screen.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

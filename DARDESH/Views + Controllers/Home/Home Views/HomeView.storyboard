@@ -134,7 +134,7 @@
                             <constraint firstItem="7RG-O8-TtP" firstAttribute="leading" secondItem="w62-tw-f7W" secondAttribute="leading" id="zis-Vx-gKp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wH4-S3-maa"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="wH4-S3-maa"/>
                     <connections>
                         <outlet property="BackView" destination="KmB-dG-NSX" id="FZt-gF-GPI"/>
                         <outlet property="MessLabel" destination="gay-Ng-NxU" id="LEP-AA-cFG"/>
@@ -684,8 +684,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sLN-KK-umM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Users" image="icons8-user-account-50" id="j13-CH-NJl"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k6k-RN-nl2">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="k6k-RN-nl2">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

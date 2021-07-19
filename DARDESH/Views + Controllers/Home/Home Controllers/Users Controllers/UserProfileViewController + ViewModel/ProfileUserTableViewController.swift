@@ -17,22 +17,36 @@ class ProfileUserTableViewController: UITableViewController {
     @IBOutlet weak var UserStatusLabel: UILabel!
     @IBOutlet weak var StartChatButton: UIButton!
     
+    // MARK:- TODO:- This Sektion for intialise new varibles
     var SelectedUser: UserModel!
     let disposebag = DisposeBag()
+    // ------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "UserProfile".localized
+        navigationController?.navigationBar.topItem?.title = ""
+        
         ProfileImageView.MakeImageCircle()
+        
         loadData()
         StartchatsubscribeTap()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.largeTitleDisplayMode = .always
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.sizeToFit()
+        
+        self.navigationItem.title = SelectedUser.UserName
+        
+    }
+    
+    // MARK:- TODO:- This Method For Download Data after Picking from Users VC.
     func loadData() {
-        print("F: \(SelectedUser.UserName)")
-        print("F: \(SelectedUser.status)")
-        print("F: \(SelectedUser.Image)")
         
         DispatchQueue.main.async {
             self.ProfileImageView.kf.setImage(with:URL(string: self.SelectedUser.Image))
@@ -40,6 +54,8 @@ class ProfileUserTableViewController: UITableViewController {
         UsernameLabel.text   = SelectedUser.UserName
         UserStatusLabel.text = SelectedUser.status
     }
+    // ------------------------------------------------
+    
     
     // MARK:- TODO:- make StartChat action with rxswift
     func StartchatsubscribeTap() {

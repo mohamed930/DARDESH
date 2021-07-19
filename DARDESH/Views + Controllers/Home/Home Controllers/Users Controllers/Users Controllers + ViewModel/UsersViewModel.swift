@@ -12,6 +12,7 @@ import ProgressHUD
 
 class UsersViewModel {
     
+    // MARK:- TODO:- This Sektion For New Intialisation
     var SearchTextFieldBehaviour = BehaviorRelay<String>(value: "")
     
     var isLoadingBehaviour = BehaviorRelay<Bool>(value: false)
@@ -21,6 +22,7 @@ class UsersViewModel {
     var FilteredGettenData      = BehaviorRelay<[UserModel]>(value: [])
     
     let disposebag = DisposeBag()
+    // ------------------------------------------------
     
     // MARK:- TODO:- Make Validation Oberval here.
     var isSearchBehaviour : Observable<Bool> {
@@ -30,6 +32,8 @@ class UsersViewModel {
             return isSearchEmpty
         }
     }
+    // ------------------------------------------------
+    
     
     // MARK:- TODO:- This Method For Getting All Users from Firebase.
     func GetAllUsersOperation() {
@@ -48,18 +52,17 @@ class UsersViewModel {
             
             guard error != nil else {
                 
-                for i in query.documents {
-                    
-                    if i.get("uid") as! String == userID {
+                let allusers = query.documents.compactMap { (snapshot) -> UserModel? in
+                    return try? snapshot.data(as: UserModel.self)
+                }
+                
+                for i in allusers {
+                    if i.uid == userID {
                         continue
                     }
                     else {
-                        let ob = UserModel(uid: i.get("uid") as! String, email: i.get("uid") as! String, UserName: i.get("UserName") as! String, Image: i.get("Image") as! String, status: i.get("status") as! String, pushid: i.get("pushid") as! String)
-                        
-                        arr.append(ob)
+                        arr.append(i)
                     }
-                    
-                    
                 }
                 
                 self.UsersModelSubject.accept(arr)
@@ -68,6 +71,11 @@ class UsersViewModel {
                 
                 return
             }
+            
+            guard let data = UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self) else { return }
+            
+            arr.append(data)
+            self.UsersModelSubject.accept(arr)
             
             self.isLoadingBehaviour.accept(false)
             ProgressHUD.showError("errorMess".localized, interaction: true)
@@ -78,6 +86,7 @@ class UsersViewModel {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Search in UserModelSubject and Filter it.
     func SearchOperation() {
         let queryResult = SearchTextFieldBehaviour.map { query in
             self.UsersModelSubject.value.filter { user in
@@ -92,5 +101,6 @@ class UsersViewModel {
          self.UsersModelSubject.accept(usermodel)
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
 }
