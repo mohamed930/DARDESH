@@ -43,13 +43,8 @@ class ChatsCell: UITableViewCell {
             ContainerView.isHidden = true
         }
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
         
-        guard let date = chat.date else {return}
-        
-        let result = formatter.string(from: date)
-        LastMessageDateLabel.text = result
+        LastMessageDateLabel.text = chat.date?.timeElapsed() ?? Date().timeElapsed()
         
         
     }

@@ -16,6 +16,7 @@
 		D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF754268DBD200061FB98 /* SettingsViewModel.swift */; };
 		D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF756268DC0540061FB98 /* ExtensionloginViewController.swift */; };
 		D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */; };
+		D3596F7926A6A07400E1A67D /* UIDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3596F7826A6A07400E1A67D /* UIDate.swift */; };
 		D376BE24268BD37E00EBEA0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE23268BD37E00EBEA0A /* AppDelegate.swift */; };
 		D376BE28268BD37E00EBEA0A /* RegsterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */; };
 		D376BE2B268BD37E00EBEA0A /* LoginMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D376BE29268BD37E00EBEA0A /* LoginMain.storyboard */; };
@@ -63,6 +64,7 @@
 		D34EF754268DBD200061FB98 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		D34EF756268DC0540061FB98 /* ExtensionloginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionloginViewController.swift; sourceTree = "<group>"; };
 		D34EF758268DC32F0061FB98 /* ExtensionRegesterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionRegesterViewController.swift; sourceTree = "<group>"; };
+		D3596F7826A6A07400E1A67D /* UIDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDate.swift; sourceTree = "<group>"; };
 		D376BE20268BD37E00EBEA0A /* DARDESH.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DARDESH.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D376BE23268BD37E00EBEA0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D376BE27268BD37E00EBEA0A /* RegsterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegsterViewController.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 				D3A909BE269057C50070FCA5 /* String.swift */,
 				D3A33B512691A4F000FAFD3D /* UIImageView.swift */,
 				D3A051F726A644CD00D104EB /* UIView.swift */,
+				D3596F7826A6A07400E1A67D /* UIDate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */,
 				D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */,
 				D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */,
+				D3596F7926A6A07400E1A67D /* UIDate.swift in Sources */,
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 				D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */,

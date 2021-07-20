@@ -11,25 +11,28 @@ import RxCocoa
 
 class ChatsViewModel {
     
+    // MARK:- TODO:- This Sektion For intialise new RxSwift Varibles.
     var isloadingBeviour = BehaviorRelay<Bool>(value: false)
     
     private var ChatsModelSubject = PublishSubject<[ChatModel]>()
     var ChatsModelObservable: Observable<[ChatModel]> {
         return ChatsModelSubject
     }
+    // ------------------------------------------------
     
+    
+    // MARK:- TODO:- This Method For Getting Data From Firebase.
     func GetDataOperation() {
         
         isloadingBeviour.accept(true)
         
         let names = ["John","Koncer","Said"]
         let LastMessageLabel = ["Hi","What'sapp Man","you are kidden me!"]
-        let dates = ["10/03/2020","02/04/1998","30/10/2021"]
+        let dates = ["19/07/2021 11:28 PM","02/04/2021 11:28 PM","30/08/2021 11:28 PM"]
         let unreadedCount = [0,2,1]
         
         let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
-        dateFormatter.dateFormat = "dd/MM/yyyy"
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm a"
         
         var chats = Array<ChatModel>()
         
@@ -46,5 +49,6 @@ class ChatsViewModel {
         self.ChatsModelSubject.onNext(chats)
         
     }
+    // ------------------------------------------------
     
 }

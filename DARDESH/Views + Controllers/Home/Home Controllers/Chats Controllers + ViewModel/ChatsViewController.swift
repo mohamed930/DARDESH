@@ -40,9 +40,13 @@ class ChatsViewController: UITableViewController {
     
     // MARK:- TODO:- This Method For Subscribe Array to TableView with RxSwift.
     func subscribeToResponseTableView() {
-        chatsviewmodel.ChatsModelObservable.asObservable().bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: ChatsCell.self)) { row, branch, cell in
+        chatsviewmodel.ChatsModelObservable
+            .asObservable()
+            .bind(to: tableView
+                                .rx
+                                .items(cellIdentifier: cellIdentifier, cellType: ChatsCell.self)) { row, branch, cell in
             
-            cell.ConfigureCell(branch)
+                                        cell.ConfigureCell(branch)
             
         }.disposed(by: disposebag)
     }

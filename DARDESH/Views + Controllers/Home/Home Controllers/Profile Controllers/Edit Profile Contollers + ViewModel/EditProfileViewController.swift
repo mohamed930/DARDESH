@@ -160,7 +160,7 @@ class EditProfileViewController: UITableViewController {
     
     // MARK:- TODO:- This Method For Setting Tapped to Dismiss.
     @IBAction func SettingTapped(_ sender: Any) {
-        "lang" == "eng" ? self.dismissDetailEn() : self.dismissDetailAr()
+        "lang".localized == "eng" ? self.dismissDetailEn() : self.dismissDetailAr()
     }
     // ------------------------------------------------
     
