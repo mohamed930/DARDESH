@@ -27,9 +27,10 @@ class ChatsCell: UITableViewCell {
     
     func ConfigureCell (_ chat: ChatModel) {
         
-        DispatchQueue.main.async {
-            self.UserProfileImageView.kf.setImage(with:URL(string: chat.AvatarLink))
-        }
+//        DispatchQueue.main.async {
+//            self.UserProfileImageView.kf.setImage(with:URL(string: chat.AvatarLink))
+//        }
+        UserProfileImageView.image = UIImage(named: chat.AvatarLink)
         
         UserNameLabel.text = chat.RecevierName
         LastMessageLabel.text = chat.lastMessage
