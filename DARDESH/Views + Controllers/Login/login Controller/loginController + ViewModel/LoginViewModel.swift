@@ -121,6 +121,8 @@ class LoginViewModel {
             
             guard let self = self else { return }
             
+            guard let snap = snap else { return }
+            
             for doc in snap.documents {
                 
                 // Download Data from Firestore

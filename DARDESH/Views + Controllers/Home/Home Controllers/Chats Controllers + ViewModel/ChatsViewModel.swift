@@ -27,8 +27,8 @@ class ChatsViewModel {
         isloadingBeviour.accept(true)
         
         let names = ["John","Koncer","Said"]
-        let LastMessageLabel = ["Hi","What'sapp Man","you are kidden me!"]
-        let dates = ["19/07/2021 11:28 PM","02/04/2021 11:28 PM","30/08/2021 11:28 PM"]
+        let LastMessageLabel = ["Hi Ali, how are you? let's meet tomorrow","What'sapp Man","you are kidden me!"]
+        let dates = ["19/07/2021 03:22 PM","02/04/2021 03:28 PM","30/08/2021 11:28 PM"]
         let unreadedCount = [0,2,1]
         
         let dateFormatter = DateFormatter()

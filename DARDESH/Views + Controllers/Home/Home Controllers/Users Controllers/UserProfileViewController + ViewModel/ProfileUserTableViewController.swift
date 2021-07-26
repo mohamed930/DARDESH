@@ -19,6 +19,7 @@ class ProfileUserTableViewController: UITableViewController {
     
     // MARK:- TODO:- This Sektion for intialise new varibles
     var SelectedUser: UserModel!
+    let profileuserviewmodel = ProfileUserViewModel()
     let disposebag = DisposeBag()
     // ------------------------------------------------
     
@@ -30,6 +31,7 @@ class ProfileUserTableViewController: UITableViewController {
         ProfileImageView.MakeImageCircle()
         
         loadData()
+        SubscribeToReponse()
         StartchatsubscribeTap()
     }
     
@@ -57,6 +59,24 @@ class ProfileUserTableViewController: UITableViewController {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Subscribe Response of Success Writing Chat.
+    func SubscribeToReponse() {
+        profileuserviewmodel.ResponseData.subscribe(onNext: { response in
+            
+            if response == "Success" {
+                print("Created Room is Success")
+                // Go To To The Chat View
+                
+            }
+            else if response == "Failed" {
+                print("Created Room is Failed")
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
     // MARK:- TODO:- make StartChat action with rxswift
     func StartchatsubscribeTap() {
         StartChatButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] (_) in
@@ -65,6 +85,9 @@ class ProfileUserTableViewController: UITableViewController {
             
             print("Start is here with \(self.SelectedUser.uid)")
             
+            guard let senderUser = self.profileuserviewmodel.GetUserData() else { return }
+            
+            self.profileuserviewmodel.StartChat(sender: senderUser, Receiver: self.SelectedUser)
             
             
         }).disposed(by: disposebag)

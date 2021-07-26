@@ -35,14 +35,14 @@ class FirebaseLayer {
     
     
     // MARK:- TODO:- This Method for Read Data from Firebase with condtion in public.
-    public static func publicreadWithWhereCondtion (collectionName:String , key:String , value:String , complention: @escaping (QuerySnapshot) -> ()) {
+    public static func publicreadWithWhereCondtion (collectionName:String , key:String , value:String , complention: @escaping (QuerySnapshot?) -> ()) {
         
         Firestore.firestore().collection(collectionName).whereField(key, isEqualTo: value).getDocuments { (quary, error) in
             if error != nil {
                 ProgressHUD.showError("errorMess".localized)
             }
             else {
-                complention(quary!)
+                complention(quary)
             }
         }
     }
