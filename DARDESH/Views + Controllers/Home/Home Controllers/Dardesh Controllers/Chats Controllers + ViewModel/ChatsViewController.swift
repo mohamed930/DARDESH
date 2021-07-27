@@ -17,6 +17,7 @@ class ChatsViewController: UITableViewController {
     let cellIdentifier = "Cell"
     let cellNibFileName = "ChatsCell"
     let chatsviewmodel = ChatsViewModel()
+    let profileuserviewmodel = ProfileUserViewModel()
     let disposebag = DisposeBag()
     let searchController = UISearchController(searchResultsController: nil)
     // ------------------------------------------------
@@ -151,11 +152,20 @@ class ChatsViewController: UITableViewController {
 
                 guard let self = self else { return }
                 
-                let privateMsg = MessageViewController(chatid: branch.chatRoomId , recipientid: branch.RecevierID , recipientName: branch.RecevierName)
+                guard let senderData = self.profileuserviewmodel.GetUserData() else { return }
                 
-                self.navigationController?.pushViewController(privateMsg, animated: true)
-                
-                print(selectedIndex[1], branch.RecevierName)
+                self.chatsviewmodel.GetReceverData(UsersId: branch.membersId) { usermodel in
+                    
+                    print("ChatRoomId: \(branch.chatRoomId), SenderName: \(senderData.uid), RecevierName: \(usermodel.first?.uid ?? "Boo")")
+                    
+                    self.profileuserviewmodel.RestartChat(chatRoomId: branch.chatRoomId, sender: senderData, Receiver: usermodel.first!)
+                    
+                    let privateMsg = MessageViewController(chatid: branch.chatRoomId , recipientid: branch.RecevierID , recipientName: branch.RecevierName)
+                    
+                    self.navigationController?.pushViewController(privateMsg, animated: true)
+                    
+                    print(selectedIndex[1], branch.RecevierName)
+                }
         }
         .disposed(by: disposebag)
         

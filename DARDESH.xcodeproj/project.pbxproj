@@ -53,6 +53,7 @@
 		D3CFDCCC269A5E91005E25E4 /* ProfileUserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */; };
 		D3CFDCCE269A5EA5005E25E4 /* ProfileUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */; };
 		D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */; };
+		D3DB8D2426B0BB62006FA21D /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3DB8D2326B0BB62006FA21D /* MessageViewModel.swift */; };
 		D3FBD3ED269BE9ED00B9A4E6 /* HomeView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3FBD3EC269BE9EC00B9A4E6 /* HomeView.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		D3CFDCCB269A5E91005E25E4 /* ProfileUserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserTableViewController.swift; sourceTree = "<group>"; };
 		D3CFDCCD269A5EA5005E25E4 /* ProfileUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUserViewModel.swift; sourceTree = "<group>"; };
 		D3CFDCD0269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionProfileUserTableView.swift; sourceTree = "<group>"; };
+		D3DB8D2326B0BB62006FA21D /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		D3FBD3EC269BE9EC00B9A4E6 /* HomeView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = HomeView.storyboard; sourceTree = "<group>"; };
 		EBCE84209F69310FAF97DD68 /* Pods-DARDESH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.debug.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.debug.xcconfig"; sourceTree = "<group>"; };
 		FD4F57AAB119CA0AFCFF4A51 /* Pods-DARDESH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DARDESH.release.xcconfig"; path = "Target Support Files/Pods-DARDESH/Pods-DARDESH.release.xcconfig"; sourceTree = "<group>"; };
@@ -455,6 +457,7 @@
 		D3ADAA4C26AFE3560082BE2F /* Messages Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D3DB8D2326B0BB62006FA21D /* MessageViewModel.swift */,
 				D3ADAA4D26AFE3A60082BE2F /* MessageViewController.swift */,
 			);
 			path = "Messages Controller";
@@ -683,6 +686,7 @@
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 				D3ADAA4E26AFE3A60082BE2F /* MessageViewController.swift in Sources */,
+				D3DB8D2426B0BB62006FA21D /* MessageViewModel.swift in Sources */,
 				D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */,
 				D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */,
 				D3C1B07626958F65002CBD94 /* StatusViewModel.swift in Sources */,

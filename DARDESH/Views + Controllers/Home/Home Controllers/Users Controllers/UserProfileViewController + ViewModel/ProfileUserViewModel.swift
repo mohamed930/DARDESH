@@ -37,6 +37,16 @@ class ProfileUserViewModel {
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- This Method For Check any users delete chat room and creat it for him.
+    func RestartChat(chatRoomId: String ,sender: UserModel , Receiver: UserModel) {
+        
+        CreateChatRooms(chatRoomId: chatRoomId, Users: [sender,Receiver])
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
     // MARK:- TODO:- Get Sender User Data
     func GetUserData() -> UserModel? {
         
@@ -78,35 +88,43 @@ class ProfileUserViewModel {
                     }
                 }
             }
-            else {
-                
-                // Create ChatRoom With Sender -> Receiver
-                for u in usersToCreateString {
-                    
-                    let senderUser = u == userID ? self.GetSender(users: Users) : self.GetReceiver(users: Users)
-                    
-                    let receiverUser = u == userID ? self.GetReceiver(users: Users) : self.GetSender(users: Users)
-                    
-                    let ob = ChatModel(id: UUID().uuidString
-                                       , chatRoomId: chatRoomId
-                                       , senderID: senderUser.uid
-                                       , senderName: senderUser.UserName
-                                       , RecevierID: receiverUser.uid
-                                       , RecevierName: receiverUser.UserName
-                                       , date: Date()
-                                       , membersId: [senderUser.uid,receiverUser.uid]
-                                       , lastMessage: ""
-                                       , unreadCounter: 0
-                                       , AvatarLink: receiverUser.Image)
-                    
-                    
-                    // Save To Firestore
-                    self.SaveToFirestore(ob: ob)
-                    
-                }
-                
-            }
             
+            
+            // Create ChatRoom With Sender -> Receiver
+            self.CreateRoom(chatRoomId: chatRoomId, usersToCreateString: usersToCreateString, Users: Users)
+            
+            
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Method For Creating Room For 2 Persons.
+    private func CreateRoom(chatRoomId: String,usersToCreateString: [String], Users: [UserModel]) {
+        
+        for u in usersToCreateString {
+            
+            let senderUser = u == userID ? self.GetSender(users: Users) : self.GetReceiver(users: Users)
+            
+            let receiverUser = u == userID ? self.GetReceiver(users: Users) : self.GetSender(users: Users)
+            
+            let ob = ChatModel(id: UUID().uuidString
+                               , chatRoomId: chatRoomId
+                               , senderID: senderUser.uid
+                               , senderName: senderUser.UserName
+                               , RecevierID: receiverUser.uid
+                               , RecevierName: receiverUser.UserName
+                               , date: Date()
+                               , membersId: [senderUser.uid,receiverUser.uid]
+                               , lastMessage: ""
+                               , unreadCounter: 0
+                               , AvatarLink: receiverUser.Image)
+            
+            
+            // Save To Firestore
+            self.SaveToFirestore(ob: ob)
             
         }
         

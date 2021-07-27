@@ -92,6 +92,34 @@ class ChatsViewModel {
     }
     // ------------------------------------------------
     
+    // MARK:- TODO:- This Method Filter ReceiverData.
+    func GetReceverData (UsersId: [String], completion: @escaping ([UserModel]) -> Void){
+        
+        var receiverid = String()
+        
+        for i in UsersId {
+            if i != userID {
+                receiverid = i
+                break
+            }
+        }
+        
+        FirebaseLayer.publicreadWithWhereCondtion(collectionName: userCollection, key: "uid", value: receiverid) { snapshot in
+            
+            guard let snapshot = snapshot else  { return }
+            
+            let data = snapshot.documents.compactMap { (snapshot) -> UserModel? in
+                return try? snapshot.data(as: UserModel.self)
+            }
+            
+            completion(data)
+            
+        }
+        
+        
+    }
+    // ------------------------------------------------
+    
     
     // MARK:- TODO:- This Method For Delete index from Chat Cell.
     func DeleteOperation(at indexPath: IndexPath) {

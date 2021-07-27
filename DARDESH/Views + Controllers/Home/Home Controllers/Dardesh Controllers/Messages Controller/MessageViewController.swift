@@ -19,7 +19,11 @@ class MessageViewController: MessagesViewController {
     var chatid = ""
     var recipientid = ""
     var recipientName = ""
+    let messageviewmodel = MessageViewModel()
+    // ------------------------------------------------
     
+    
+    // MARK:- TODO:- This init for init message view controller.
     init(chatid: String , recipientid: String , recipientName: String) {
         super.init(nibName: nil, bundle: nil)
         
@@ -31,7 +35,10 @@ class MessageViewController: MessagesViewController {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    // ------------------------------------------------
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
