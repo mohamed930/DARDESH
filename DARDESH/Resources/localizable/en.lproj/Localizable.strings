@@ -10,6 +10,15 @@
 
 "ChooceImageActionFalse"   = "Please, Pick one image for your profile";
 
+"ChatSearchPlaceHolder"    = "Enter chat name";
+"UserSearchPlaceHolder"    = "Enter user name";
+"Users"                    = "Users";
+"Back"                     = "Back";
+
+"Attention"                = "Attention";
+"DeleMess"                 = "Are you sure to delete this chat?";
+"Delete"                   = "Delete";
+
 "Status"                   = "Choose your status";
 "Avaliable"                = "Avaliable";
 "Busy"                     = "Busy";

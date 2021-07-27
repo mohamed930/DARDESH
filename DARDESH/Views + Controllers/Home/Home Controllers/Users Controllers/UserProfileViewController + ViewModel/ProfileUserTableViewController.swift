@@ -65,7 +65,6 @@ class ProfileUserTableViewController: UITableViewController {
             
             if response == "Success" {
                 print("Created Room is Success")
-                // Go To To The Chat View
                 
             }
             else if response == "Failed" {
@@ -88,6 +87,10 @@ class ProfileUserTableViewController: UITableViewController {
             guard let senderUser = self.profileuserviewmodel.GetUserData() else { return }
             
             self.profileuserviewmodel.StartChat(sender: senderUser, Receiver: self.SelectedUser)
+            
+            let privateMsg = MessageViewController(chatid: self.profileuserviewmodel.chatRoomid.value, recipientid: self.SelectedUser.uid , recipientName: self.SelectedUser.UserName)
+            
+            self.navigationController?.pushViewController(privateMsg, animated: true)
             
             
         }).disposed(by: disposebag)

@@ -37,6 +37,8 @@
 		D3A33B522691A4F000FAFD3D /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A33B512691A4F000FAFD3D /* UIImageView.swift */; };
 		D3A909BA269056D10070FCA5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D3A909BC269056D10070FCA5 /* Localizable.strings */; };
 		D3A909BF269057C50070FCA5 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A909BE269057C50070FCA5 /* String.swift */; };
+		D3ADAA4B26AFD3CF0082BE2F /* ChatUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADAA4A26AFD3CF0082BE2F /* ChatUsersTableViewController.swift */; };
+		D3ADAA4E26AFE3A60082BE2F /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3ADAA4D26AFE3A60082BE2F /* MessageViewController.swift */; };
 		D3C0E6792692B35A00B50CE2 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */; };
 		D3C0E67B2692B3C900B50CE2 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */; };
 		D3C1B07426958F51002CBD94 /* StatusTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C1B07326958F51002CBD94 /* StatusTableViewController.swift */; };
@@ -115,6 +117,8 @@
 		D3A909BB269056D10070FCA5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3A909BD269056D70070FCA5 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D3A909BE269057C50070FCA5 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D3ADAA4A26AFD3CF0082BE2F /* ChatUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUsersTableViewController.swift; sourceTree = "<group>"; };
+		D3ADAA4D26AFE3A60082BE2F /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		D3C0E6782692B35A00B50CE2 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		D3C0E67A2692B3C900B50CE2 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D3C1B07326958F51002CBD94 /* StatusTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +180,7 @@
 		D34EF749268DBABC0061FB98 /* Home Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
+				D3ADAA4826AFD3590082BE2F /* Dardesh Controllers */,
 				D3CFDCCF269A5EB9005E25E4 /* Users Controllers */,
 				D31432BB269912EE006F3FE2 /* Profile Controllers */,
 			);
@@ -430,6 +434,32 @@
 			path = localizable;
 			sourceTree = "<group>";
 		};
+		D3ADAA4826AFD3590082BE2F /* Dardesh Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D34EF74C268DBC450061FB98 /* Chats Controllers + ViewModel */,
+				D3ADAA4926AFD3870082BE2F /* Users Controller */,
+				D3ADAA4C26AFE3560082BE2F /* Messages Controller */,
+			);
+			path = "Dardesh Controllers";
+			sourceTree = "<group>";
+		};
+		D3ADAA4926AFD3870082BE2F /* Users Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D3ADAA4A26AFD3CF0082BE2F /* ChatUsersTableViewController.swift */,
+			);
+			path = "Users Controller";
+			sourceTree = "<group>";
+		};
+		D3ADAA4C26AFE3560082BE2F /* Messages Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D3ADAA4D26AFE3A60082BE2F /* MessageViewController.swift */,
+			);
+			path = "Messages Controller";
+			sourceTree = "<group>";
+		};
 		D3C0E6772692B33000B50CE2 /* Edit Profile Contollers + ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,12 +675,14 @@
 				D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */,
 				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
 				D3CFDCC4269A4B36005E25E4 /* UsersViewController.swift in Sources */,
+				D3ADAA4B26AFD3CF0082BE2F /* ChatUsersTableViewController.swift in Sources */,
 				D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */,
 				D34EF759268DC32F0061FB98 /* ExtensionRegesterViewController.swift in Sources */,
 				D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */,
 				D3596F7926A6A07400E1A67D /* UIDate.swift in Sources */,
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
+				D3ADAA4E26AFE3A60082BE2F /* MessageViewController.swift in Sources */,
 				D3C1B07A269595E7002CBD94 /* StatusCell.swift in Sources */,
 				D34EF757268DC0540061FB98 /* ExtensionloginViewController.swift in Sources */,
 				D3C1B07626958F65002CBD94 /* StatusViewModel.swift in Sources */,

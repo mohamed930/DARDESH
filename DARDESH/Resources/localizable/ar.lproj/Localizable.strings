@@ -9,6 +9,15 @@
 
 "ChooceImageActionFalse"   = "من فضلك اختر صورة واحده للملف الشخصي";
 
+"ChatSearchPlaceHolder"    = "ادخل اسم المحادثه";
+"UserSearchPlaceHolder"    = "ادخل اسم المستخدم";
+"Users"                    = "المستخدمين";
+"Back"                     = "رجوع";
+
+"Attention"                = "انتبه";
+"DeleMess"                 = "هل انت متأكد من انك تريد مسح تلك المحادثه؟";
+"Delete"                   = "امسح";
+
 "Status"                   = "اختر حالتك";
 "Avaliable"                = "متاح";
 "Busy"                     = "مشغول";

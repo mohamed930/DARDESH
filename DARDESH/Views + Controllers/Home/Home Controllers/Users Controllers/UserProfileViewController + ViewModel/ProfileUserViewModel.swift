@@ -13,6 +13,7 @@ class ProfileUserViewModel {
     
     // MARK:- TODO:- Intialize new rxvarible Here:-
     var ResponseData = BehaviorRelay<String>(value: "")
+    var chatRoomid = BehaviorRelay<String>(value: "")
     // ------------------------------------------------
     
     // MARK:- TODO:- This Method For Creating Room Chat When tapped on Start Chat Button.
@@ -28,6 +29,8 @@ class ProfileUserViewModel {
         else {
             chatRoomId = Receiver.uid + sender.uid
         }
+        
+        self.chatRoomid.accept(chatRoomId)
         
         CreateChatRooms(chatRoomId: chatRoomId, Users: [sender,Receiver])
         

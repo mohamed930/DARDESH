@@ -58,11 +58,42 @@
                             <color key="backgroundColor" name="Color 1"/>
                         </view>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Chats" largeTitleDisplayMode="always" id="FlZ-xS-IRR"/>
+                    <navigationItem key="navigationItem" title="Chats" largeTitleDisplayMode="always" id="FlZ-xS-IRR">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="fAG-im-ep7"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="NewChatButton" destination="fAG-im-ep7" id="hPM-dP-otz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KGL-Oa-wdS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2666" y="524"/>
+            <point key="canvasLocation" x="-3473" y="524"/>
+        </scene>
+        <!--Chat Users Table View Controller-->
+        <scene sceneID="VBX-E6-UiW">
+            <objects>
+                <tableViewController storyboardIdentifier="ChatUsersTableViewController" id="kmW-oY-Nv1" customClass="ChatUsersTableViewController" customModule="DARDESH" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fCf-Ch-dRj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="Color 1"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="xxY-JU-Nty">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="81"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" name="Color 1"/>
+                        </view>
+                        <connections>
+                            <outlet property="dataSource" destination="kmW-oY-Nv1" id="T9G-KK-Bfu"/>
+                            <outlet property="delegate" destination="kmW-oY-Nv1" id="k94-i2-vj5"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="BackView" destination="xxY-JU-Nty" id="5sw-I0-CDb"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xPw-Ey-FBn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2730.4000000000001" y="523.89162561576359"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2nc-FF-g4q">
@@ -224,7 +255,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-U1-Nxz">
                                                     <rect key="frame" x="16" y="5.9999999999999982" width="316" height="30.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="NotoSansJP-Medium" family="Noto Sans JP" pointSize="17"/>
-                                                    <state key="normal" title="Start chat"/>
+                                                    <state key="normal" title="Start chat">
+                                                        <color key="titleColor" name="label"/>
+                                                    </state>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -720,7 +753,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m9D-QG-4Sz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3551.1999999999998" y="523.89162561576359"/>
+            <point key="canvasLocation" x="-4217" y="524"/>
         </scene>
     </scenes>
     <resources>

@@ -47,6 +47,19 @@ class FirebaseLayer {
         }
     }
     
+    // MARK:- TODO:- This Method for Read Data from Firebase with condtion in public.
+    public static func publicRealtimereadWithWhereCondtion (collectionName:String , key:String , value:String , complention: @escaping (QuerySnapshot?) -> ()) {
+        
+        Firestore.firestore().collection(collectionName).whereField(key, isEqualTo: value).addSnapshotListener { (quary, error) in
+            if error != nil {
+                ProgressHUD.showError("errorMess".localized)
+            }
+            else {
+                complention(quary)
+            }
+        }
+    }
+    
     // MARK:- TODO:- This Method for Read Data from Firebase without condtion in public.
     public static func publicreadWithoutWhereCondtion (collectionName:String , complention: @escaping (QuerySnapshot? , Error?) -> ()) {
         
