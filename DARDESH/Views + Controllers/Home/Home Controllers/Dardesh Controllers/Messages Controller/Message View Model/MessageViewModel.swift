@@ -11,9 +11,12 @@ import RxCocoa
 
 class MessageViewModel {
     
+    // MARK:- TODO:- Initialise new rx varible here.
     var inputTextFieldBahaviour = BehaviorRelay<String>(value: "")
     var MessagesBahaviour = BehaviorRelay<[MKMessage]>(value: [])
+    // ------------------------------------------------
     
+    // MARK:- TODO:- Add Condtions here to rx swift.
     var isinputTextFieldEmpty: Observable<Bool> {
         
         return inputTextFieldBahaviour.asObservable().map { input -> Bool in
@@ -23,9 +26,28 @@ class MessageViewModel {
         }
         
     }
+    // ------------------------------------------------
     
+    
+    // MARK:- TODO:- This Method for Getten Current User Data from UserDefaults
     func GetCurrentUserData() -> UserModel {
         return UserDefaultsMethods.loadDataFromUserDefaults(Key: currentUser, className: UserModel.self)!
     }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- Send Messgae Function.
+    func sendMessageOperation() {
+        
+        // 1. Create local message from the data we have
+        
+        // 2.check message type
+        
+        // 3. save message locally
+        
+        // 4. save message to firestore
+        
+    }
+    // ------------------------------------------------
     
 }

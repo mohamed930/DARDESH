@@ -14,6 +14,8 @@
 		D348020326B14175007D4FBE /* MKSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348020226B14175007D4FBE /* MKSender.swift */; };
 		D348020526B14355007D4FBE /* MessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348020426B14355007D4FBE /* MessageDataSource.swift */; };
 		D348020726B143DD007D4FBE /* MKMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D348020626B143DD007D4FBE /* MKMessage.swift */; };
+		D34D634526B2101500A17891 /* RealmswiftLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D634426B2101500A17891 /* RealmswiftLayer.swift */; };
+		D34D634726B2144A00A17891 /* Outgoing.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D634626B2144A00A17891 /* Outgoing.swift */; };
 		D34EF74E268DBC6A0061FB98 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */; };
 		D34EF750268DBC8F0061FB98 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */; };
 		D34EF753268DBD050061FB98 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34EF752268DBD050061FB98 /* SettingsViewController.swift */; };
@@ -69,6 +71,8 @@
 		D348020226B14175007D4FBE /* MKSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKSender.swift; sourceTree = "<group>"; };
 		D348020426B14355007D4FBE /* MessageDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDataSource.swift; sourceTree = "<group>"; };
 		D348020626B143DD007D4FBE /* MKMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MKMessage.swift; sourceTree = "<group>"; };
+		D34D634426B2101500A17891 /* RealmswiftLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmswiftLayer.swift; sourceTree = "<group>"; };
+		D34D634626B2144A00A17891 /* Outgoing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Outgoing.swift; sourceTree = "<group>"; };
 		D34EF74D268DBC6A0061FB98 /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		D34EF74F268DBC8F0061FB98 /* ChatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		D34EF752268DBD050061FB98 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -309,7 +313,7 @@
 			children = (
 				D376BE37268BD3EC00EBEA0A /* AppDelegate */,
 				D376BE65268C336500EBEA0A /* Extensions */,
-				D376BE3F268BD6E600EBEA0A /* Firebase Layer */,
+				D376BE3F268BD6E600EBEA0A /* DataBase Layers */,
 				D376BE3B268BD45A00EBEA0A /* LaunchScreen */,
 				D376BE38268BD3FB00EBEA0A /* Views + Controllers */,
 				D376BE3C268BD47000EBEA0A /* Resources */,
@@ -372,14 +376,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		D376BE3F268BD6E600EBEA0A /* Firebase Layer */ = {
+		D376BE3F268BD6E600EBEA0A /* DataBase Layers */ = {
 			isa = PBXGroup;
 			children = (
 				D376BE40268BD70000EBEA0A /* FirebaseLayer.swift */,
 				D376BE42268BD84400EBEA0A /* BaseURL.swift */,
 				D31432B92698FCC5006F3FE2 /* UserDefaultsMethods.swift */,
+				D34D634426B2101500A17891 /* RealmswiftLayer.swift */,
+				D34D634626B2144A00A17891 /* Outgoing.swift */,
 			);
-			path = "Firebase Layer";
+			path = "DataBase Layers";
 			sourceTree = "<group>";
 		};
 		D376BE44268C236500EBEA0A /* Fonts */ = {
@@ -739,6 +745,7 @@
 				D3CFDCC8269A4B7D005E25E4 /* UsersCell.swift in Sources */,
 				D3C1B07426958F51002CBD94 /* StatusTableViewController.swift in Sources */,
 				D376BE6A268C34E300EBEA0A /* LoginViewModel.swift in Sources */,
+				D34D634526B2101500A17891 /* RealmswiftLayer.swift in Sources */,
 				D37A0BF32692D000003EC335 /* ExtensionEditProfileViewController.swift in Sources */,
 				D34EF755268DBD200061FB98 /* SettingsViewModel.swift in Sources */,
 				D3CFDCC4269A4B36005E25E4 /* UsersViewController.swift in Sources */,
@@ -748,6 +755,7 @@
 				D3CFDCD1269A5EEB005E25E4 /* ExtensionProfileUserTableView.swift in Sources */,
 				D3596F7926A6A07400E1A67D /* UIDate.swift in Sources */,
 				D3242995268D13ED00EF0B6E /* UserModel.swift in Sources */,
+				D34D634726B2144A00A17891 /* Outgoing.swift in Sources */,
 				D376BE6D268C350D00EBEA0A /* RegesterViewModel.swift in Sources */,
 				D3ADAA4E26AFE3A60082BE2F /* MessageViewController.swift in Sources */,
 				D3DB8D2426B0BB62006FA21D /* MessageViewModel.swift in Sources */,

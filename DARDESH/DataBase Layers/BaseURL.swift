@@ -13,8 +13,18 @@ let defaultAvatar = "https://firebasestorage.googleapis.com/v0/b/dardesh-9e38a.a
 
 let userCollection = "User"
 let chatCollection = "Chat"
+let messCollection = "Message"
 
 let currentUser = "UserData"
 let RoomId = "chatRoomId"
+
+let sentstatus = "sent"
+let readstatus = "read"
+
+let textType = "text"
+let imageType = "image"
+let videoType = "video"
+let location = "location"
+let audio = "audio"
 
 var userID = Auth.auth().currentUser!.uid

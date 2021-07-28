@@ -46,22 +46,28 @@ class MessageViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        messagesCollectionView.messagesDataSource = self
         
         ConfigureMessageCollection()
         ConfigureInputBar()
+        
         SubscribeToAttachButtonAction()
+        SubscribeToSendButtonAction()
     }
     
     
+    // MARK:- TODO:- This Method For Configure the Message Collection View
     func ConfigureMessageCollection() {
+        
+        messagesCollectionView.messagesDataSource = self
+        
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
         messagesCollectionView.refreshControl = refreshController
     }
+    // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Methof For Configgure the input bar with two button and relatr textfield with rxswift varible.
     func ConfigureInputBar() {
         
         // Configure The Attach Button
@@ -83,15 +89,18 @@ class MessageViewController: MessagesViewController {
         
         MicButton.setSize(CGSize(width: 30.0, height: 30.0), animated: false)
         
+        // Add Attach Button to input bar.
         messageInputBar.setStackViewItems([AttachButton], forStack: .left, animated: false)
         messageInputBar.setLeftStackViewWidthConstant(to: 30, animated: false)
         
         messageInputBar.inputTextView.isImagePasteEnabled = false
         
+        // relate the textfield to it's rxswift and check it if it's empty or not
         SubscribeToTextField()
         SubscribeToTextFieldisEmpty()
         
         
+        // make it color.
         if #available(iOS 13.0, *) {
             messageInputBar.backgroundView.backgroundColor = .systemBackground
             messageInputBar.inputTextView.backgroundColor = .systemBackground
@@ -99,7 +108,10 @@ class MessageViewController: MessagesViewController {
         
         
     }
+    // ------------------------------------------------
     
+    
+    // MARK:- TODO:- This Method For Action for AttachButton.
     func SubscribeToAttachButtonAction() {
         AttachButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
             
@@ -110,26 +122,58 @@ class MessageViewController: MessagesViewController {
             
         }).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
     
+    
+    // MARK:- TODO:- This Method For Binding MessageTextFeild with RxSwift Varible.
     func SubscribeToTextField() {
         messageInputBar.inputTextView.rx.text.orEmpty.bind(to: messageviewmodel.inputTextFieldBahaviour).disposed(by: disposebag)
     }
+    // ------------------------------------------------
     
+    
+    
+    // MARK:- TODO:- This Method For Check if textField is empty or not to show mic button or not.
     func SubscribeToTextFieldisEmpty() {
         messageviewmodel.isinputTextFieldEmpty.subscribe(onNext: { [weak self] empty in
             
             guard let self = self else { return }
             
             if empty {
+                
+                // Add Mic Button To messageInputBar.
                 self.messageInputBar.setStackViewItems([self.MicButton], forStack: .right, animated: false)
                 self.messageInputBar.setRightStackViewWidthConstant(to: 30, animated: false)
+                
             }
             else {
+                
+                // Add Send Button To messageInputBar.
                 self.messageInputBar.setStackViewItems([self.messageInputBar.sendButton], forStack: .right, animated: false)
-                self.messageInputBar.setRightStackViewWidthConstant(to: 30, animated: false)
+                self.messageInputBar.setRightStackViewWidthConstant(to: 40, animated: false)
+                
             }
             
         }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Action Method For Send Button.
+    func SubscribeToSendButtonAction() {
+        
+        messageInputBar.sendButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            
+            guard let self = self else { return }
+            
+            print("Sending Message \(self.messageviewmodel.inputTextFieldBahaviour.value)")
+            
+            self.messageInputBar.inputTextView.text = ""
+            self.messageInputBar.inputTextView.resignFirstResponder()
+            
+        }).disposed(by: disposebag)
+        
     }
 }

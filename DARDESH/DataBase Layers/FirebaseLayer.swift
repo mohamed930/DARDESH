@@ -19,6 +19,27 @@ class FirebaseLayer {
         return Firestore.firestore().collection(collectionName)
     }
     
+    // MARK:- TODO:- This Method For Write Message into Firebae
+    public static func WriteMessageToFirebase (message: MessageModel, MemberId: String) {
+        
+        do {
+            try FirebaseLayer.refernceCollection(messCollection).document(MemberId).collection(message.chatRoomId).document(message.id).setData(from: message) {
+                error in
+                
+                if error != nil {
+                    print("Error in writing")
+                }
+                else {
+                    print("Success")
+                }
+                
+            }
+        } catch {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+    // ------------------------------------------------
+    
     
     // MARK:- TODO:- This Method For Signup completly to Firebase.
     public static func createAccount(Email:String,Password:String,completion: @escaping (String,AuthDataResult?) -> ()) {
