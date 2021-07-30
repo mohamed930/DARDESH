@@ -13,6 +13,11 @@ class MessageViewModel {
     
     // MARK:- TODO:- Initialise new rx varible here.
     var inputTextFieldBahaviour = BehaviorRelay<String>(value: "")
+    
+    var ChatIdBahaviour = BehaviorRelay<String>(value: "")
+    var recipientidBahaviour = BehaviorRelay<String>(value: "")
+    var recipientNameBahaviour = BehaviorRelay<String>(value: "")
+    
     var MessagesBahaviour = BehaviorRelay<[MKMessage]>(value: [])
     // ------------------------------------------------
     
@@ -37,16 +42,11 @@ class MessageViewModel {
     
     
     // MARK:- TODO:- Send Messgae Function.
-    func sendMessageOperation() {
+    func sendMessageTextOperation() {
         
-        // 1. Create local message from the data we have
+        let senderId = GetCurrentUserData().uid
         
-        // 2.check message type
-        
-        // 3. save message locally
-        
-        // 4. save message to firestore
-        
+        Outgoing.shared.sendMessage(chatid: ChatIdBahaviour.value, text: inputTextFieldBahaviour.value, photo: nil, video: nil, audio: nil, audioDuration: 0.0, memberIds: [senderId , recipientidBahaviour.value], location: nil)
     }
     // ------------------------------------------------
     

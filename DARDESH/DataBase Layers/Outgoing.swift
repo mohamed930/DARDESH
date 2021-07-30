@@ -12,7 +12,9 @@ import Gallery
 
 class Outgoing {
     
-    let messageviewmodel = MessageViewModel()
+    public static let shared = Outgoing()
+    
+    private let messageviewmodel = MessageViewModel()
     
     // MARK:- TODO:- Send Messgae Function.
     func sendMessage(chatid: String,text: String?, photo: UIImage? , video: Video?, audio: String?, audioDuration: Float = 0.0, memberIds: [String],location: String?){
@@ -32,8 +34,7 @@ class Outgoing {
         
         // 2.check message type
         if let text = text {
-            message.message = text
-            message.type = textType
+            SendText(message: message , Text: text, memberIds: memberIds)
         }
         
         if photo != nil {
@@ -53,6 +54,22 @@ class Outgoing {
         }
         
         
+        // 5. Send Push notification
+        
+        // 6. Update Chat Room
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Method For Sending Text to Firebase & Realm database.
+    private func SendText (message: MessageModel ,Text: String , memberIds: [String]) {
+        
+        message.message = Text
+        message.type = textType
+        
+        
         // 3. save message locally
         RealmswiftLayer.Save(message)
         
@@ -62,11 +79,6 @@ class Outgoing {
             FirebaseLayer.WriteMessageToFirebase(message: message, MemberId: memberid)
         }
         
-        // 5. Send Push notification
-        
-        // 6. Update Chat Room
-        
     }
     // ------------------------------------------------
-    
 }

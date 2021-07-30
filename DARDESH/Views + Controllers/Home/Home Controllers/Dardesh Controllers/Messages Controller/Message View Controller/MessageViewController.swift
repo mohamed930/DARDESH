@@ -16,6 +16,7 @@ import RxCocoa
 class MessageViewController: MessagesViewController {
     
     // MARK:- TODO:- intialise new varibles here
+    var ty = ""  // remove it after finishing
     var chatid = ""
     var recipientid = ""
     var recipientName = ""
@@ -35,7 +36,12 @@ class MessageViewController: MessagesViewController {
         self.chatid = chatid
         self.recipientid = recipientid
         self.recipientName = recipientName
-        self.currentUserSender = MKSender(senderId: currentUser, displayName: messageviewmodel.GetCurrentUserData().UserName)
+        
+        self.currentUserSender = MKSender(senderId: messageviewmodel.GetCurrentUserData().uid , displayName: messageviewmodel.GetCurrentUserData().UserName)
+        
+        self.messageviewmodel.ChatIdBahaviour.accept(chatid)
+        self.messageviewmodel.recipientidBahaviour.accept(recipientid)
+        self.messageviewmodel.recipientNameBahaviour.accept(recipientName)
     }
     
     required init?(coder: NSCoder) {
@@ -118,7 +124,7 @@ class MessageViewController: MessagesViewController {
             guard let self = self else { return }
             
             print("Attacehd Document Tapped")
-            self.chatid = ""
+            self.ty = ""
             
         }).disposed(by: disposebag)
     }
@@ -168,8 +174,12 @@ class MessageViewController: MessagesViewController {
             
             guard let self = self else { return }
             
-            print("Sending Message \(self.messageviewmodel.inputTextFieldBahaviour.value)")
+            // Send A Message
+            self.messageviewmodel.sendMessageTextOperation()
             
+            print("Realm Directory: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+            
+            // Clear TextField and Dismiss KeyPad.
             self.messageInputBar.inputTextView.text = ""
             self.messageInputBar.inputTextView.resignFirstResponder()
             
