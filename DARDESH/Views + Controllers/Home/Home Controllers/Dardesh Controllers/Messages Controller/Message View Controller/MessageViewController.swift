@@ -58,6 +58,9 @@ class MessageViewController: MessagesViewController {
         
         SubscribeToAttachButtonAction()
         SubscribeToSendButtonAction()
+        
+        SubscribeToReponse()
+        GetMessages()
     }
     
     
@@ -65,6 +68,8 @@ class MessageViewController: MessagesViewController {
     func ConfigureMessageCollection() {
         
         messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
@@ -186,4 +191,28 @@ class MessageViewController: MessagesViewController {
         }).disposed(by: disposebag)
         
     }
+    
+    
+    // MARK:- TODO:- This Method For Response To Getten Messages.
+    func SubscribeToReponse() {
+        messageviewmodel.responseBehaviour.subscribe(onNext: { [weak self] response in
+            
+            guard let self = self else { return }
+            
+            if response {
+                self.messagesCollectionView.reloadData()
+                self.messagesCollectionView.scrollToLastItem(animated: true)
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Method For Getting Messages.
+    func GetMessages() {
+        messageviewmodel.loadMessageOperation(messageViewContrller: self)
+    }
+    // ------------------------------------------------
 }
