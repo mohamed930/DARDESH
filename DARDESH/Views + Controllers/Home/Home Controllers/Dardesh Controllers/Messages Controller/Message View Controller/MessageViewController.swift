@@ -63,6 +63,19 @@ class MessageViewController: MessagesViewController {
         GetMessages()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.largeTitleDisplayMode = .never
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.navigationBar.sizeToFit()
+        
+        self.navigationItem.title = recipientName
+        self.navigationController?.navigationBar.backItem?.title = "Back".localized
+        
+    }
+    
     
     // MARK:- TODO:- This Method For Configure the Message Collection View
     func ConfigureMessageCollection() {
@@ -71,6 +84,8 @@ class MessageViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
+        self.messagesCollectionView.contentInset = UIEdgeInsets(top: 105, left: 0, bottom: 0, right: 10)
+        
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
         messagesCollectionView.refreshControl = refreshController
@@ -78,7 +93,7 @@ class MessageViewController: MessagesViewController {
     // ------------------------------------------------
     
     
-    // MARK:- TODO:- This Methof For Configgure the input bar with two button and relatr textfield with rxswift varible.
+    // MARK:- TODO:- This Methof For Configgure the input bar with two button and relate textfield with rxswift varible.
     func ConfigureInputBar() {
         
         // Configure The Attach Button
@@ -213,6 +228,7 @@ class MessageViewController: MessagesViewController {
     // MARK:- TODO:- This Method For Getting Messages.
     func GetMessages() {
         messageviewmodel.loadMessageOperation(messageViewContrller: self)
+        messageviewmodel.ReadNewMessagesOpertation()
     }
     // ------------------------------------------------
 }

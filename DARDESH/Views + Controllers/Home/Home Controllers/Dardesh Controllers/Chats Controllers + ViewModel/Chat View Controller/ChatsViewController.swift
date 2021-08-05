@@ -147,7 +147,7 @@ class ChatsViewController: UITableViewController {
     // MARK:- TODO:- This Method For Selection Cell.
     func SubscribeToTappedCell() {
         
-        Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(ChatModel.self))
+        Observable.zip(tableView.rx.itemSelected.throttle(RxTimeInterval.milliseconds(2000), scheduler: MainScheduler.instance), tableView.rx.modelSelected(ChatModel.self))
             .bind { [weak self] selectedIndex, branch in
 
                 guard let self = self else { return }

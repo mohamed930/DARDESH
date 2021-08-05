@@ -15,6 +15,8 @@ import RappleProgressHUD
 
 class FirebaseLayer {
     
+    static var newmessagesListner: ListenerRegistration!
+    
     public static func refernceCollection (_ collectionName:String) -> CollectionReference {
         return Firestore.firestore().collection(collectionName)
     }
@@ -92,6 +94,37 @@ class FirebaseLayer {
                 complention(quary!,nil)
             }
         }
+    }
+    
+    // MARK:- TODO:- This Method For Reading Old Messages From Firebase.
+    public static func ReadOldMessages (collectionId: String, documntId: String, complention: @escaping (QuerySnapshot? , Error?) -> ()) {
+        
+        Firestore.firestore().collection(messCollection).document(documntId).collection(collectionId).getDocuments { Query, error in
+            
+            if error != nil {
+                complention(nil,error!)
+            }
+            else {
+                complention(Query,nil)
+            }
+        }
+        
+    }
+    
+    // MARK:- TODO:- This Method For Reading New Messages From Firebase.
+    public static func RealtimeReadNewMessages (collectionId: String, documntId: String,LastMessageDate: Date, complention: @escaping (QuerySnapshot? , Error?) -> ()) {
+        
+        newmessagesListner = Firestore.firestore().collection(messCollection).document(documntId).collection(collectionId).whereField("date", isGreaterThan: LastMessageDate).addSnapshotListener({ Query, error in
+            
+            if error != nil {
+                complention(nil,error!)
+            }
+            else {
+                complention(Query,nil)
+            }
+            
+        })
+        
     }
     
     

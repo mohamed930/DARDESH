@@ -74,6 +74,10 @@ class MessageViewModel {
         
         let messages = realm.objects(MessageModel.self).filter(predicate).sorted(byKeyPath: "date", ascending: true)
         
+        if messages.isEmpty {
+            GetOldMessages()
+        }
+        
         allLocalMessageBehaviour.onNext(messages)
         allLocalMessageBehaviour.onCompleted()
         
@@ -101,6 +105,92 @@ class MessageViewModel {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method Reading New messages from firebase and add it on Realm Database.
+    func ReadNewMessagesOpertation() {
+        
+        let userid = GetCurrentUserData().uid
+        
+        FirebaseLayer.RealtimeReadNewMessages(collectionId: ChatIdBahaviour.value, documntId: userid, LastMessageDate: LastMessageDate()) { query, error in
+            
+            if error != nil {
+                print("Error in Getting Messages")
+            }
+            else {
+                
+                guard let query = query else {
+                    print("No Messages Found in database")
+                    return
+                }
+                
+                for i in query.documentChanges {
+                    
+                    if i.type == .added {
+                        
+                        let reasult = Result {
+                            try? i.document.data(as: MessageModel.self)
+                        }
+                        
+                        switch reasult {
+                        
+                        case .success(let mess):
+                            
+                            if let mess = mess {
+                                if mess.Senderid != userid {
+                                    RealmswiftLayer.Save(mess)
+                                }
+                            }
+                            
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                        
+                    }
+                    
+                }
+            }
+            
+        }
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Medthod For Getten Message from Firebase.
+    private func GetOldMessages() {
+        
+        let userId = GetCurrentUserData().uid
+        
+        FirebaseLayer.ReadOldMessages(collectionId: ChatIdBahaviour.value , documntId: userId) { query, error in
+            
+            if error != nil {
+                print("Error in Getting Messages")
+            }
+            else {
+                
+                guard let query = query?.documents else {
+                    print("No Messages Found in database")
+                    return
+                }
+                
+                var oldmessages = query.compactMap { (querysanpshot) -> MessageModel? in
+                    return try? querysanpshot.data(as: MessageModel.self)
+                }
+                
+                oldmessages.sort(by: {$0.date < $1.date})
+                
+                for message in oldmessages {
+                    RealmswiftLayer.Save(message)
+                }
+                
+            }
+            
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
     
     // MARK:- TODO:- This Method For Insert All To Mkmessages Behaviour.
     private func insertAllMessages(messageViewContrller: MessageViewController) {
@@ -124,6 +214,22 @@ class MessageViewModel {
             self.MessagesBahaviour.accept(mkmessages)
             
         }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method Help To Get Last Current Date From Realm Database.
+    private func LastMessageDate() -> Date {
+        
+        var lastmessage: Date?
+        
+        allLocalMessageBehaviour.subscribe(onNext: { messages in
+            
+            lastmessage = messages.last?.date ?? Date()
+            
+        }).disposed(by: disposebag)
+        
+        return Calendar.current.date(byAdding: .second, value: 1, to: lastmessage!) ?? lastmessage!
     }
     // ------------------------------------------------
     
