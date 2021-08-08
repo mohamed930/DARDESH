@@ -24,4 +24,64 @@ extension MessageViewController: MessagesDataSource {
     }
     
     
+    // MARK:- TODO:- This Method For Cell Attributed To Show Date For 3 Messages
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        let showloadMore = false
+        
+        let text = showloadMore == true ? "Pull to load more" : MessageKitDateFormatter.shared.string(from: message.sentDate)
+        
+        let font = showloadMore ? UIFont.systemFont(ofSize: 13) : UIFont.boldSystemFont(ofSize: 10)
+        
+        let color = showloadMore ? UIColor.systemBlue : UIColor.darkGray
+        
+        if indexPath.section % 3 == 0 {
+            
+            return NSAttributedString(string: text, attributes: [.font: font , .foregroundColor: color])
+        }
+        
+        return nil
+        
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Last message Show status and sent date.
+    func cellBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        if isFromCurrentSender(message: message) {
+            let message = self.messageviewmodel.MessagesBahaviour.value
+            let lmessage = message[indexPath.section]
+            
+            let status = indexPath.section == self.messageviewmodel.MessagesBahaviour.value.count - 1 ? lmessage.status + " " + lmessage.readData.ConvertTimeString() : ""
+            
+            let font = UIFont.boldSystemFont(ofSize: 10)
+            let color = UIColor.darkGray
+            
+            return NSAttributedString(string: status, attributes: [.font: font, .foregroundColor: color])
+        }
+        
+        return nil
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For add to all messages withoud last message date.
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        
+        let lmessage = self.messageviewmodel.MessagesBahaviour.value
+        
+        if indexPath.section != lmessage.count - 1 {
+            
+            let font = UIFont.boldSystemFont(ofSize: 10)
+            let color = UIColor.darkGray
+            
+            return NSAttributedString(string: message.sentDate.ConvertTimeString(), attributes: [.font: font,.foregroundColor: color])
+            
+        }
+        
+        return nil
+    }
+    // ------------------------------------------------
+    
 }

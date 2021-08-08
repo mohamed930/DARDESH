@@ -40,4 +40,10 @@ extension Date {
         
     }
     
+    func ConvertTimeString() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "HH:mm"
+        return dateformatter.string(from: self)
+    }
+    
 }
