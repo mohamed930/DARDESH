@@ -10,6 +10,8 @@
 
 "ChooceImageActionFalse"   = "Please, Pick one image for your profile";
 
+"MoreLoad"                 = "Pull to load more";
+
 "ChatSearchPlaceHolder"    = "Enter chat name";
 "UserSearchPlaceHolder"    = "Enter user name";
 "Users"                    = "Users";

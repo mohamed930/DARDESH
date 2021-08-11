@@ -289,6 +289,7 @@ class MessageViewController: MessagesViewController {
             // Clear TextField and Dismiss KeyPad.
             self.messageInputBar.inputTextView.text = ""
             self.messageInputBar.inputTextView.resignFirstResponder()
+            self.messagesCollectionView.scrollToLastItem()
             
         }).disposed(by: disposebag)
         

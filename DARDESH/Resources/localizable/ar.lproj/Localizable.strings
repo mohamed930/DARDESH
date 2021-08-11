@@ -9,6 +9,8 @@
 
 "ChooceImageActionFalse"   = "من فضلك اختر صورة واحده للملف الشخصي";
 
+"MoreLoad"                 = "اسحب لرؤيه المزيد";
+
 "ChatSearchPlaceHolder"    = "ادخل اسم المحادثه";
 "UserSearchPlaceHolder"    = "ادخل اسم المستخدم";
 "Users"                    = "المستخدمين";

@@ -245,6 +245,8 @@ class MessageViewModel {
     }
     // ------------------------------------------------
     
+    
+    
     // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
     func ReomoveAllLestnerOperation() {
         FirebaseLayer.isTypingListner.remove()

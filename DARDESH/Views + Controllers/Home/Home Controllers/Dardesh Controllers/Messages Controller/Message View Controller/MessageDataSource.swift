@@ -30,7 +30,7 @@ extension MessageViewController: MessagesDataSource {
         // To Set Show More is true or not.
         let showloadMore = (indexPath.section == 0 && (messageviewmodel.alllocalMessgaes > messageviewmodel.displayNumber))
         
-        let text = showloadMore == true ? "Pull to load more" : MessageKitDateFormatter.shared.string(from: message.sentDate)
+        let text = showloadMore == true ? "MoreLoad".localized : MessageKitDateFormatter.shared.string(from: message.sentDate)
         
         let font = showloadMore ? UIFont.systemFont(ofSize: 13) : UIFont.boldSystemFont(ofSize: 10)
         
