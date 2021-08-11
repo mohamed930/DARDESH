@@ -15,6 +15,10 @@ extension MessageViewController: MessagesLayoutDelegate {
         
         if indexPath.section % 3 == 0{
             
+            if indexPath.section == 0 && messageviewmodel.alllocalMessgaes > messageviewmodel.displayNumber {
+                return 40.0
+            }
+            
         }
         
         return 15.0

@@ -22,6 +22,8 @@ class MessageViewModel {
     
     var responseBehaviour = BehaviorRelay<Bool>(value: false)
     
+    var isTypingBehaviour = BehaviorRelay<Bool>(value: false)
+    
     var MessagesBahaviour = BehaviorRelay<[MKMessage]>(value: [])
     
     private var allLocalMessageBehaviour = ReplaySubject<Results<MessageModel>>.createUnbounded()
@@ -32,6 +34,15 @@ class MessageViewModel {
     let realm = try! Realm()
     var notificationToken: NotificationToken?
     let disposebag = DisposeBag()
+    
+    var max = 0
+    var mini = 0
+    var displayNumber = 0
+    var alllocalMessgaes = 0
+    
+    var typingCount = 0
+    
+    let numberOfShowMessgaes = 12
     // ------------------------------------------------
     
     // MARK:- TODO:- Add Condtions here to rx swift.
@@ -86,14 +97,15 @@ class MessageViewModel {
             
             guard let self = self else { return }
             
+           
             switch change {
                 
             case .initial:
-                self.insertAllMessages(messageViewContrller: messageViewContrller)
+                self.insertMessages(messageViewContrller: messageViewContrller)
                 self.responseBehaviour.accept(true)
                 
             case .update:
-                self.insertAllMessages(messageViewContrller: messageViewContrller)
+                self.insertOneMessages(messageViewContrller: messageViewContrller)
                 self.responseBehaviour.accept(true)
                 
             case .error(let error):
@@ -155,6 +167,194 @@ class MessageViewModel {
     
     
     
+    // MARK:- TODO:- This Method For Insert 12 More Messages To Mkmessages Behaviour.
+    func insertMoreMessagesOperation(messageViewContrller: MessageViewController) {
+        
+        allLocalMessageObservable.asObservable().subscribe(onNext: {  [weak self] result in
+            
+            guard let self = self else { return }
+            
+            var mkmessages = self.MessagesBahaviour.value
+            let incomming = Incomming(messageViewController: messageViewContrller)
+            
+            self.max = self.mini - 1
+            self.mini = self.max - self.numberOfShowMessgaes
+            
+            if self.mini < 0 {
+                self.mini = 0
+            }
+            
+            // Add Some Messages from first load.
+            for i in (self.mini ... self.max).reversed() {
+                let mkmessage = incomming.createMCMessage(localMessage: result[i])
+                mkmessages.insert(mkmessage, at: 0)
+                self.displayNumber += 1
+            }
+            
+            self.MessagesBahaviour.accept(mkmessages)
+            self.alllocalMessgaes = result.count
+            
+            
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- CheckIsTyping From Firebase Operation.
+    func startTypingIdecatorOperation() {
+        
+        typingCount += 1
+        isTypingCounter(type: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            self.typingCount -= 1
+            
+            if self.typingCount == 0 {
+                self.isTypingCounter(type: false)
+            }
+            
+        }
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
+    func isTypingLestner() {
+        
+        let currentUserId = GetCurrentUserData().uid
+        
+        FirebaseLayer.RealtimeReadisTyping(ChatRoomId: ChatIdBahaviour.value) { snapshot, error in
+            
+            if error != nil {
+                self.isTypingBehaviour.accept(false)
+                print("Error in reading")
+            }
+            else {
+                
+                for data in snapshot.data()! {
+                    if data.key != currentUserId {
+                        print(data.value as! Bool)
+                        self.isTypingBehaviour.accept(data.value as! Bool)
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
+    func ReomoveAllLestnerOperation() {
+        FirebaseLayer.isTypingListner.remove()
+        FirebaseLayer.newmessagesListner.remove()
+    }
+    // ------------------------------------------------
+    
+    
+    
+    
+    // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
+    private func isTypingCounter(type: Bool) {
+        
+        let currentUserId = GetCurrentUserData().uid
+        
+        FirebaseLayer.updateDocumnt(collectionName: typingCollection, documntId: ChatIdBahaviour.value, data: [currentUserId: type]) { Result in
+            if Result {
+                print("Changed")
+            }
+            else {
+                print("No Changed")
+            }
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
+    
+    // MARK:- TODO:- This Method For Insert first 12 Messages To Mkmessages Behaviour.
+    private func insertMessages(messageViewContrller: MessageViewController) {
+        
+        allLocalMessageObservable.asObservable().subscribe(onNext: {  [weak self] result in
+            
+            guard let self = self else { return }
+            
+            // This Section for Getting All Messages and show it for user.
+            // ------------------------------------------------------------------
+            /* print("Messages Found: \(result.count)")
+
+            var mkmessages = Array<MKMessage>()
+
+            let incomming = Incomming(messageViewController: messageViewContrller)
+
+            for i in result {
+
+                let mkmessage = incomming.createMCMessage(localMessage: i)
+                mkmessages.append(mkmessage)
+            }
+
+            self.MessagesBahaviour.accept(mkmessages) */
+            
+            
+            var mkmessages = Array<MKMessage>()
+            let incomming = Incomming(messageViewController: messageViewContrller)
+            
+            self.max = result.count - self.displayNumber
+            self.mini = self.max - self.numberOfShowMessgaes
+            
+            if self.mini < 0 {
+                self.mini = 0
+            }
+            
+            // Add 12 Messages from first to load.
+            for i in self.mini ..< self.max {
+                let mkmessage = incomming.createMCMessage(localMessage: result[i])
+                mkmessages.append(mkmessage)
+                self.displayNumber += 1
+            }
+            
+            self.MessagesBahaviour.accept(mkmessages)
+            self.alllocalMessgaes = result.count
+            
+            
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
+    
+    
+    // MARK:- TODO:- This Method For Insert Last Message To Mkmessages Behaviour.
+    private func insertOneMessages(messageViewContrller: MessageViewController) {
+        
+        allLocalMessageObservable.asObservable().subscribe(onNext: {  [weak self] result in
+            
+            guard let self = self else { return }
+            
+            let mostdate = result.reduce(result[0], {$0.date > $1.date ? $0 : $1 })
+            print("New message: \(mostdate.message)")
+            
+            let incomming = Incomming(messageViewController: messageViewContrller)
+            let newestmessage = incomming.createMCMessage(localMessage: mostdate)
+            
+            var messagesAddednew = self.MessagesBahaviour.value
+            messagesAddednew.append(newestmessage)
+            
+            self.MessagesBahaviour.accept(messagesAddednew)
+            self.responseBehaviour.accept(true)
+            self.displayNumber += 1
+            
+            
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
     // MARK:- TODO:- This Medthod For Getten Message from Firebase.
     private func GetOldMessages() {
         
@@ -186,34 +386,6 @@ class MessageViewModel {
             
         }
         
-    }
-    // ------------------------------------------------
-    
-    
-    
-    
-    // MARK:- TODO:- This Method For Insert All To Mkmessages Behaviour.
-    private func insertAllMessages(messageViewContrller: MessageViewController) {
-        
-        allLocalMessageObservable.asObservable().subscribe(onNext: {  [weak self] result in
-            
-            guard let self = self else { return }
-            
-            print("Messages Found: \(result.count)")
-            
-            var mkmessages = Array<MKMessage>()
-            
-            let incomming = Incomming(messageViewController: messageViewContrller)
-            
-            for i in result {
-                
-                let mkmessage = incomming.createMCMessage(localMessage: i)
-                mkmessages.append(mkmessage)
-            }
-            
-            self.MessagesBahaviour.accept(mkmessages)
-            
-        }).disposed(by: disposebag)
     }
     // ------------------------------------------------
     

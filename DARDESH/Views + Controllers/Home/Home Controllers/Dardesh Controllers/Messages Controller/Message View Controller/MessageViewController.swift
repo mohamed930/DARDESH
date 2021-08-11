@@ -16,6 +16,15 @@ import RxCocoa
 class MessageViewController: MessagesViewController {
     
     // MARK:- TODO:- intialise new varibles here
+    var screenedge : UIScreenEdgePanGestureRecognizer!
+    let subtitle: UILabel = {
+        let title = "lang".localized == "eng" ? UILabel(frame: CGRect(x: 5, y: 20, width: 100, height: 25)) : UILabel(frame: CGRect(x: 95, y: 20, width: 100, height: 25))
+        title.textAlignment = "lang".localized == "eng" ? .left : .right
+        title.font = UIFont.systemFont(ofSize: 14,weight: .medium)
+        title.textColor = .darkGray
+        title.adjustsFontSizeToFitWidth = true
+        return title
+    }()
     var ty = ""  // remove it after finishing
     var chatid = ""
     var recipientid = ""
@@ -59,22 +68,98 @@ class MessageViewController: MessagesViewController {
         SubscribeToAttachButtonAction()
         SubscribeToSendButtonAction()
         
+        SubscribeisTyping()
+        CheckisTyping()
+        
         SubscribeToReponse()
         GetMessages()
     }
     
+    
+    // MARK:- TODO:- I used method to call init the naviagation Bar.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        ConfigureNavigationBar()
+        initScreenEdgeGeuster()
+    }
+    // ------------------------------------------------
+    
+    
+    
+    
+    // MARK:- TODO:- This Method For Customize Navigation Bar.
+    func ConfigureNavigationBar() {
+        
         self.navigationItem.largeTitleDisplayMode = .never
         
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationController?.navigationBar.sizeToFit()
+        let leftBarButtonView: UIView =  {
+            return UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        }()
         
-        self.navigationItem.title = recipientName
-        self.navigationController?.navigationBar.backItem?.title = "Back".localized
+        let titleLabel: UILabel = {
+            let title = "lang".localized == "eng" ? UILabel(frame: CGRect(x: 5, y: 0, width: 100, height: 25)) : UILabel(frame: CGRect(x: 95, y: 0, width: 100, height: 25))
+            title.textAlignment = "lang".localized == "eng" ? .left : .right
+            title.font = UIFont.systemFont(ofSize: 16,weight: .medium)
+            title.adjustsFontSizeToFitWidth = true
+            return title
+        }()
+        
+        
+        if "lang".localized == "eng" {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "NextAr"), style: .plain, target: self, action: #selector(self.BackButtonPressed))
+        }
+        else {
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "next-1"), style: .plain, target: self, action: #selector(self.BackButtonPressed))
+            print("None")
+        }
+        
+        titleLabel.text = recipientName
+//        subtitle.text = "typing..."
+        
+        leftBarButtonView.addSubview(titleLabel)
+        leftBarButtonView.addSubview(subtitle)
+        
+        let leftBarButtonItem = UIBarButtonItem(customView: leftBarButtonView)
+        
+        self.navigationItem.leftBarButtonItems?.append(leftBarButtonItem)
+        
+        
         
     }
+    
+    @objc func BackButtonPressed() {
+        
+        // remove Listenr.
+        messageviewmodel.ReomoveAllLestnerOperation()
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- Add ScreenEdgePanGesture To This Page.
+    func initScreenEdgeGeuster() {
+        screenedge = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(Back(_:)))
+        
+        if "lang".localized == "eng" {
+            screenedge.edges = .left
+        }
+        else {
+            screenedge.edges = .right
+        }
+        
+        view.addGestureRecognizer(screenedge)
+    }
+    
+    @objc func Back (_ sender:UIScreenEdgePanGestureRecognizer) {
+        
+        // remove Listenr.
+        messageviewmodel.ReomoveAllLestnerOperation()
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    // ------------------------------------------------
     
     
     // MARK:- TODO:- This Method For Configure the Message Collection View
@@ -84,7 +169,7 @@ class MessageViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
-        self.messagesCollectionView.contentInset = UIEdgeInsets(top: 105, left: 0, bottom: 0, right: 10)
+        self.messagesCollectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 10)
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         maintainPositionOnKeyboardFrameChanged = true
@@ -179,6 +264,8 @@ class MessageViewController: MessagesViewController {
                 self.messageInputBar.setStackViewItems([self.messageInputBar.sendButton], forStack: .right, animated: false)
                 self.messageInputBar.setRightStackViewWidthConstant(to: 40, animated: false)
                 
+                self.messageviewmodel.startTypingIdecatorOperation()
+                
             }
             
         }).disposed(by: disposebag)
@@ -206,6 +293,33 @@ class MessageViewController: MessagesViewController {
         }).disposed(by: disposebag)
         
     }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Method For Checking if you are typing or not.
+    func SubscribeisTyping() {
+        
+        messageviewmodel.isTypingBehaviour.subscribe(onNext: { [weak self] typing in
+            
+            guard let self = self else { return }
+            
+            if typing {
+                self.subtitle.text = "typing..."
+            }
+            else {
+                self.subtitle.text = ""
+            }
+            
+        }).disposed(by: disposebag)
+        
+    }
+    
+    // MARK:- TODO:- This Method For Checking another user is Typing or not.
+    func CheckisTyping () {
+        messageviewmodel.isTypingLestner()
+    }
+    // ------------------------------------------------
     
     
     // MARK:- TODO:- This Method For Response To Getten Messages.

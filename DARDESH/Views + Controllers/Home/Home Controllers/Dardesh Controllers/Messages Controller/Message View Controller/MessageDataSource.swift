@@ -24,10 +24,11 @@ extension MessageViewController: MessagesDataSource {
     }
     
     
-    // MARK:- TODO:- This Method For Cell Attributed To Show Date For 3 Messages
+    // MARK:- TODO:- This Method For Cell Attributed To Show Date For 3 Messages and if it first index show pull to more.
     func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
-        let showloadMore = false
+        // To Set Show More is true or not.
+        let showloadMore = (indexPath.section == 0 && (messageviewmodel.alllocalMessgaes > messageviewmodel.displayNumber))
         
         let text = showloadMore == true ? "Pull to load more" : MessageKitDateFormatter.shared.string(from: message.sentDate)
         
@@ -66,7 +67,7 @@ extension MessageViewController: MessagesDataSource {
     // ------------------------------------------------
     
     
-    // MARK:- TODO:- This Method For add to all messages withoud last message date.
+    // MARK:- TODO:- This Method For add date to all messages withoud last message date.
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         
         let lmessage = self.messageviewmodel.MessagesBahaviour.value

@@ -16,6 +16,7 @@ import RappleProgressHUD
 class FirebaseLayer {
     
     static var newmessagesListner: ListenerRegistration!
+    static var isTypingListner: ListenerRegistration!
     
     public static func refernceCollection (_ collectionName:String) -> CollectionReference {
         return Firestore.firestore().collection(collectionName)
@@ -124,6 +125,29 @@ class FirebaseLayer {
             }
             
         })
+        
+    }
+    
+    // MARK:- TODO:- This Method For Reading Status of Typing From Firebase.
+    public static func RealtimeReadisTyping (ChatRoomId: String, complention: @escaping (DocumentSnapshot , Error?) -> ()) {
+        
+        isTypingListner = Firestore.firestore().collection(typingCollection).document(ChatRoomId).addSnapshotListener({ documntSnapShot, error in
+            
+            guard let snapshot = documntSnapShot else { return }
+            
+            if snapshot.exists {
+                complention(snapshot,error)
+            }
+            else {
+                
+                Firestore.firestore().collection(typingCollection).document(ChatRoomId).setData([userID: false])
+                
+            }
+            
+            
+            
+        })
+            
         
     }
     

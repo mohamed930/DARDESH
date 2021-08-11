@@ -14,6 +14,7 @@ let defaultAvatar = "https://firebasestorage.googleapis.com/v0/b/dardesh-9e38a.a
 let userCollection = "User"
 let chatCollection = "Chat"
 let messCollection = "Message"
+let typingCollection = "Typing"
 
 let currentUser = "UserData"
 let RoomId = "chatRoomId"
