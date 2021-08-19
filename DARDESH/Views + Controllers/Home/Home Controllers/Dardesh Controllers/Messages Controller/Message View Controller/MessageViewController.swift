@@ -129,11 +129,7 @@ class MessageViewController: MessagesViewController {
     }
     
     @objc func BackButtonPressed() {
-        
-        // remove Listenr.
-        messageviewmodel.ReomoveAllLestnerOperation()
-        
-        self.navigationController?.popViewController(animated: true)
+        BackOperation()
     }
     // ------------------------------------------------
     
@@ -153,11 +149,22 @@ class MessageViewController: MessagesViewController {
     }
     
     @objc func Back (_ sender:UIScreenEdgePanGestureRecognizer) {
+        BackOperation()
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Private method For Back Operation.
+    private func BackOperation() {
+        
+        // Update ChatRoom Methods.
+        messageviewmodel.UpdateCounterUsingIdOperatoin()
         
         // remove Listenr.
         messageviewmodel.ReomoveAllLestnerOperation()
         
         self.navigationController?.popViewController(animated: true)
+        
     }
     // ------------------------------------------------
     

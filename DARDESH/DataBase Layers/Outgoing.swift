@@ -57,6 +57,7 @@ class Outgoing {
         // 5. Send Push notification
         
         // 6. Update Chat Room
+        messageviewmodel.UpdateChatRoomsOperation(chatRoomId: chatid, lastMess: message.message)
         
     }
     // ------------------------------------------------

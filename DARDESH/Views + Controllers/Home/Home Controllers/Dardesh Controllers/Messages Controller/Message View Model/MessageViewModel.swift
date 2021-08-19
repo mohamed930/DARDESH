@@ -254,7 +254,65 @@ class MessageViewModel {
     }
     // ------------------------------------------------
     
+
     
+    // MARK:- TODO:- This Method For UpdateCounter in chatRoom with Id.
+    func UpdateCounterUsingIdOperatoin() {
+        
+        let senderId = self.GetCurrentUserData().uid
+        
+        FirebaseLayer.refernceCollection(chatCollection).whereField(RoomId, isEqualTo: ChatIdBahaviour.value).whereField("senderID", isEqualTo: senderId).getDocuments {  [weak self] snapshot, error in
+            
+            guard let self = self else { return }
+            
+            if error != nil {
+                print("Error in your Connection")
+            }
+            else {
+                
+                guard let snapshot = snapshot else {
+                    print("No Chat Room Founded")
+                    return
+                }
+                
+                let chatroom = snapshot.documents.compactMap { (query) -> ChatModel? in
+                    return try! query.data(as: ChatModel.self)
+                }
+                
+                guard var first = chatroom.first else { return }
+                self.UpdateCounterOperatoin(chatroom: &first)
+                
+            }
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Method For Update ChatRooms with new message.
+    func UpdateChatRoomsOperation (chatRoomId: String,lastMess: String) {
+        FirebaseLayer.publicreadWithWhereCondtion(collectionName: chatCollection, key: RoomId, value: chatRoomId) { [weak self] snapshot in
+            
+            guard let self = self else { return }
+            
+            guard let snapshot = snapshot else {
+                print("No Chat Room Founded")
+                return
+            }
+            
+            let chatroom = snapshot.documents.compactMap { (query) -> ChatModel? in
+                return try! query.data(as: ChatModel.self)
+            }
+            
+            for i in chatroom {
+                var chat = i
+                self.UpdateChatRoomOperation(chatroom: &chat, lastMess: lastMess)
+            }
+            
+        }
+    }
+    // ------------------------------------------------
     
     
     // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
@@ -404,6 +462,53 @@ class MessageViewModel {
         }).disposed(by: disposebag)
         
         return Calendar.current.date(byAdding: .second, value: 1, to: lastmessage!) ?? lastmessage!
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For UpdateCounter in chatRoom.
+    private func UpdateCounterOperatoin(chatroom: inout ChatModel) {
+        print("FCounter: \(chatroom.lastMessage)")
+        
+        chatroom.unreadCounter = 0
+        do {
+            try FirebaseLayer.refernceCollection(chatCollection).document(chatroom.id).setData(from: chatroom) {
+                error in
+                
+                if error != nil {
+                    print("Error in update")
+                }
+                else {
+                    print("Updated Successfully")
+                }
+                
+            }
+            
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- Update ChatRoom with new message
+    private func UpdateChatRoomOperation (chatroom: inout ChatModel, lastMess: String) {
+        
+        let currentId = self.GetCurrentUserData().uid
+        
+        if chatroom.senderID != currentId {
+            chatroom.unreadCounter += 1
+        }
+        
+        chatroom.lastMessage = lastMess
+        chatroom.date = Date()
+        
+        do {
+            try FirebaseLayer.refernceCollection(chatCollection).document(chatroom.id).setData(from: chatroom)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     // ------------------------------------------------
     
