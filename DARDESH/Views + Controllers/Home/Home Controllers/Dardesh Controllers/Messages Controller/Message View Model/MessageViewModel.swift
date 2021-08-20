@@ -86,11 +86,50 @@ class MessageViewModel {
         let messages = realm.objects(MessageModel.self).filter(predicate).sorted(byKeyPath: "date", ascending: true)
         
         if messages.isEmpty {
-            GetOldMessages()
+            GetOldMessages(completion: { [weak self] result in
+                
+                guard let self = self else { return }
+                
+                print("FRead: \(result)")
+                
+                if result {
+                    
+                    // Get Messages from Realm database.
+                    let predicate = NSPredicate(format: "chatRoomId = %@", self.ChatIdBahaviour.value)
+                    
+                    let messages = self.realm.objects(MessageModel.self).filter(predicate).sorted(byKeyPath: "date", ascending: true)
+                    
+                    self.allLocalMessageBehaviour.onNext(messages)
+                    self.allLocalMessageBehaviour.onCompleted()
+                    
+                    // Add Listener to Realm swift and load messages from it to mkmessages.
+                    self.notificationToken = messages.observe({ [weak self] (change: RealmCollectionChange) in
+                        
+                        guard let self = self else { return }
+                        
+                       
+                        switch change {
+                            
+                        case .initial:
+                            self.insertMessages(messageViewContrller: messageViewContrller)
+                            self.responseBehaviour.accept(true)
+                            
+                        case .update:
+                            self.insertOneMessages(messageViewContrller: messageViewContrller)
+                            self.responseBehaviour.accept(true)
+                            
+                        case .error(let error):
+                            print("Error on new insertion \(error.localizedDescription)")
+                        }
+                    })
+                    
+                }
+                else {
+                    print("No Messages found here.")
+                }
+            })
         }
-        
-        if messages.count != 0 {
-            
+        else {
             allLocalMessageBehaviour.onNext(messages)
             allLocalMessageBehaviour.onCompleted()
             
@@ -114,9 +153,7 @@ class MessageViewModel {
                     print("Error on new insertion \(error.localizedDescription)")
                 }
             })
-            
         }
-        
     }
     // ------------------------------------------------
     
@@ -469,7 +506,7 @@ class MessageViewModel {
     
     
     // MARK:- TODO:- This Medthod For Getten Message from Firebase.
-    private func GetOldMessages() {
+    private func GetOldMessages(completion: @escaping (Bool) -> Void) {
         
         let userId = GetCurrentUserData().uid
         
@@ -477,22 +514,31 @@ class MessageViewModel {
             
             if error != nil {
                 print("Error in Getting Messages")
+                completion(false)
             }
             else {
                 
                 guard let query = query?.documents else {
                     print("No Messages Found in database")
+                    completion(false)
                     return
                 }
                 
-                var oldmessages = query.compactMap { (querysanpshot) -> MessageModel? in
-                    return try? querysanpshot.data(as: MessageModel.self)
+                if query.isEmpty {
+                    completion(false)
                 }
-                
-                oldmessages.sort(by: {$0.date < $1.date})
-                
-                for message in oldmessages {
-                    RealmswiftLayer.Save(message)
+                else {
+                    var oldmessages = query.compactMap { (querysanpshot) -> MessageModel? in
+                        return try? querysanpshot.data(as: MessageModel.self)
+                    }
+                    
+                    oldmessages.sort(by: {$0.date < $1.date})
+                    
+                    for message in oldmessages {
+                        RealmswiftLayer.Save(message)
+                    }
+                    
+                    completion(true)
                 }
                 
             }

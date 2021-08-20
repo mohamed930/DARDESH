@@ -291,7 +291,7 @@ class MessageViewController: MessagesViewController {
             
             // For Reading New messages for empty arr.
             if self.messageviewmodel.MessagesBahaviour.value.count == 0 {
-                self.GetMessages()
+                self.messageviewmodel.loadMessageOperation(messageViewContrller: self)
             }
             
 //            print("Realm Directory: \(Realm.Configuration.defaultConfiguration.fileURL!)")
