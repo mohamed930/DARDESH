@@ -289,6 +289,11 @@ class MessageViewController: MessagesViewController {
             // Send A Message
             self.messageviewmodel.sendMessageTextOperation()
             
+            // For Reading New messages for empty arr.
+            if self.messageviewmodel.MessagesBahaviour.value.count == 0 {
+                self.GetMessages()
+            }
+            
 //            print("Realm Directory: \(Realm.Configuration.defaultConfiguration.fileURL!)")
             
             // Clear TextField and Dismiss KeyPad.

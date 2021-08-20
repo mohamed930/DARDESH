@@ -89,29 +89,33 @@ class MessageViewModel {
             GetOldMessages()
         }
         
-        allLocalMessageBehaviour.onNext(messages)
-        allLocalMessageBehaviour.onCompleted()
-        
-        // Add Listener to Realm swift and load messages from it to mkmessages.
-        notificationToken = messages.observe({ [weak self] (change: RealmCollectionChange) in
+        if messages.count != 0 {
             
-            guard let self = self else { return }
+            allLocalMessageBehaviour.onNext(messages)
+            allLocalMessageBehaviour.onCompleted()
             
-           
-            switch change {
+            // Add Listener to Realm swift and load messages from it to mkmessages.
+            notificationToken = messages.observe({ [weak self] (change: RealmCollectionChange) in
                 
-            case .initial:
-                self.insertMessages(messageViewContrller: messageViewContrller)
-                self.responseBehaviour.accept(true)
+                guard let self = self else { return }
                 
-            case .update:
-                self.insertOneMessages(messageViewContrller: messageViewContrller)
-                self.responseBehaviour.accept(true)
-                
-            case .error(let error):
-                print("Error on new insertion \(error.localizedDescription)")
-            }
-        })
+               
+                switch change {
+                    
+                case .initial:
+                    self.insertMessages(messageViewContrller: messageViewContrller)
+                    self.responseBehaviour.accept(true)
+                    
+                case .update:
+                    self.insertOneMessages(messageViewContrller: messageViewContrller)
+                    self.responseBehaviour.accept(true)
+                    
+                case .error(let error):
+                    print("Error on new insertion \(error.localizedDescription)")
+                }
+            })
+            
+        }
         
     }
     // ------------------------------------------------
@@ -250,6 +254,7 @@ class MessageViewModel {
     func ReomoveAllLestnerOperation() {
         FirebaseLayer.isTypingListner.remove()
         FirebaseLayer.newmessagesListner.remove()
+//        FirebaseLayer.isReadedListner.remove()
     }
     // ------------------------------------------------
     
@@ -324,6 +329,59 @@ class MessageViewModel {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Calling To Change The Message Status.
+    func UpdateMessStatusOperation(mess: MessageModel) {
+        
+        if mess.Senderid != userID {
+            self.UpdateMessageStatus(message: mess, userId: recipientidBahaviour.value)
+        }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- Listen for Read Status Update.
+    func ListenToReadMessOperation() {
+        
+        FirebaseLayer.isReadedListner(documntId: "", collectionId: "") { snapshot, error in
+            
+            if error != nil {
+                print("Error \(error!.localizedDescription)")
+            }
+            else {
+                
+                guard let snapshot = snapshot else {
+                    print("No Documnts found here")
+                    return
+                }
+                
+                for change in snapshot.documentChanges {
+                    if change.type == .modified {
+                        
+                        let result = Result {
+                            try? change.document.data(as: MessageModel.self)
+                        }
+                        
+                        switch result {
+                        case .success(let messageObject):
+                            
+                            if let mess = messageObject {
+                                
+                            }
+                            
+                        case .failure(let error):
+                            print("Error \(error.localizedDescription)")
+                        }
+                        
+                    }
+                }
+                
+            }
+            
+        }
+        
+    }
+    // ------------------------------------------------
     
     
     // MARK:- TODO:- This Method For Insert first 12 Messages To Mkmessages Behaviour.
@@ -349,6 +407,9 @@ class MessageViewModel {
 
             self.MessagesBahaviour.accept(mkmessages) */
             
+            let mostdate = result.reduce(result[0], {$0.date > $1.date ? $0 : $1 })
+            
+            self.UpdateMessStatusOperation(mess: mostdate)
             
             var mkmessages = Array<MKMessage>()
             let incomming = Incomming(messageViewController: messageViewContrller)
@@ -387,6 +448,8 @@ class MessageViewModel {
             guard let self = self else { return }
             
             let mostdate = result.reduce(result[0], {$0.date > $1.date ? $0 : $1 })
+            
+            self.UpdateMessStatusOperation(mess: mostdate)
             
             let incomming = Incomming(messageViewController: messageViewContrller)
             let newestmessage = incomming.createMCMessage(localMessage: mostdate)
@@ -447,11 +510,22 @@ class MessageViewModel {
         
         allLocalMessageBehaviour.subscribe(onNext: { messages in
             
-            lastmessage = messages.last?.date ?? Date()
+            if let mess = messages.last?.date {
+                lastmessage = mess
+            }
+            else {
+                lastmessage = Date()
+            }
             
         }).disposed(by: disposebag)
         
-        return Calendar.current.date(byAdding: .second, value: 1, to: lastmessage!) ?? lastmessage!
+        if lastmessage == nil {
+            return Date()
+        }
+        else {
+            return Calendar.current.date(byAdding: .second, value: 1, to: lastmessage!) ?? lastmessage!
+        }
+        
     }
     // ------------------------------------------------
     
@@ -495,6 +569,15 @@ class MessageViewModel {
         } catch {
             print(error.localizedDescription)
         }
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Updating Message Status (Read-Sent).
+    private func UpdateMessageStatus(message: MessageModel, userId: String) {
+        let values = ["status": readstatus, "readDate": Date()] as [String : Any]
+        
+        FirebaseLayer.refernceCollection(messCollection).document(userId).collection(message.chatRoomId).document(message.id).updateData(values)
     }
     // ------------------------------------------------
     

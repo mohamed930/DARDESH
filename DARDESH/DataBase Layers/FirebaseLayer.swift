@@ -17,6 +17,7 @@ class FirebaseLayer {
     
     static var newmessagesListner: ListenerRegistration!
     static var isTypingListner: ListenerRegistration!
+    static var isReadedListner: ListenerRegistration!
     
     public static func refernceCollection (_ collectionName:String) -> CollectionReference {
         return Firestore.firestore().collection(collectionName)
@@ -141,12 +142,28 @@ class FirebaseLayer {
                 
             }
             
-            
-            
         })
             
         
     }
+    
+    // MARK:- TODO:- This Method For Reading Message Status Listner From Firebase.
+    public static func isReadedListner(documntId: String, collectionId: String,complention: @escaping (QuerySnapshot? , Error?) -> ()) {
+        
+        isReadedListner = Firestore.firestore().collection(messCollection).document(documntId).collection(collectionId).addSnapshotListener({ querysanpshot, error in
+            
+            if error != nil {
+                complention(nil,error)
+            }
+            else {
+                complention(querysanpshot,nil)
+            }
+            
+        })
+        
+    }
+    
+    
     
     
     // MARK:- TODO:- This Method For Make a login opertation.
