@@ -234,7 +234,6 @@ class MessageViewModel {
                 
                 for data in snapshot.data()! {
                     if data.key != currentUserId {
-                        print(data.value as! Bool)
                         self.isTypingBehaviour.accept(data.value as! Bool)
                     }
                 }
@@ -320,15 +319,7 @@ class MessageViewModel {
         
         let currentUserId = GetCurrentUserData().uid
         
-        FirebaseLayer.updateDocumnt(collectionName: typingCollection, documntId: ChatIdBahaviour.value, data: [currentUserId: type]) { Result in
-            if Result {
-                print("Changed")
-            }
-            else {
-                print("No Changed")
-            }
-        }
-        
+        FirebaseLayer.updateDocumnt(collectionName: typingCollection, documntId: ChatIdBahaviour.value, data: [currentUserId: type], completion: { _ in })
     }
     // ------------------------------------------------
     
@@ -396,7 +387,6 @@ class MessageViewModel {
             guard let self = self else { return }
             
             let mostdate = result.reduce(result[0], {$0.date > $1.date ? $0 : $1 })
-            print("New message: \(mostdate.message)")
             
             let incomming = Incomming(messageViewController: messageViewContrller)
             let newestmessage = incomming.createMCMessage(localMessage: mostdate)
@@ -468,9 +458,9 @@ class MessageViewModel {
     
     // MARK:- TODO:- This Method For UpdateCounter in chatRoom.
     private func UpdateCounterOperatoin(chatroom: inout ChatModel) {
-        print("FCounter: \(chatroom.lastMessage)")
         
         chatroom.unreadCounter = 0
+        
         do {
             try FirebaseLayer.refernceCollection(chatCollection).document(chatroom.id).setData(from: chatroom) {
                 error in
@@ -478,10 +468,6 @@ class MessageViewModel {
                 if error != nil {
                     print("Error in update")
                 }
-                else {
-                    print("Updated Successfully")
-                }
-                
             }
             
         } catch {

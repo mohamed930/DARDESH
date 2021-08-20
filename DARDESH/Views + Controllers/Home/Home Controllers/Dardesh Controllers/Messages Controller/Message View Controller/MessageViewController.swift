@@ -111,11 +111,9 @@ class MessageViewController: MessagesViewController {
         }
         else {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "next-1"), style: .plain, target: self, action: #selector(self.BackButtonPressed))
-            print("None")
         }
         
         titleLabel.text = recipientName
-//        subtitle.text = "typing..."
         
         leftBarButtonView.addSubview(titleLabel)
         leftBarButtonView.addSubview(subtitle)
@@ -291,7 +289,7 @@ class MessageViewController: MessagesViewController {
             // Send A Message
             self.messageviewmodel.sendMessageTextOperation()
             
-            print("Realm Directory: \(Realm.Configuration.defaultConfiguration.fileURL!)")
+//            print("Realm Directory: \(Realm.Configuration.defaultConfiguration.fileURL!)")
             
             // Clear TextField and Dismiss KeyPad.
             self.messageInputBar.inputTextView.text = ""

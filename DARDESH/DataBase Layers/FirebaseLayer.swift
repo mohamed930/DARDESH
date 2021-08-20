@@ -32,9 +32,6 @@ class FirebaseLayer {
                 if error != nil {
                     print("Error in writing")
                 }
-                else {
-                    print("Success")
-                }
                 
             }
         } catch {
