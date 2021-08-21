@@ -90,69 +90,19 @@ class MessageViewModel {
                 
                 guard let self = self else { return }
                 
-                print("FRead: \(result)")
-                
                 if result {
                     
                     // Get Messages from Realm database.
-                    let predicate = NSPredicate(format: "chatRoomId = %@", self.ChatIdBahaviour.value)
+                    let mess = self.realm.objects(MessageModel.self).filter(predicate).sorted(byKeyPath: "date", ascending: true)
                     
-                    let messages = self.realm.objects(MessageModel.self).filter(predicate).sorted(byKeyPath: "date", ascending: true)
-                    
-                    self.allLocalMessageBehaviour.onNext(messages)
-                    self.allLocalMessageBehaviour.onCompleted()
-                    
-                    // Add Listener to Realm swift and load messages from it to mkmessages.
-                    self.notificationToken = messages.observe({ [weak self] (change: RealmCollectionChange) in
-                        
-                        guard let self = self else { return }
-                        
-                       
-                        switch change {
-                            
-                        case .initial:
-                            self.insertMessages(messageViewContrller: messageViewContrller)
-                            self.responseBehaviour.accept(true)
-                            
-                        case .update:
-                            self.insertOneMessages(messageViewContrller: messageViewContrller)
-                            self.responseBehaviour.accept(true)
-                            
-                        case .error(let error):
-                            print("Error on new insertion \(error.localizedDescription)")
-                        }
-                    })
+                    self.AddMessagesAndAddListner(mess, messageViewContrller)
                     
                 }
-                else {
-                    print("No Messages found here.")
-                }
+                
             })
         }
         else {
-            allLocalMessageBehaviour.onNext(messages)
-            allLocalMessageBehaviour.onCompleted()
-            
-            // Add Listener to Realm swift and load messages from it to mkmessages.
-            notificationToken = messages.observe({ [weak self] (change: RealmCollectionChange) in
-                
-                guard let self = self else { return }
-                
-               
-                switch change {
-                    
-                case .initial:
-                    self.insertMessages(messageViewContrller: messageViewContrller)
-                    self.responseBehaviour.accept(true)
-                    
-                case .update:
-                    self.insertOneMessages(messageViewContrller: messageViewContrller)
-                    self.responseBehaviour.accept(true)
-                    
-                case .error(let error):
-                    print("Error on new insertion \(error.localizedDescription)")
-                }
-            })
+            AddMessagesAndAddListner(messages, messageViewContrller)
         }
     }
     // ------------------------------------------------
@@ -291,7 +241,7 @@ class MessageViewModel {
     func ReomoveAllLestnerOperation() {
         FirebaseLayer.isTypingListner.remove()
         FirebaseLayer.newmessagesListner.remove()
-//        FirebaseLayer.isReadedListner.remove()
+        FirebaseLayer.isReadedListner.remove()
     }
     // ------------------------------------------------
     
@@ -356,16 +306,6 @@ class MessageViewModel {
     // ------------------------------------------------
     
     
-    // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
-    private func isTypingCounter(type: Bool) {
-        
-        let currentUserId = GetCurrentUserData().uid
-        
-        FirebaseLayer.updateDocumnt(collectionName: typingCollection, documntId: ChatIdBahaviour.value, data: [currentUserId: type], completion: { _ in })
-    }
-    // ------------------------------------------------
-    
-    
     // MARK:- TODO:- This Method For Calling To Change The Message Status.
     func UpdateMessStatusOperation(mess: MessageModel) {
         
@@ -380,7 +320,7 @@ class MessageViewModel {
     // MARK:- TODO:- Listen for Read Status Update.
     func ListenToReadMessOperation() {
         
-        FirebaseLayer.isReadedListner(documntId: "", collectionId: "") { snapshot, error in
+        FirebaseLayer.isReadedListner(documntId: userID, collectionId: ChatIdBahaviour.value) { snapshot, error in
             
             if error != nil {
                 print("Error \(error!.localizedDescription)")
@@ -403,7 +343,7 @@ class MessageViewModel {
                         case .success(let messageObject):
                             
                             if let mess = messageObject {
-                                
+                                self.UpdateMessStatusOperation(mess: mess)
                             }
                             
                         case .failure(let error):
@@ -416,6 +356,36 @@ class MessageViewModel {
             }
             
         }
+        
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This is method For Add Data from Realm Database and Add to Array and add notication listner to it.
+    private func AddMessagesAndAddListner(_ messages: Results<MessageModel>, _ messageViewContrller: MessageViewController) {
+        
+        allLocalMessageBehaviour.onNext(messages)
+        allLocalMessageBehaviour.onCompleted()
+        
+        // Add Listener to Realm swift and load messages from it to mkmessages.
+        notificationToken = messages.observe({ [weak self] (change: RealmCollectionChange) in
+            
+            guard let self = self else { return }
+            
+           
+            switch change {
+                
+            case .initial:
+                self.insertMessages(messageViewContrller: messageViewContrller)
+                
+            case .update:
+                self.insertOneMessages(messageViewContrller: messageViewContrller)
+                
+            case .error(let error):
+                print("Error on new insertion \(error.localizedDescription)")
+            }
+        })
         
     }
     // ------------------------------------------------
@@ -467,6 +437,7 @@ class MessageViewModel {
             
             self.MessagesBahaviour.accept(mkmessages)
             self.alllocalMessgaes = result.count
+            self.responseBehaviour.accept(true)
             
             
             
@@ -576,6 +547,17 @@ class MessageViewModel {
     // ------------------------------------------------
     
     
+    
+    // MARK:- TODO:- This Method For Check Typing Lestner From Firebase.
+    private func isTypingCounter(type: Bool) {
+        
+        let currentUserId = GetCurrentUserData().uid
+        
+        FirebaseLayer.updateDocumnt(collectionName: typingCollection, documntId: ChatIdBahaviour.value, data: [currentUserId: type], completion: { _ in })
+    }
+    // ------------------------------------------------
+    
+    
     // MARK:- TODO:- This Method For UpdateCounter in chatRoom.
     private func UpdateCounterOperatoin(chatroom: inout ChatModel) {
         
@@ -624,6 +606,33 @@ class MessageViewModel {
         let values = ["status": readstatus, "readDate": Date()] as [String : Any]
         
         FirebaseLayer.refernceCollection(messCollection).document(userId).collection(message.chatRoomId).document(message.id).updateData(values)
+    }
+    // ------------------------------------------------
+    
+    
+    
+    // MARK:- TODO:- This Method For Update Status in MessageCollectionView.
+    private func UpdateReadStatusInMkMessages(mess: MessageModel) {
+        
+        let messages = MessagesBahaviour.value
+        
+        for i in 0..<messages.count {
+            
+            let tempmess = messages[i]
+            
+            if mess.id == tempmess.messageId {
+                messages[i].status = mess.status
+                messages[i].readData = mess.readDate
+                
+                RealmswiftLayer.Save(mess)
+                
+                if messages[i].status == readstatus {
+                    self.responseBehaviour.accept(true)
+                }
+            }
+            
+        }
+        
     }
     // ------------------------------------------------
     

@@ -29,6 +29,7 @@ class MessageViewController: MessagesViewController {
     var chatid = ""
     var recipientid = ""
     var recipientName = ""
+    var typing = true
     var refreshController = UIRefreshControl()
     var AttachButton = InputBarButtonItem()
     var MicButton = InputBarButtonItem()
@@ -67,6 +68,8 @@ class MessageViewController: MessagesViewController {
         
         SubscribeToAttachButtonAction()
         SubscribeToSendButtonAction()
+        
+        ListenisReadedStatus()
         
         SubscribeisTyping()
         CheckisTyping()
@@ -261,6 +264,7 @@ class MessageViewController: MessagesViewController {
                 // Add Mic Button To messageInputBar.
                 self.messageInputBar.setStackViewItems([self.MicButton], forStack: .right, animated: false)
                 self.messageInputBar.setRightStackViewWidthConstant(to: 30, animated: false)
+                self.typing = true
                 
             }
             else {
@@ -270,6 +274,13 @@ class MessageViewController: MessagesViewController {
                 self.messageInputBar.setRightStackViewWidthConstant(to: 40, animated: false)
                 
                 self.messageviewmodel.startTypingIdecatorOperation()
+                
+                if self.typing == true {
+                    self.messagesCollectionView.scrollToLastItem(animated: false)
+                    self.messagesCollectionView.scrollToBottom(animated: false)
+                    self.typing = false
+                }
+                
                 
             }
             
@@ -308,6 +319,13 @@ class MessageViewController: MessagesViewController {
     
     
     
+    // MARK:- TODO:- This Method For Listen for Read Status and change it in the tableView.
+    func ListenisReadedStatus() {
+        messageviewmodel.ListenToReadMessOperation()
+    }
+    // ------------------------------------------------
+    
+    
     // MARK:- TODO:- This Method For Checking if you are typing or not.
     func SubscribeisTyping() {
         
@@ -341,7 +359,8 @@ class MessageViewController: MessagesViewController {
             
             if response {
                 self.messagesCollectionView.reloadData()
-                self.messagesCollectionView.scrollToLastItem(animated: true)
+                self.messagesCollectionView.scrollToLastItem(animated: false)
+                self.messagesCollectionView.scrollToBottom(animated: false)
             }
             
         }).disposed(by: disposebag)
