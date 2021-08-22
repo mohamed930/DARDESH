@@ -69,13 +69,15 @@ class MessageViewController: MessagesViewController {
         SubscribeToAttachButtonAction()
         SubscribeToSendButtonAction()
         
-        ListenisReadedStatus()
         
         SubscribeisTyping()
         CheckisTyping()
         
         SubscribeToReponse()
         GetMessages()
+        
+        
+        ListenisReadedStatus()
     }
     
     

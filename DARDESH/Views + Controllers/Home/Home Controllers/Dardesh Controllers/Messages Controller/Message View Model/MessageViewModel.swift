@@ -309,7 +309,9 @@ class MessageViewModel {
     // MARK:- TODO:- This Method For Calling To Change The Message Status.
     func UpdateMessStatusOperation(mess: MessageModel) {
         
-        if mess.Senderid != userID {
+        let currentUserId = self.GetCurrentUserData().uid
+        
+        if mess.Senderid != currentUserId {
             self.UpdateMessageStatus(message: mess, userId: recipientidBahaviour.value)
         }
         
@@ -320,7 +322,9 @@ class MessageViewModel {
     // MARK:- TODO:- Listen for Read Status Update.
     func ListenToReadMessOperation() {
         
-        FirebaseLayer.isReadedListner(documntId: userID, collectionId: ChatIdBahaviour.value) { snapshot, error in
+        let currentUserId = GetCurrentUserData().uid
+        
+        FirebaseLayer.isReadedListner(documntId: currentUserId, collectionId: ChatIdBahaviour.value) { snapshot, error in
             
             if error != nil {
                 print("Error \(error!.localizedDescription)")
@@ -343,7 +347,7 @@ class MessageViewModel {
                         case .success(let messageObject):
                             
                             if let mess = messageObject {
-                                self.UpdateMessStatusOperation(mess: mess)
+                                self.UpdateReadStatusInMkMessages(mess: mess)
                             }
                             
                         case .failure(let error):
@@ -414,10 +418,7 @@ class MessageViewModel {
 
             self.MessagesBahaviour.accept(mkmessages) */
             
-            let mostdate = result.reduce(result[0], {$0.date > $1.date ? $0 : $1 })
-            
-            self.UpdateMessStatusOperation(mess: mostdate)
-            
+           
             var mkmessages = Array<MKMessage>()
             let incomming = Incomming(messageViewController: messageViewContrller)
             
@@ -430,8 +431,11 @@ class MessageViewModel {
             
             // Add 12 Messages from first to load.
             for i in self.mini ..< self.max {
+                self.UpdateMessStatusOperation(mess: result[i])
+                
                 let mkmessage = incomming.createMCMessage(localMessage: result[i])
                 mkmessages.append(mkmessage)
+                
                 self.displayNumber += 1
             }
             
@@ -611,24 +615,44 @@ class MessageViewModel {
     
     
     
-    // MARK:- TODO:- This Method For Update Status in MessageCollectionView.
+    // MARK:- TODO:- This Method For Update Status in MessageCollectionView and show it to the user.
     private func UpdateReadStatusInMkMessages(mess: MessageModel) {
         
-        let messages = MessagesBahaviour.value
+        var filteredArray = MessagesBahaviour.value
         
-        for i in 0..<messages.count {
+        // Get index For the message i wanna to change status for it.
+        let index = filteredArray.firstIndex { $0.messageId == mess.id }!
+        
+        // check the status != the status is comming from firebase like (sent != read)
+        if filteredArray[index].status != mess.status {
             
-            let tempmess = messages[i]
+            // in this line for Isolates the message i wanna to change status for it.
+            let messPicked = filteredArray[index]
             
-            if mess.id == tempmess.messageId {
-                messages[i].status = mess.status
-                messages[i].readData = mess.readDate
-                
+            // remove it from the big Array.
+            filteredArray.remove(at: index)
+            
+//            print("FMess: \(mess.message), \(mess.status), \(mess.readDate)")
+            
+            // Change status and the date data with firebase data comming.
+            messPicked.status = mess.status
+            messPicked.readData = mess.readDate
+            
+            
+            // check if the status be read and make sure for it.
+            if messPicked.status == readstatus {
+                // save changes into local realm database.
                 RealmswiftLayer.Save(mess)
                 
-                if messages[i].status == readstatus {
-                    self.responseBehaviour.accept(true)
-                }
+                // add the message into the big array.
+                filteredArray.append(messPicked)
+                MessagesBahaviour.accept(filteredArray)
+                
+                // For redunduncy i will remove last message in messagecollectionview.
+                var filteredArray = MessagesBahaviour.value
+                filteredArray.remove(at: filteredArray.count - 1)
+                MessagesBahaviour.accept(filteredArray)
+
             }
             
         }

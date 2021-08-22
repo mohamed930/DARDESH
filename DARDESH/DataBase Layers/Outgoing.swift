@@ -27,7 +27,7 @@ class Outgoing {
         message.chatRoomId = chatid
         message.Senderid = senderUser.uid
         message.SenderName = senderUser.UserName
-        message.Senderinitials = String(senderUser.UserName.first!)
+        message.Senderinitials = String(senderUser.UserName.first!).capitalized
         message.date = Date()
         message.status = sentstatus
         
