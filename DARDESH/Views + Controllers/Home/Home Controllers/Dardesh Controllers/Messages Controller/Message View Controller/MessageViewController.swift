@@ -77,7 +77,8 @@ class MessageViewController: MessagesViewController {
         GetMessages()
         
         
-        ListenisReadedStatus()
+        subscribeToResponseReaded()
+        
     }
     
     
@@ -302,6 +303,9 @@ class MessageViewController: MessagesViewController {
             // Send A Message
             self.messageviewmodel.sendMessageTextOperation()
             
+            // Send to realmswift listner that an update is a new message to handle it.
+            self.messageviewmodel.responseReadedBehaviour.accept(false)
+            
             // For Reading New messages for empty arr.
             if self.messageviewmodel.MessagesBahaviour.value.count == 0 {
                 self.messageviewmodel.loadMessageOperation(messageViewContrller: self)
@@ -371,10 +375,24 @@ class MessageViewController: MessagesViewController {
     
     
     
+    // MARK:- TODO:- This Method For Listen any changes of read status to reload data.
+    func subscribeToResponseReaded() {
+        messageviewmodel.responseReaded1Behaviour.subscribe(onNext: { response in
+            if response {
+                self.messagesCollectionView.reloadData()
+            }
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+
+    
     // MARK:- TODO:- This Method For Getting Messages.
     func GetMessages() {
         messageviewmodel.loadMessageOperation(messageViewContrller: self)
         messageviewmodel.ReadNewMessagesOpertation()
+        ListenisReadedStatus()
+        
     }
     // ------------------------------------------------
 }

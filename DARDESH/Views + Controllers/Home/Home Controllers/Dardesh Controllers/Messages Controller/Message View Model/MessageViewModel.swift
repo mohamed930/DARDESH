@@ -21,6 +21,8 @@ class MessageViewModel {
     var recipientNameBahaviour = BehaviorRelay<String>(value: "")
     
     var responseBehaviour = BehaviorRelay<Bool>(value: false)
+    var responseReadedBehaviour = BehaviorRelay<Bool>(value: false)
+    var responseReaded1Behaviour = BehaviorRelay<Bool>(value: false)
     
     var isTypingBehaviour = BehaviorRelay<Bool>(value: false)
     
@@ -139,6 +141,9 @@ class MessageViewModel {
                             
                             if let mess = mess {
                                 if mess.Senderid != userid {
+                                    // in this line after getten new message told realm listner the type of update is add new message to handle it on the database.
+                                    self.responseReadedBehaviour.accept(false)
+                                    // Save to RealmSwift.
                                     RealmswiftLayer.Save(mess)
                                 }
                             }
@@ -384,7 +389,11 @@ class MessageViewModel {
                 self.insertMessages(messageViewContrller: messageViewContrller)
                 
             case .update:
-                self.insertOneMessages(messageViewContrller: messageViewContrller)
+                
+                // Before update i wanna to know the type of update if add message or update read status.
+                if self.responseReadedBehaviour.value == false {
+                    self.insertOneMessages(messageViewContrller: messageViewContrller)
+                }
                 
             case .error(let error):
                 print("Error on new insertion \(error.localizedDescription)")
@@ -618,44 +627,37 @@ class MessageViewModel {
     // MARK:- TODO:- This Method For Update Status in MessageCollectionView and show it to the user.
     private func UpdateReadStatusInMkMessages(mess: MessageModel) {
         
-        var filteredArray = MessagesBahaviour.value
+        // Send To Listner there is new update status.
+        responseReadedBehaviour.accept(true)
         
-        // Get index For the message i wanna to change status for it.
-        let index = filteredArray.firstIndex { $0.messageId == mess.id }!
+        // Send To table there is no changes to reload data.
+        responseReaded1Behaviour.accept(false)
         
-        // check the status != the status is comming from firebase like (sent != read)
-        if filteredArray[index].status != mess.status {
+        let arr = MessagesBahaviour.value
+        
+        for i in arr {
             
-            // in this line for Isolates the message i wanna to change status for it.
-            let messPicked = filteredArray[index]
-            
-            // remove it from the big Array.
-            filteredArray.remove(at: index)
-            
-//            print("FMess: \(mess.message), \(mess.status), \(mess.readDate)")
-            
-            // Change status and the date data with firebase data comming.
-            messPicked.status = mess.status
-            messPicked.readData = mess.readDate
-            
-            
-            // check if the status be read and make sure for it.
-            if messPicked.status == readstatus {
-                // save changes into local realm database.
-                RealmswiftLayer.Save(mess)
+            // check the index and get the correct message in array.
+            if i.messageId == mess.id {
                 
-                // add the message into the big array.
-                filteredArray.append(messPicked)
-                MessagesBahaviour.accept(filteredArray)
+                // update status of read and add to array to show for user.
+                i.status = mess.status
+                i.readData = mess.readDate
                 
-                // For redunduncy i will remove last message in messagecollectionview.
-                var filteredArray = MessagesBahaviour.value
-                filteredArray.remove(at: filteredArray.count - 1)
-                MessagesBahaviour.accept(filteredArray)
-
+                // check if status be read status.
+                if i.status == readstatus {
+                    // save to realmswift and break for.
+                    RealmswiftLayer.Save(mess)
+                    break
+                }
             }
             
         }
+        
+        // add the updated arr to mkmessages array.
+        MessagesBahaviour.accept(arr)
+        // send to the array to reload data.
+        responseReaded1Behaviour.accept(true)
         
     }
     // ------------------------------------------------
