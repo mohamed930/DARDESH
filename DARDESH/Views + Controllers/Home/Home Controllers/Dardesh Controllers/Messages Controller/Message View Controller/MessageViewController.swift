@@ -25,7 +25,6 @@ class MessageViewController: MessagesViewController {
         title.adjustsFontSizeToFitWidth = true
         return title
     }()
-    var ty = ""  // remove it after finishing
     var chatid = ""
     var recipientid = ""
     var recipientName = ""
@@ -239,10 +238,75 @@ class MessageViewController: MessagesViewController {
             
             guard let self = self else { return }
             
-            print("Attacehd Document Tapped")
-            self.ty = ""
+            self.messageInputBar.inputTextView.resignFirstResponder()
+            self.ActionSheetConfigure()
             
         }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Actions in ActionSheet.
+    private func ActionSheetConfigure() {
+        
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        // Cancel Action
+        actionSheet.addAction(UIAlertAction(title: "Cancel".localized , style: .cancel, handler: nil))
+        
+        
+        // Camera:
+        // ------------------------------------------------
+        var cameraAction = UIAlertAction(title: "Camera".localized , style: .default, handler: { _ in
+            print("Camera Opended")
+        })
+        
+        
+        cameraAction = self.SetActionImage(action: &cameraAction, image: "Camera")
+        
+        actionSheet.addAction(cameraAction)
+        // ------------------------------------------------
+        
+        
+        // Gallary:
+        // ------------------------------------------------
+        var GallaryAction = UIAlertAction(title: "Library".localized , style: .default, handler: { _ in
+            print("Library Opended")
+        })
+        
+        GallaryAction = self.SetActionImage(action: &GallaryAction, image: "Gallary")
+        
+        actionSheet.addAction(GallaryAction)
+        // ------------------------------------------------
+        
+        
+        // Location:
+        // ------------------------------------------------
+        var ShareLocationAction = UIAlertAction(title: "Share Location".localized , style: .default, handler: { _ in
+            print("Share Location Opended")
+        })
+        
+        ShareLocationAction = self.SetActionImage(action: &ShareLocationAction, image: "ShareLocation")
+        
+        actionSheet.addAction(ShareLocationAction)
+        // ------------------------------------------------
+        
+        
+        self.present(actionSheet, animated: true)
+        
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For init the ActionSheet.
+    private func SetActionImage(action: inout UIAlertAction, image: String) -> UIAlertAction {
+        
+        let image = UIImage(named: image)
+        if let image = image?.imageWithSize(scaledToSize: CGSize(width: 30, height: 30)) {
+            action.setValue(image, forKey: "image")
+        }
+        
+        return action
     }
     // ------------------------------------------------
     

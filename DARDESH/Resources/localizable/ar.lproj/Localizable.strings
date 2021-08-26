@@ -9,6 +9,10 @@
 
 "ChooceImageActionFalse"   = "من فضلك اختر صورة واحده للملف الشخصي";
 
+"Camera"                   = "كاميرا";
+"Library"                  = "الاستدويو";
+"Share Location"           = "شارك مكانك الحالي";
+
 "MoreLoad"                 = "اسحب لرؤيه المزيد";
 
 "ChatSearchPlaceHolder"    = "ادخل اسم المحادثه";

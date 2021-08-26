@@ -10,6 +10,10 @@
 
 "ChooceImageActionFalse"   = "Please, Pick one image for your profile";
 
+"Camera"                   = "Camera";
+"Library"                  = "Library";
+"Share Location"           = "Share Location";
+
 "MoreLoad"                 = "Pull to load more";
 
 "ChatSearchPlaceHolder"    = "Enter chat name";
