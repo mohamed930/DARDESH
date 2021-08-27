@@ -63,6 +63,21 @@ class Outgoing {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Save Images into Firebase and RealmSwift.
+    private func SaveMessages (message: MessageModel , membersIds: [String]) {
+        
+        // 3. save message locally
+        RealmswiftLayer.Save(message)
+        
+        // 4. save message to firestore
+        for memberid in membersIds {
+            
+            FirebaseLayer.WriteMessageToFirebase(message: message, MemberId: memberid)
+        }
+        
+    }
+    // ------------------------------------------------
+    
     
     // MARK:- TODO:- This Method For Sending Text to Firebase & Realm database.
     private func SendText (message: MessageModel ,Text: String , memberIds: [String]) {
@@ -70,14 +85,32 @@ class Outgoing {
         message.message = Text
         message.type = textType
         
+        SaveMessages(message: message, membersIds: memberIds)
         
-        // 3. save message locally
-        RealmswiftLayer.Save(message)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Sending Image to Firebase & Realm database.
+    private func SendImage(message: MessageModel ,Image: UIImage , memberIds: [String]) {
         
-        // 4. save message to firestore
-        for memberid in memberIds {
+        message.message = "Photo Message"
+        message.type = imageType
+        
+        // 3. Save message locally
+        let fileName = Date().StringDate()
+        let fileDirectory = "MediaMessages/Photo" + "\(message.chatRoomId)" + "_ \(fileName)" + ".jpg"
+        
+        FirebaseLayer.uploadMedia(ImageFolder: "MediaMessages", ImageName: fileDirectory, Image: "Photo", PickedImage: Image) { [weak self] url in
             
-            FirebaseLayer.WriteMessageToFirebase(message: message, MemberId: memberid)
+            guard let self = self else { return }
+            
+            guard let url = url else { return }
+            
+            message.imageUrl = url
+            
+            self.SaveMessages(message: message, membersIds: memberIds)
+            
         }
         
     }

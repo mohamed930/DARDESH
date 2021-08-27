@@ -78,6 +78,16 @@ class MessageViewModel {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- Send Messgae Function.
+    func sendMessageImageOperation(PickedImage: UIImage) {
+        
+        let senderId = GetCurrentUserData().uid
+        
+        Outgoing.shared.sendMessage(chatid: ChatIdBahaviour.value, text: nil, photo: PickedImage, video: nil, audio: nil, audioDuration: 0.0, memberIds: [senderId , recipientidBahaviour.value], location: nil)
+    }
+    // ------------------------------------------------
+    
+    
     
     // MARK:- TODO:- LoadMessage From Realm database and put it into messageCollectionView.
     func loadMessageOperation(messageViewContrller: MessageViewController) {

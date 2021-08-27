@@ -258,7 +258,9 @@ class MessageViewController: MessagesViewController {
         // Camera:
         // ------------------------------------------------
         var cameraAction = UIAlertAction(title: "Camera".localized , style: .default, handler: { _ in
-            print("Camera Opended")
+            
+            // Open Camera.
+            self.OpenGalleyWithConfig(VC: self, initTap: .cameraTab, numberOfImages: 1, tapsType: [.cameraTab])
         })
         
         
@@ -271,7 +273,9 @@ class MessageViewController: MessagesViewController {
         // Gallary:
         // ------------------------------------------------
         var GallaryAction = UIAlertAction(title: "Library".localized , style: .default, handler: { _ in
-            print("Library Opended")
+            
+            // Open Gallery.
+            self.OpenGalleyWithConfig(VC: self, initTap: .imageTab, numberOfImages: 4, tapsType: [.imageTab , .videoTab])
         })
         
         GallaryAction = self.SetActionImage(action: &GallaryAction, image: "Gallary")

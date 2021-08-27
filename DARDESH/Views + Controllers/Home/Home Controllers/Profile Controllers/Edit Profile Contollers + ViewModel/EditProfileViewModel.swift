@@ -80,7 +80,7 @@ class EditProfileViewModel {
         
         let imgName = imageFolder + "/ProfileImages/" + userID
         
-        FirebaseLayer.uploadMedia(ImageName: imgName, PickedImage: PickedImageBehaviour.value) { [weak self] urlImg in
+        FirebaseLayer.uploadMedia(ImageFolder: "ProfileImages", ImageName: imgName, Image: "Photo", PickedImage: PickedImageBehaviour.value) { [weak self] urlImg in
             
             guard let self = self else { return }
             
@@ -111,6 +111,7 @@ class EditProfileViewModel {
                 }
                 
             }
+            
         }
         
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import RappleProgressHUD
+import Gallery
 
 let transictionTime = 0.3
 
@@ -76,6 +77,20 @@ extension UIViewController {
         self.view.window!.layer.add(transition, forKey: kCATransition)
 
         dismiss(animated: false)
+    }
+    
+    
+    func OpenGalleyWithConfig (VC: GalleryControllerDelegate, initTap: Config.GalleryTab , numberOfImages: Int , tapsType: [Config.GalleryTab]) {
+        
+        let gallery = GalleryController()
+        Config.tabsToShow = tapsType
+        Config.initialTab = initTap
+        Config.Camera.imageLimit = numberOfImages
+        Config.VideoEditor.maximumDuration = 30
+        gallery.delegate = VC
+        gallery.modalPresentationStyle = .fullScreen
+        self.present(gallery, animated: true)
+        
     }
     
 }
