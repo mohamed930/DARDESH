@@ -248,10 +248,10 @@ class FirebaseLayer {
     
     // MARK:- TODO:- This Method for Upload Image.
     // --------------------------------------------
-    public static func uploadMedia(ImageFolder: String ,ImageName:String,Image: String ,PickedImage:UIImage,completion: @escaping (_ url: String?) -> Void) {
+    public static func uploadMedia(ImageFolder: String ,PickedImage:UIImage,completion: @escaping (_ url: String?) -> Void) {
         
        let StorageRef = Storage.storage().reference(forURL: imageFolder)
-        let starsRef = StorageRef.child(ImageFolder).child(Image).child(ImageName)
+        let starsRef = StorageRef.child(ImageFolder)
        var task: StorageUploadTask!
         
         if let uploadData = PickedImage.jpegData(compressionQuality: 0.5) {

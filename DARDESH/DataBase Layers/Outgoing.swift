@@ -38,7 +38,7 @@ class Outgoing {
         }
         
         if photo != nil {
-            
+            SendImage(message: message, Image: photo!, memberIds: memberIds)
         }
         
         if video != nil {
@@ -67,6 +67,7 @@ class Outgoing {
     private func SaveMessages (message: MessageModel , membersIds: [String]) {
         
         // 3. save message locally
+        self.messageviewmodel.responseReadedBehaviour.accept(false)
         RealmswiftLayer.Save(message)
         
         // 4. save message to firestore
@@ -97,11 +98,16 @@ class Outgoing {
         message.message = "Photo Message"
         message.type = imageType
         
-        // 3. Save message locally
-        let fileName = Date().StringDate()
-        let fileDirectory = "MediaMessages/Photo" + "\(message.chatRoomId)" + "_ \(fileName)" + ".jpg"
+        // initialise image name and directory
+        let id = UUID().uuidString
+        let fileName = Date().StringDate() + id
+        let fileDirectory = "MediaMessages/Photo/" + "\(message.chatRoomId)" + "_ \(fileName)" + ".jpg"
         
-        FirebaseLayer.uploadMedia(ImageFolder: "MediaMessages", ImageName: fileDirectory, Image: "Photo", PickedImage: Image) { [weak self] url in
+        // Save Image Locally.
+        FileManagerLayer.shared.SaveFileLocally(fileData: Image.jpegData(compressionQuality: 0.6)! as NSData, fileName: fileName)
+        
+        // Upload Image to storage and add to message and save into messages collection.
+        FirebaseLayer.uploadMedia(ImageFolder: fileDirectory, PickedImage: Image) { [weak self] url in
             
             guard let self = self else { return }
             
@@ -109,6 +115,7 @@ class Outgoing {
             
             message.imageUrl = url
             
+            // Save message to message collection.
             self.SaveMessages(message: message, membersIds: memberIds)
             
         }

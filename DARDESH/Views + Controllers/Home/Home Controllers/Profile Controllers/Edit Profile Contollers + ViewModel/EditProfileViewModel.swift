@@ -71,16 +71,10 @@ class EditProfileViewModel {
     func UpdateProfileImageOperation() {
         
         isloadingBehaviour.accept(true)
+
+        let imgName =  "ProfileImages/" + userID
         
-//        let date = Date()
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
-//        let result = formatter.string(from: date)
-        
-        
-        let imgName = imageFolder + "/ProfileImages/" + userID
-        
-        FirebaseLayer.uploadMedia(ImageFolder: "ProfileImages", ImageName: imgName, Image: "Photo", PickedImage: PickedImageBehaviour.value) { [weak self] urlImg in
+        FirebaseLayer.uploadMedia(ImageFolder: imgName, PickedImage: PickedImageBehaviour.value) { [weak self] urlImg in
             
             guard let self = self else { return }
             

@@ -14,23 +14,20 @@ extension MessageViewController:  GalleryControllerDelegate {
         
         if images.count > 1 {
             
-            for i in images {
+            Image.resolve(images: images) { [weak self] Imgarray in
                 
-                i.resolve { [weak self] img in
-                    
-                    guard let self = self else { return }
-                    
-                    self.messageviewmodel.responseReadedBehaviour.accept(false)
-                    self.messageviewmodel.sendMessageImageOperation(PickedImage: img!)
+                guard let self = self else { return }
+                
+                for i in Imgarray {
+                    self.messageviewmodel.sendMessageImageOperation(PickedImage: i!)
                 }
                 
+                // After Picking Image Dismiss Gallery
+                controller.dismiss(animated: true)
             }
             
-            // After Picking Image Dismiss Gallery
-            controller.dismiss(animated: true)
-            
         }
-        else {
+        else if images.count == 1 {
             
             images[0].resolve(completion: { [weak self] img in
                 
